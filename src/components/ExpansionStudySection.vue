@@ -6,13 +6,13 @@
         <div class="col-12 col-md-8">
           <span class="uc-pill-black">Campus Land &amp; Expansion Study</span>
           <div class="text-h5 text-weight-bolder q-mt-sm">
-            Why Our Auditorium Seats Don't Match the Lot—and Where to Add +400 Spaces
+            Adding +360 Spaces on the East &amp; NE Sides (While Preserving the School Turf Field)
           </div>
           <p class="text-body1 uc-muted q-mt-sm q-mb-none" style="line-height: 1.65">
-            Because the campus was originally designed as a K–12 school (heavy bus and parent drop-off usage), only
-            <strong>4.29 acres</strong> of our <strong>~22–28 acre property</strong> were paved. We have
-            <strong>3.18 acres of flat, dry land</strong> outside the Ramah Creek buffer to add
-            <strong>+400 spaces</strong>—bringing total campus parking to <strong>~850 spaces</strong>.
+            Because the campus was built as a K–12 school, only <strong>4.29 acres</strong> are paved parking today (~450 spaces), and the cleared area on the West side is the
+            <strong>school's dedicated athletic turf field</strong>. By focusing expansion exclusively on the
+            <strong>2.93 acres of open land on the Northeast and East sides</strong>, we can add
+            <strong>+360 spaces</strong> (~810 total spaces) without touching the school turf field or Ramah Creek buffer.
           </p>
         </div>
         <div class="col-12 col-md-4 row justify-end no-print">
@@ -33,9 +33,9 @@
       <div class="row q-col-gutter-md q-mt-md">
         <div class="col-6 col-md-3">
           <div class="uc-subcard q-pa-md full-height">
-            <div class="text-caption uc-muted text-uppercase text-weight-bold">Total Deeded Land</div>
-            <div class="text-h5 text-weight-bolder q-mt-xs">21.9 – 28.0 ac</div>
-            <div class="text-caption uc-muted q-mt-xs">Over 75% is still unpaved</div>
+            <div class="text-caption uc-muted text-uppercase text-weight-bold">West Athletic Turf</div>
+            <div class="text-h5 text-weight-bolder q-mt-xs">100% Protected</div>
+            <div class="text-caption uc-muted q-mt-xs">Preserved for school athletics</div>
           </div>
         </div>
         <div class="col-6 col-md-3">
@@ -47,16 +47,16 @@
         </div>
         <div class="col-6 col-md-3">
           <div class="uc-subcard q-pa-md full-height">
-            <div class="text-caption uc-muted text-uppercase text-weight-bold">New Upland Infill</div>
-            <div class="text-h5 text-weight-bolder q-mt-xs">+400 Spaces</div>
-            <div class="text-caption uc-muted q-mt-xs">3.18 acres outside creek buffer</div>
+            <div class="text-caption uc-muted text-uppercase text-weight-bold">East &amp; NE Infill</div>
+            <div class="text-h5 text-weight-bolder q-mt-xs">+360 Spaces</div>
+            <div class="text-caption uc-muted q-mt-xs">2.93 acres on East &amp; NE sides</div>
           </div>
         </div>
         <div class="col-6 col-md-3">
           <div class="uc-subcard q-pa-md full-height">
             <div class="text-caption uc-muted text-uppercase text-weight-bold">Expanded Total</div>
-            <div class="text-h5 text-weight-bolder q-mt-xs">~850 Spaces</div>
-            <div class="text-caption uc-muted q-mt-xs">Supports 1,850–2,100 ppl/service</div>
+            <div class="text-h5 text-weight-bolder q-mt-xs">~810 Spaces</div>
+            <div class="text-caption uc-muted q-mt-xs">Supports 1,800–2,000 ppl/service</div>
           </div>
         </div>
       </div>

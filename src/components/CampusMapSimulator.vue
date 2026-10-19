@@ -18,9 +18,9 @@
       </div>
       <div class="col-6 col-md-3">
         <div class="uc-card q-pa-md">
-          <div class="text-caption uc-muted text-uppercase text-weight-bold" style="letter-spacing: 0.05em">Expansion Potential</div>
-          <div class="text-h5 text-weight-bolder q-mt-xs">+400 Spaces</div>
-          <div class="text-caption uc-muted">850 total spaces on site</div>
+          <div class="text-caption uc-muted text-uppercase text-weight-bold" style="letter-spacing: 0.05em">East/NE Expansion</div>
+          <div class="text-h5 text-weight-bolder q-mt-xs">+360 Spaces</div>
+          <div class="text-caption uc-muted">810 total (Turf field preserved)</div>
         </div>
       </div>
       <div class="col-6 col-md-3">
@@ -82,7 +82,7 @@
             style="background: #0b1120; border: 1px solid #27272a; border-radius: 12px"
           >
             <svg
-              viewBox="65 20 385 607"
+              viewBox="55 15 395 612"
               style="width: 100%; max-height: 510px; height: auto; user-select: none"
               role="img"
               aria-label="Campus Map of 11901 Sam Furr Rd"
@@ -105,6 +105,23 @@
               <!-- 1. Surrounding Tree Canopy -->
               <path d="M 372.3,2.1 L 318.4,36.4 L 298.9,107.5 L 244.6,94.6 L 223.1,25.9 L 146.3,-25.1 L 19.6,161.9 L 56.1,229.3 L 103.5,263.7 L 134.2,280.6 L 216.9,400.3 L 233.5,428.8 L 240.8,448.8 L 234.6,463.6 L 218.1,480.2 L 204.3,511.7 L 208.9,543.0 L 223.1,573.4 L 239.7,597.2 L 60,640 L 60,2.1 Z" fill="#064e3b" fill-opacity="0.3" stroke="#059669" stroke-opacity="0.2" stroke-width="1" />
               <path d="M 259.9,559.7 L 291.1,560.5 L 357.3,515.2 L 355.2,490.4 L 348.6,437.3 L 341.0,426.8 L 320.0,436.3 L 250.3,490.8 L 243.0,507.5 L 242.7,525.3 L 250.0,545.4 Z" fill="#064e3b" fill-opacity="0.35" stroke="#059669" stroke-opacity="0.25" stroke-width="1" />
+
+              <!-- 1B. Ambassador Christian School Athletic Turf Field (NW Side — Protected) -->
+              <g class="marker-btn" @click="selectPost('turf')">
+                <polygon
+                  points="135.0,108.0 162.0,126.5 112.0,200.5 85.0,182.0"
+                  fill="#065f46"
+                  fill-opacity="0.75"
+                  stroke="#34d399"
+                  stroke-opacity="0.8"
+                  stroke-width="1.5"
+                />
+                <!-- Midfield line & markings on turf field -->
+                <line x1="110.0" y1="145.0" x2="137.0" y2="163.5" stroke="#a7f3d0" stroke-opacity="0.55" stroke-width="1" />
+                <circle cx="123.5" cy="154.2" r="6" fill="none" stroke="#a7f3d0" stroke-opacity="0.55" stroke-width="1" />
+                <text x="123" y="152" text-anchor="middle" fill="#ecfdf5" font-size="7.5" font-weight="700" transform="rotate(-56 123 152)">SCHOOL TURF</text>
+                <text x="131" y="158" text-anchor="middle" fill="#a7f3d0" font-size="6.8" font-weight="600" transform="rotate(-56 131 158)">FIELD (PROTECTED)</text>
+              </g>
 
               <!-- 2. Ramah Creek Stream & Culvert Bridge -->
               <path d="M 74.1,274.3 L 96.3,292.0 L 120.2,304.9 L 144.7,331.5 L 169.3,368.4 L 191.6,397.3 L 205.8,419.9 L 236.3,454.1" fill="none" stroke="#0ea5e9" stroke-opacity="0.5" stroke-width="3.5" />
@@ -152,7 +169,7 @@
 
               <text x="150" y="315" text-anchor="middle" fill="#f4f4f5" font-size="10" font-weight="700" transform="rotate(55 150 315)">WEST LOT (~90)</text>
               <text x="348" y="245" text-anchor="middle" fill="#f4f4f5" font-size="10.5" font-weight="700" transform="rotate(56 348 245)">EAST LOT (~210)</text>
-              <text x="168" y="82" text-anchor="middle" fill="#f4f4f5" font-size="10.5" font-weight="700" transform="rotate(-55 168 82)">NORTH LOT (~150)</text>
+              <text x="172" y="75" text-anchor="middle" fill="#f4f4f5" font-size="10.5" font-weight="700" transform="rotate(-55 172 75)">NORTH LOT (~150)</text>
 
               <!-- PHASE 1: ARRIVAL + PASSENGER-SIDE DROP-OFF + ESCAPE LANE -->
               <g v-show="currentPhase === 'ingress'">
@@ -189,18 +206,21 @@
                 </g>
               </g>
 
-              <!-- PHASE 4: +400 STALL EXPANSION ZONES (E1, E2, E3) -->
+              <!-- PHASE 4: +360 STALL EXPANSION ZONES ON NE & EAST SIDE (PRESERVING TURF FIELD) -->
               <g v-show="currentPhase === 'expand'">
-                <polygon points="210.5,30.9 250.6,160.6 322.7,175.7 348.0,145.0 298.9,85.0" fill="#a855f7" fill-opacity="0.36" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" class="marker-btn" @click="selectPost('e1')" />
+                <!-- E1: NE Infill Wedge (+175 Spaces) -->
+                <polygon points="210.5,30.9 250.6,160.6 322.7,175.7 348.0,145.0 298.9,85.0" fill="#a855f7" fill-opacity="0.38" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" class="marker-btn" @click="selectPost('e1')" />
                 <path d="M 347.0,227.8 L 318.0,182.2 L 285.0,105.0 L 210.5,30.9" fill="none" stroke="#c084fc" stroke-width="3" class="flow-line" marker-end="url(#arr-purple)" />
                 <text x="282" y="112" text-anchor="middle" fill="#f3e8ff" font-size="11" font-weight="700" style="pointer-events: none">NEW LOT E1</text>
                 <text x="282" y="125" text-anchor="middle" fill="#e9d5ff" font-size="10" font-weight="600" style="pointer-events: none">+175 Spaces (1.38 ac)</text>
 
-                <polygon points="145.4,111.9 169.8,153.6 139.6,193.2 123.4,232.0 138.8,243.7 103.5,263.7 72.0,205.0 95.0,140.0" fill="#a855f7" fill-opacity="0.36" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" class="marker-btn" @click="selectPost('e2')" />
-                <text x="108" y="188" text-anchor="middle" fill="#f3e8ff" font-size="10.5" font-weight="700" transform="rotate(-55 108 188)" style="pointer-events: none">NEW LOT E2 (+145)</text>
+                <!-- E2: East Lot Outer Expansion Bays (+125 Spaces) -->
+                <polygon points="322.7,175.7 374.1,241.0 382.5,278.2 379.7,314.6 360.0,333.0 398.0,342.0 426.0,305.0 428.0,255.0 408.0,210.0 355.0,152.0" fill="#a855f7" fill-opacity="0.38" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" class="marker-btn" @click="selectPost('e2')" />
+                <text x="398" y="250" text-anchor="middle" fill="#f3e8ff" font-size="10.5" font-weight="700" transform="rotate(56 398 250)" style="pointer-events: none">NEW LOT E2 (+125)</text>
 
-                <polygon points="322.7,175.7 374.1,241.0 382.5,278.2 379.7,314.6 402.0,305.0 405.0,265.0 392.0,225.0 348.0,165.0" fill="#a855f7" fill-opacity="0.36" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" class="marker-btn" @click="selectPost('e3')" />
-                <text x="392" y="248" text-anchor="middle" fill="#f3e8ff" font-size="10" font-weight="700" transform="rotate(56 392 248)" style="pointer-events: none">E3: +80</text>
+                <!-- E3: North Apex & Perimeter Shoulder Bays (+60 Spaces) -->
+                <polygon points="185.0,45.0 210.5,30.9 298.9,85.0 310.0,70.0 215.0,18.0 172.0,32.0" fill="#a855f7" fill-opacity="0.38" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" class="marker-btn" @click="selectPost('e3')" />
+                <text x="245" y="42" text-anchor="middle" fill="#f3e8ff" font-size="9.5" font-weight="700" transform="rotate(30 245 42)" style="pointer-events: none">E3: +60</text>
               </g>
 
               <!-- CLICKABLE POLICE & VOLUNTEER POST MARKERS -->
@@ -226,7 +246,7 @@
               </g>
 
               <!-- North Compass Badge -->
-              <g transform="translate(92, 46)">
+              <g transform="translate(82, 42)">
                 <circle cx="0" cy="0" r="14" fill="#18181b" stroke="#71717a" stroke-width="1.2" />
                 <path d="M 0 -9 L 4 5 L 0 2 L -4 5 Z" fill="#ffffff" />
                 <text x="0" y="11" text-anchor="middle" fill="#e4e4e7" font-size="8.5" font-weight="700">N</text>
@@ -250,7 +270,11 @@
             </div>
             <div class="row items-center no-wrap">
               <span style="width: 12px; height: 12px; background: rgba(168, 85, 247, 0.45); border: 1px solid #c084fc; border-radius: 3px; display: inline-block" class="q-mr-xs"></span>
-              <span>+400 New Spaces</span>
+              <span>+360 New Spaces</span>
+            </div>
+            <div class="row items-center no-wrap">
+              <span style="width: 12px; height: 12px; background: rgba(6, 95, 70, 0.85); border: 1px solid #34d399; border-radius: 3px; display: inline-block" class="q-mr-xs"></span>
+              <span>School Turf Field (Protected)</span>
             </div>
           </div>
 
@@ -295,7 +319,7 @@
           </p>
           <div class="row q-gutter-xs">
             <q-btn
-              v-for="key in ['hpd', 'split', 'crosswalk', 'east', 'north', 'e1', 'e2']"
+              v-for="key in ['hpd', 'split', 'crosswalk', 'east', 'north', 'turf', 'e1', 'e2']"
               :key="key"
               size="sm"
               no-caps
@@ -368,13 +392,13 @@
             <q-toggle
               v-model="shuttle"
               :color="$q.dark.isActive ? 'white' : 'dark'"
-              label="Park 90 Dream Team cars on North grass (saves paved spaces)"
+              label="Park 90 Dream Team cars on NE grass wedge (saves paved spaces)"
               class="text-body2"
             />
             <q-toggle
               v-model="expand"
               :color="$q.dark.isActive ? 'white' : 'dark'"
-              label="Include +400 Expansion Spaces (Zones E1–E3)"
+              label="Include +360 Expansion Spaces (Zones E1–E3, preserving Turf Field)"
               class="text-body2"
               @update:model-value="onToggleExpand"
             />
@@ -424,7 +448,7 @@ const activePostObj = computed(() => {
   return postData[selectedPostKey.value] || postData.crosswalk
 })
 
-const capacity = computed(() => (expand.value ? 850 : 450))
+const capacity = computed(() => (expand.value ? 810 : 450))
 const guestCars = computed(() => Math.round(attendees.value / occ.value))
 const pavedNeeded = computed(() =>
   shuttle.value ? guestCars.value : guestCars.value + vols.value
@@ -444,12 +468,12 @@ const takeawayHtml = computed(() => {
     return `<strong>Comfortable Fit:</strong> At ${att} people, the lot is ${pct.value}% full with <strong>${spare} open spaces</strong> to spare.`
   }
   if (pavedNeeded.value <= capacity.value + 10) {
-    return `<strong>Right at Capacity (100%):</strong> Works on Day 1 as long as <strong>all ${vols.value} Dream Team cars park on the North grass wedge</strong> and hosts park cars row-by-row.`
+    return `<strong>Right at Capacity (100%):</strong> Works on Day 1 as long as <strong>all ${vols.value} Dream Team cars park on the NE grass wedge</strong> and hosts park cars row-by-row.`
   }
   const over = pavedNeeded.value - capacity.value
   const advice = expand.value
     ? 'Spread attendance across the 8:30, 10:30, and 12:30 services.'
-    : 'Turn on <strong>"Include +400 Expansion Spaces"</strong> above to see how adding Zones E1–E3 solves this.'
+    : 'Turn on <strong>"Include +360 Expansion Spaces"</strong> above to see how adding Zones E1–E3 (on the NE & East sides) solves this.'
   return `<strong>Over Capacity by +${over} Cars:</strong> ${advice}`
 })
 

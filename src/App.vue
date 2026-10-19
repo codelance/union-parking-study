@@ -112,7 +112,7 @@
                 :color="$q.dark.isActive ? 'white' : 'dark'"
                 :text-color="$q.dark.isActive ? 'dark' : 'white'"
                 icon-right="arrow_forward"
-                label="Next: 3. +400 Space Expansion Plan"
+                label="Next: 3. +360 Space Expansion Plan"
                 no-caps
                 class="text-weight-bold q-px-lg q-py-sm"
                 style="border-radius: 10px"
@@ -121,7 +121,7 @@
             </div>
           </div>
 
-          <!-- TAB 3: +400 SPACE EXPANSION STUDY -->
+          <!-- TAB 3: +360 SPACE EXPANSION STUDY -->
           <div v-show="activeTab === 'expansion' || activeTab === 'all'" class="q-mb-xl">
             <ExpansionStudySection @show-expansion="handleShowExpansion" />
             <div v-if="activeTab === 'expansion'" class="row justify-between q-mt-lg no-print">
@@ -157,7 +157,7 @@
                 outline
                 :color="$q.dark.isActive ? 'white' : 'dark'"
                 icon="arrow_back"
-                label="Back to +400 Space Expansion"
+                label="Back to +360 Space Expansion"
                 no-caps
                 class="text-weight-bold q-px-md q-py-sm"
                 style="border-radius: 10px"
@@ -201,7 +201,7 @@ const mapSimRef = ref(null)
 const navTabs = [
   { id: 'map', label: '1. Campus Map' },
   { id: 'engineering', label: '2. Traffic & Drop-Off' },
-  { id: 'expansion', label: '3. +400 Expansion' },
+  { id: 'expansion', label: '3. +360 Expansion' },
   { id: 'playbook', label: '4. Sunday Playbook' },
   { id: 'all', label: 'Full Report' }
 ]

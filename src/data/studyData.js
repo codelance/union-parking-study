@@ -28,12 +28,12 @@ export const executiveTakeaways = [
   },
   {
     id: 4,
-    badge: '4. Room to Double Parking',
+    badge: '4. Expand Without Touching Turf',
     badgeColor: 'accent',
     icon: 'add_road',
-    title: '+400 New Spaces on Our Land',
+    title: '+360 New Spaces on East/NE Land',
     description:
-      'Only 4.3 acres of our ~22–28 acre property are paved today. We have 3.2 acres of flat, dry land right next to the existing lots (outside the creek buffer) to add +400 spaces—doubling campus parking to ~850 spaces.'
+      'While the West side is the school\'s athletic turf field (protected), we have 2.93 acres of flat upland on the Northeast Wedge and East side of campus to add +360 spaces—bringing total parking to ~810 spaces.'
   }
 ]
 
@@ -68,11 +68,11 @@ export const phaseOptions = [
   {
     value: 'expand',
     stepLabel: 'View 4 • Future',
-    label: '+400 New Spaces',
+    label: '+360 New Spaces',
     color: 'accent',
-    badge: 'Viewing: View 4 • Future +400 Space Expansion (450 → 850 Spaces)',
-    title: 'Adding +400 New Spaces on Our Existing Flat, Dry Land (Purple Zones)',
-    desc: 'Tap the purple zones on the map! Adding New Lot E1 (+175 spaces between the East & North lots), New Lot E2 (+145 spaces on the NW meadow), and E3 (+80 perimeter spaces) brings total campus parking from ~450 to ~850 spaces.'
+    badge: 'Viewing: View 4 • Future +360 Space Expansion (450 → 810 Spaces)',
+    title: 'Adding +360 Spaces on the NE & East Side (Preserving the School Turf Field)',
+    desc: 'Because the West side is the school\'s athletic turf field, all parking expansion happens on the Northeast & East side: New Lot E1 (+175 spaces in the NE Wedge), New Lot E2 (+125 spaces expanding the East Lot), and E3 (+60 perimeter stalls).'
   }
 ]
 
@@ -120,7 +120,16 @@ export const postData = {
     color: 'purple-8',
     title: 'V4: North Parking Lot (~150 Spaces)',
     detail:
-      'Has 4 parallel rows plus curved west bays. During the 9:45 AM turnaround (while 8:30 AM is leaving the East Lot), early 10:30 AM arrivals are sent straight here so they park effortlessly without waiting on backing-out cars.'
+      'Has 4 parallel rows plus curved west bays adjacent to the school turf field. During the 9:45 AM turnaround (while 8:30 AM is leaving the East Lot), early 10:30 AM arrivals are sent straight here so they park effortlessly.'
+  },
+  turf: {
+    id: 'turf',
+    code: 'TURF',
+    shortLabel: 'School Turf Field',
+    color: 'green-8',
+    title: 'Ambassador Christian School Athletic Turf Field (Protected — Do Not Pave)',
+    detail:
+      'Located immediately West/Northwest of the building and NW parking bays. This is the school\'s dedicated athletic turf field and is 100% preserved in our expansion plan—all new parking is placed on the Northeast and East sides of campus instead.'
   },
   e1: {
     id: 'e1',
@@ -129,25 +138,25 @@ export const postData = {
     color: 'purple-6',
     title: 'New Lot E1: North-East Wedge (+175 Spaces • Priority #1)',
     detail:
-      '1.38-acre V-shaped grass area right between the East Lot and North Lot. Because it already touches our existing asphalt roads on two sides, gravelling or paving E1 adds +175 spaces AND connects the East and North lots into a complete outer loop!'
+      '1.38-acre V-shaped grass area right between the East Lot and North Lot (on the opposite side of campus from the school turf field). Because it already touches our existing asphalt roads on two sides, gravelling or paving E1 adds +175 spaces AND connects the East and North lots into a complete outer loop!'
   },
   e2: {
     id: 'e2',
     code: 'E2',
-    shortLabel: 'E2: +145 Spaces',
+    shortLabel: 'E2: +125 Spaces',
     color: 'purple-6',
-    title: 'New Lot E2: Northwest Meadow Pad (+145 Spaces • Priority #2)',
+    title: 'New Lot E2: East Lot Outer Expansion Bays (+125 Spaces • Priority #2)',
     detail:
-      '1.15-acre flat, cleared meadow just west of the North Lot bays (well outside the Ramah Creek flood buffer). Extending the existing parking aisles into this meadow adds +145 spaces that drain straight to the West exit road.'
+      '1.05-acre upland corridor (480 ft × 95 ft) immediately East of the existing East Fan Lot. Adding two outer parking bays along the East side expands our closest lot by +125 spaces without touching the school\'s athletic turf field on the West side.'
   },
   e3: {
     id: 'e3',
     code: 'E3',
-    shortLabel: 'E3: +80 Spaces',
+    shortLabel: 'E3: +60 Spaces',
     color: 'purple-6',
-    title: 'New Lot E3: Outer Perimeter Bays (+80 Spaces • Priority #3)',
+    title: 'New Lot E3: North Apex & Perimeter Shoulder Stalls (+60 Spaces • Priority #3)',
     detail:
-      'Adding a single 60-ft parking bay along the outer eastern curve of the East Lot plus angled shoulder spaces along the West drive adds +80 fast-in, fast-out spaces with minimal grading.'
+      '0.50-acre perimeter expansion adding angled spaces around the North Lot apex and outer drive shoulders, yielding +60 fast-exit spaces with minimal grading.'
   }
 }
 
@@ -187,12 +196,12 @@ export const attendancePresets = [
   },
   {
     id: 'full',
-    title: '1,850+ Full Auditorium',
-    subtitle: 'With +400 Expansion (~841 cars)',
+    title: '1,800+ Full Auditorium',
+    subtitle: 'With +360 Expansion (~810 cars)',
     color: 'accent',
-    attendees: 1850,
+    attendees: 1800,
     occ: 2.2,
-    vols: 120,
+    vols: 110,
     shuttle: true,
     expand: true
   }
@@ -203,19 +212,19 @@ export const roadmapPhases = [
     phase: 'Phase 1: Day-One Sunday Launch (~$2,500 Gear)',
     color: 'text-positive',
     icon: 'flag',
-    desc: 'Place 45 cones to keep 1 Lane In / 1 Lane Out on the entrance drive, run the front canopy drop-off NE→SW, and park all 90 Dream Team cars on the North grass wedge (Zone D).'
+    desc: 'Place 45 cones to keep 1 Lane In / 1 Lane Out on the entrance drive, run the front canopy drop-off NE→SW, and park all 90 Dream Team cars on the North-East grass wedge (Zone E1).'
   },
   {
-    phase: 'Phase 2: Quick Gravel/Turf Overflow (+175 Spaces)',
+    phase: 'Phase 2: Quick Gravel/Geocell on NE Wedge (+175 Spaces)',
     color: 'text-info',
     icon: 'terrain',
     desc: 'Stabilize the 1.38-acre V-shaped grass notch between the East and North lots (Zone E1) with gravel/geocell so it works in rainy weather and connects both lots into a full loop.'
   },
   {
-    phase: 'Phase 3: Full Paved Expansion (+400 Spaces → 850 Total)',
+    phase: 'Phase 3: Pave East & NE Expansion (+360 Spaces → 810 Total)',
     color: 'text-accent',
     icon: 'construction',
-    desc: 'Pave Zone E1 (+175), Zone E2 (+145), and Zone E3 (+80) on existing flat, dry church land outside the creek buffer to support 1,800–2,100 attendees per service.'
+    desc: 'Pave Zone E1 (+175 in NE Wedge), Zone E2 (+125 expanding East Lot), and Zone E3 (+60 perimeter stalls) while 100% preserving the school\'s athletic turf field on the West side.'
   }
 ]
 
@@ -231,7 +240,7 @@ export const chickFilAPrinciples = [
     num: '2',
     title: 'Unload 8 Cars at Once + Bypass Lane',
     color: 'info',
-    icon: 'Airline_stops',
+    icon: 'airline_stops',
     desc: 'Never let Car #1 stop at the middle door while 15 cars wait behind it. Split the wide canopy drive into an Inner Unloading Curb (8 cars unloading at once) and an Outer Escape Lane so unloaded cars can pull around immediately.'
   },
   {
@@ -270,30 +279,30 @@ export const expansionZones = [
     name: 'Zone E1: North-East Wedge',
     priority: '★ Priority #1 (Best ROI)',
     priorityColor: 'positive',
-    location: 'Open grass V-notch right between the East Lot and the North Lot',
+    location: 'Open grass V-notch right between the East Lot and the North Lot (away from the school turf field)',
     size: "339' × 190' (1.38 Acres)",
     spaces: '+175 Spaces',
     why: 'Already bordered on 2 sides by our existing asphalt roads! Connecting this wedge links the East and North lots into a complete outer ring road and can be used immediately as grass/gravel overflow.'
   },
   {
     id: 'e2',
-    name: 'Zone E2: Northwest Meadow Pad',
+    name: 'Zone E2: East Lot Outer Expansion',
     priority: 'Priority #2',
     priorityColor: 'info',
-    location: 'Cleared flat meadow just west of the North Lot curved bays before the tree line',
-    size: "380' × 140' (1.15 Acres)",
-    spaces: '+145 Spaces',
-    why: 'Already cleared upland meadow far away from Ramah Creek; drains straight into the West Outbound exit road for fast dismissal.'
+    location: 'Upland corridor along the eastern curve of the East Fan Lot (preserving the West school turf field)',
+    size: "480' × 95' (1.05 Acres)",
+    spaces: '+125 Spaces',
+    why: 'Extends our main East Lot outward by two double-loaded bays right next to the auditorium entrance while keeping 100% of the school\'s athletic turf field untouched.'
   },
   {
     id: 'e3',
-    name: 'Zone E3: East & West Outer Bays',
+    name: 'Zone E3: North Apex & Perimeter Bays',
     priority: 'Priority #3',
     priorityColor: 'grey-6',
-    location: 'One outer parking bay along the eastern curve of the East Lot + angled spaces along the West drive',
-    size: "400' × 65' (0.65 Acres)",
-    spaces: '+80 Spaces',
-    why: 'Easy perimeter spaces along existing drive lanes requiring minimal grading.'
+    location: 'Angled perimeter bays around the North Lot apex and outer drive shoulders',
+    size: "360' × 60' (0.50 Acres)",
+    spaces: '+60 Spaces',
+    why: 'Easy perimeter spaces along existing drive lanes requiring minimal grading and zero impact on athletic facilities.'
   }
 ]
 
@@ -310,7 +319,7 @@ export const sundayTimeline = [
     title: 'Dream Team & Staff Arrival',
     color: 'positive',
     icon: 'groups',
-    desc: 'All staff & volunteers park on the North Grass Wedge (Zone D/E1) or off-site shuttle lot—saving 100% of paved spaces for guests.'
+    desc: 'All staff & volunteers park on the North-East Grass Wedge (Zone E1) or off-site shuttle lot—saving 100% of paved spaces for guests.'
   },
   {
     time: '8:00 – 8:35 AM',
