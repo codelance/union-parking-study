@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Union Church CLT — Huntersville Campus Traffic, Parking & Expansion Study</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    body {
+      background-color: #020617;
+      color: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+    }
+    @keyframes dashFlow {
+      to { stroke-dashoffset: -24; }
+    }
+    .flow-line {
+      stroke-dasharray: 7 5;
+      animation: dashFlow 0.85s linear infinite;
+    }
+    .marker-btn {
+      cursor: pointer;
+      transition: transform 0.15s ease, filter 0.15s ease;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    .marker-btn:hover {
+      transform: scale(1.22);
+      filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.7));
+    }
+    .marker-active circle {
+      stroke: #fde047 !important;
+      stroke-width: 3px !important;
+    }
+    @media print {
+      .no-print { display: none !important; }
+      .tab-section { display: block !important; page-break-inside: avoid; margin-bottom: 2rem; }
+      body { background: #0f172a; }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased min-h-screen flex flex-col">
+
+  <!-- Top Navigation & Header -->
+  <header class="sticky top-0 z-30 bg-slate-950/90 backdrop-blur-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-bold text-sm">
+          UC
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-base sm:text-lg font-bold text-white leading-tight">Union Church CLT — Huntersville Campus Traffic &amp; Parking Study</h1>
+            <span class="hidden sm:inline-block text-xs px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 font-semibold border border-emerald-500/30">
+              8:30 • 10:30 • 12:30
+            </span>
+          </div>
+          <p class="text-xs text-slate-400">11901 Sam Furr Rd (NC-73) / 2520 Ambassador Christian Way, Huntersville, NC 28078</p>
+        </div>
+      </div>
+
+      <!-- SPA View Navigation Tabs -->
+      <nav class="flex flex-wrap items-center gap-1 bg-slate-900 p-1 rounded-xl border border-slate-800 no-print" aria-label="Study Sections">
+        <button onclick="switchTab('map')" id="nav-map" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 text-white transition">
+          1. Campus Map &amp; Simulator
+        </button>
+        <button onclick="switchTab('engineering')" id="nav-engineering" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition">
+          2. Chick-fil-A &amp; 3-Service Flow
+        </button>
+        <button onclick="switchTab('expansion')" id="nav-expansion" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition">
+          3. Parcel GIS &amp; +400 Expansion
+        </button>
+        <button onclick="switchTab('playbook')" id="nav-playbook" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition">
+          4. Sunday Playbook &amp; Posts
+        </button>
+        <button onclick="switchTab('all')" id="nav-all" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-amber-400 hover:text-amber-300 transition">
+          Full Report View
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 py-5 space-y-8 flex-1">
+
+    <!-- =================================================================== -->
+    <!-- SECTION 1: INTERACTIVE GIS CAMPUS MAP & SURGE SIMULATOR (ON LOAD)   -->
+    <!-- =================================================================== -->
+    <section id="sec-map" class="tab-section space-y-6">
+      <!-- Executive KPI Banner -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3.5">
+          <div class="text-xs text-slate-400">Auditorium Capacity</div>
+          <div class="text-xl font-bold text-white mt-0.5">2,100 Seats</div>
+          <div class="text-xs text-sky-400 mt-0.5">80,081 Gross Sq Ft Building</div>
+        </div>
+        <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3.5">
+          <div class="text-xs text-slate-400">Current Paved Parking</div>
+          <div class="text-xl font-bold text-white mt-0.5">~450 Stalls</div>
+          <div class="text-xs text-amber-400 mt-0.5">4.29 Acres Paved (186,875 sq ft)</div>
+        </div>
+        <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3.5">
+          <div class="text-xs text-slate-400">Total Parcel Size</div>
+          <div class="text-xl font-bold text-white mt-0.5">21.9–28 Acres</div>
+          <div class="text-xs text-purple-400 mt-0.5">+400 Stall Expansion Potential</div>
+        </div>
+        <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3.5">
+          <div class="text-xs text-slate-400">Sunday Service Times</div>
+          <div class="text-xl font-bold text-emerald-400 mt-0.5">8:30 • 10:30 • 12:30</div>
+          <div class="text-xs text-slate-400 mt-0.5">45-Min Turnaround Windows</div>
+        </div>
+      </div>
+
+      <!-- Interactive Map + Right Controls Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <!-- Left 7 Columns: GIS-Accurate Interactive Map -->
+        <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 shadow-lg">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="text-base font-bold text-white">GIS-Accurate Campus Traffic &amp; Cone Map</h2>
+                <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 font-medium">Real OSM Satellite Vectors • North ↑</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5">Toggle operational phases below • Click <strong class="text-slate-200">P1–V4</strong> or <strong class="text-purple-300">E1–E3</strong> markers on the map</p>
+            </div>
+
+            <!-- Phase Switcher Buttons -->
+            <div class="flex flex-wrap items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
+              <button id="btn-ingress" onclick="setPhase('ingress')" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 text-white transition">
+                1. Arrival + Drop-Off
+              </button>
+              <button id="btn-swap" onclick="setPhase('swap')" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition">
+                2. 9:45 / 11:45 Swap
+              </button>
+              <button id="btn-egress" onclick="setPhase('egress')" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition">
+                3. 1:45 Final Egress
+              </button>
+              <button id="btn-expand" onclick="setPhase('expand')" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition">
+                4. +400 Expansion
+              </button>
+            </div>
+          </div>
+
+          <!-- SVG Map Viewport -->
+          <div class="bg-[#0b1120] border border-slate-800 rounded-xl p-2 relative flex items-center justify-center overflow-hidden">
+            <svg viewBox="65 20 385 607" class="w-full max-h-[520px] h-auto select-none" role="img" aria-label="GIS Campus Map of 11901 Sam Furr Rd">
+              <defs>
+                <marker id="arr-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981" />
+                </marker>
+                <marker id="arr-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+                </marker>
+                <marker id="arr-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#f59e0b" />
+                </marker>
+                <marker id="arr-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#c084fc" />
+                </marker>
+              </defs>
+
+              <!-- 1. Surrounding Tree Canopy / Woodland Buffers (OSM Ways 1386017859 & 1129013767) -->
+              <path d="M 372.3,2.1 L 318.4,36.4 L 298.9,107.5 L 244.6,94.6 L 223.1,25.9 L 146.3,-25.1 L 19.6,161.9 L 56.1,229.3 L 103.5,263.7 L 134.2,280.6 L 216.9,400.3 L 233.5,428.8 L 240.8,448.8 L 234.6,463.6 L 218.1,480.2 L 204.3,511.7 L 208.9,543.0 L 223.1,573.4 L 239.7,597.2 L 60,640 L 60,2.1 Z" fill="#064e3b" fill-opacity="0.35" stroke="#059669" stroke-opacity="0.25" stroke-width="1" />
+              <path d="M 259.9,559.7 L 291.1,560.5 L 357.3,515.2 L 355.2,490.4 L 348.6,437.3 L 341.0,426.8 L 320.0,436.3 L 250.3,490.8 L 243.0,507.5 L 242.7,525.3 L 250.0,545.4 Z" fill="#064e3b" fill-opacity="0.45" stroke="#059669" stroke-opacity="0.35" stroke-width="1" />
+
+              <!-- 2. Ramah Creek Stream & Culvert Bridge (OSM Ways 41353999, 1112600978, 1415965305, 1112600977) -->
+              <path d="M 74.1,274.3 L 96.3,292.0 L 120.2,304.9 L 144.7,331.5 L 169.3,368.4 L 191.6,397.3 L 205.8,419.9 L 236.3,454.1" fill="none" stroke="#0ea5e9" stroke-opacity="0.55" stroke-width="3.5" />
+              <path d="M 236.3,454.1 L 260.6,483.4" fill="none" stroke="#38bdf8" stroke-opacity="0.85" stroke-width="3" stroke-dasharray="3 3" />
+              <path d="M 260.6,483.4 L 277.2,505.2 L 307.4,530.8 L 319.9,538.3 L 359.4,559.3 L 383.5,565.5 L 429.6,580.0 L 461.4,583.9" fill="none" stroke="#0ea5e9" stroke-opacity="0.55" stroke-width="3.5" />
+              <text x="160" y="392" fill="#38bdf8" opacity="0.8" font-size="10" font-style="italic" transform="rotate(48 160 392)">Ramah Creek</text>
+
+              <!-- 3. Actual Paved Parking Lot Polygons (OSM Ways 1112600979 & 1112600980: 4.29 Acres / ~450 Stalls) -->
+              <path d="M 308.9,171.7 L 265.2,166.1 L 250.6,160.6 L 210.5,30.9 L 149.0,121.6 L 169.8,153.6 L 139.6,193.2 L 139.6,236.1 L 155.7,254.5 L 235.2,205.7 L 332.9,336.3 L 360.0,333.0 L 372.1,322.5 L 379.7,314.6 L 382.5,278.2 L 374.1,241.0 L 322.7,175.7 Z" fill="#1e293b" stroke="#475569" stroke-width="1.5" />
+              <path d="M 160.5,257.2 L 155.5,262.7 L 210.3,346.2 L 215.3,339.9 Z" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6" stroke-width="1.2" />
+
+              <!-- 4. Actual Paved Campus Roads & Parking Aisles -->
+              <!-- S-Curve Entrance Road: Ambassador Christian Way (OSM Way 444930148) -->
+              <path d="M 276.8,602.1 L 235.0,549.6 L 229.8,538.3 L 226.5,526.1 L 224.8,514.0 L 225.1,501.8 L 228.5,489.4 L 235.5,477.4 L 243.7,468.2 L 257.7,457.1 L 274.1,445.5" fill="none" stroke="#334155" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M 276.8,602.1 L 235.0,549.6 L 229.8,538.3 L 226.5,526.1 L 224.8,514.0 L 225.1,501.8 L 228.5,489.4 L 235.5,477.4 L 243.7,468.2 L 257.7,457.1 L 274.1,445.5" fill="none" stroke="#475569" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" />
+              <!-- Culvert Bridge Curbs -->
+              <line x1="230" y1="471" x2="242" y2="459" stroke="#94a3b8" stroke-width="2" />
+              <line x1="241" y1="481" x2="253" y2="469" stroke="#94a3b8" stroke-width="2" />
+
+              <!-- Main Perimeter Loop & North Triangle Spine (OSM Way 679026089) -->
+              <path d="M 257.7,457.1 L 274.1,445.5 L 361.5,383.8 L 363.8,378.3 L 364.5,373.6 L 363.6,368.5 L 346.8,333.6 L 299.5,262.6 L 241.1,174.8 L 249.7,166.8 L 241.3,146.7 L 240.0,141.9 L 236.1,127.8 L 231.4,110.3 L 217.9,60.0 L 213.9,45.6 L 212.3,41.2 L 209.5,37.2 L 206.5,35.5 L 203.1,34.6 L 199.1,35.4 L 195.7,38.5 L 145.4,111.9 L 144.0,114.5 L 143.3,117.7 L 143.7,120.9 L 145.2,124.0 L 165.3,137.9 L 167.2,139.0 L 174.8,143.4 L 177.0,146.5 L 192.8,168.0 L 195.0,171.0 L 211.2,193.1 L 138.8,243.7 L 201.6,346.8 L 230.1,384.5 L 243.3,402.8 L 274.1,445.5" fill="none" stroke="#334155" stroke-width="11" stroke-linejoin="round" />
+              <!-- Curved SE Portico / Canopy Drop-Off Loop (OSM Way 679026090) -->
+              <path d="M 243.3,402.8 L 259.0,394.1 L 280.5,388.6 L 285.8,395.6 L 290.3,400.6 L 294.5,402.4 L 299.6,402.4 L 322.5,387.1 L 325.3,383.1 L 325.3,378.9 L 323.8,373.8 L 318.8,364.2 L 324.3,354.0 L 335.2,341.3 L 346.8,333.6" fill="none" stroke="#334155" stroke-width="9.5" stroke-linejoin="round" />
+              <!-- NW Curved Bays & 4 Ladder Aisles (OSM Ways 679026091-679026096) -->
+              <path d="M 138.8,243.7 L 132.4,242.7 L 128.1,240.4 L 125.0,236.4 L 123.4,232.0 L 123.9,227.3 L 125.8,222.8 L 130.3,216.3 L 135.9,208.8 L 140.3,203.9 L 140.5,203.8 L 192.8,168.0" fill="none" stroke="#334155" stroke-width="8" stroke-linejoin="round" />
+              <path d="M 140.5,203.8 L 135.1,195.3 L 133.5,190.2 L 134.0,185.4 L 137.0,178.3 L 152.2,156.6 L 167.2,139.0" fill="none" stroke="#334155" stroke-width="8" stroke-linejoin="round" />
+              <path d="M 165.3,137.9 L 173.1,120.4 L 217.9,60.0" fill="none" stroke="#334155" stroke-width="7.5" />
+              <path d="M 177.0,146.5 L 231.4,110.3" fill="none" stroke="#334155" stroke-width="7.5" />
+              <path d="M 195.0,171.0 L 240.0,141.9" fill="none" stroke="#334155" stroke-width="7.5" />
+              <path d="M 211.2,193.1 L 241.1,174.8" fill="none" stroke="#334155" stroke-width="7.5" />
+              <!-- East Fan Lot Outer Loop & Middle Aisles (OSM Ways 679026097-679026099) -->
+              <path d="M 249.7,166.8 L 262.6,173.2 L 276.0,174.6 L 306.6,177.8 L 313.3,178.7 L 318.0,182.2 L 347.0,227.8 L 376.7,274.4 L 379.3,280.0 L 380.8,287.5 L 381.4,295.4 L 379.8,303.5 L 376.5,309.2 L 367.1,317.8 L 346.8,333.6" fill="none" stroke="#334155" stroke-width="9" stroke-linejoin="round" />
+              <path d="M 367.1,317.8 L 362.4,304.9 L 323.1,245.6 L 276.0,174.6" fill="none" stroke="#334155" stroke-width="8" stroke-linejoin="round" />
+              <path d="M 347.0,227.8 L 323.1,245.6 L 299.5,262.6" fill="none" stroke="#334155" stroke-width="7.5" />
+
+              <!-- Painted White Parking Stall Stripes -->
+              <path d="M 168.4,126.7 L 180.2,132.0 M 170.9,121.2 L 182.7,126.5 M 176.2,110.2 L 186.6,118.0 M 179.8,105.4 L 190.2,113.2 M 183.4,100.6 L 193.8,108.4 M 187.0,95.8 L 197.4,103.6 M 190.6,91.0 L 201.0,98.8 M 194.2,86.2 L 204.6,94.0 M 197.8,81.4 L 208.2,89.2 M 201.4,76.6 L 211.8,84.4 M 205.0,71.8 L 215.4,79.6 M 208.6,67.0 L 219.0,74.8 M 178.4,137.8 L 185.6,148.6 M 183.4,134.5 L 190.6,145.3 M 188.4,131.1 L 195.6,141.9 M 193.4,127.8 L 200.6,138.6 M 198.4,124.5 L 205.6,135.3 M 203.4,121.2 L 210.6,132.0 M 208.4,117.8 L 215.6,128.6 M 213.4,114.5 L 220.6,125.3 M 218.4,111.2 L 225.6,122.0 M 196.5,162.3 L 203.6,173.2 M 201.5,159.0 L 208.6,169.9 M 206.6,155.8 L 213.7,166.7 M 211.6,152.5 L 218.7,163.4 M 216.6,149.2 L 223.7,160.1 M 221.7,146.0 L 228.8,156.9 M 226.7,142.7 L 233.8,153.6 M 231.8,139.5 L 238.9,150.4 M 212.8,184.5 L 219.7,195.6 M 217.9,181.4 L 224.8,192.5 M 223.0,178.3 L 229.9,189.4 M 228.1,175.1 L 235.0,186.2 M 233.3,172.0 L 240.2,183.1 M 367.9,302.3 L 353.8,307.5 M 365.9,296.7 L 351.8,301.9 M 365.3,295.9 L 352.8,304.1 M 362.0,290.9 L 349.5,299.1 M 358.7,285.9 L 346.2,294.1 M 355.4,280.9 L 342.9,289.1 M 352.1,275.9 L 339.6,284.1 M 348.8,270.9 L 336.3,279.1 M 345.5,265.9 L 333.0,274.1 M 342.2,260.9 L 329.7,269.1 M 338.9,255.9 L 326.4,264.1 M 335.6,250.9 L 323.1,259.1 M 326.1,236.4 L 313.6,244.6 M 322.8,231.4 L 310.3,239.6 M 319.5,226.4 L 307.0,234.6 M 316.2,221.4 L 303.7,229.6 M 312.9,216.4 L 300.4,224.6 M 309.6,211.4 L 297.1,219.6 M 306.3,206.4 L 293.8,214.6 M 303.0,201.4 L 290.5,209.6 M 299.7,196.4 L 287.2,204.6 M 293.1,186.4 L 280.6,194.6 M 289.8,181.4 L 277.3,189.6 M 349.3,324.8 L 337.7,332.5 M 346.0,319.8 L 334.4,327.5 M 342.6,314.8 L 331.0,322.5 M 339.3,309.8 L 327.7,317.5 M 336.0,304.8 L 324.4,312.5 M 332.7,299.8 L 321.1,307.5 M 329.4,294.8 L 317.8,302.5 M 326.0,289.8 L 314.4,297.5 M 322.7,284.8 L 311.1,292.5 M 319.4,279.8 L 307.8,287.5 M 316.1,274.8 L 304.5,282.5 M 312.8,269.8 L 301.2,277.5 M 306.1,259.8 L 294.5,267.5 M 302.8,254.8 L 291.2,262.5 M 299.5,249.8 L 287.9,257.5 M 296.1,244.8 L 284.5,252.5 M 292.8,239.8 L 281.2,247.5 M 289.5,234.8 L 277.9,242.5 M 286.2,229.8 L 274.6,237.5 M 282.9,224.8 L 271.3,232.5 M 279.5,219.8 L 267.9,227.5 M 276.2,214.8 L 264.6,222.5 M 272.9,209.8 L 261.3,217.5 M 269.6,204.8 L 258.0,212.5 M 266.3,199.8 L 254.7,207.5 M 263.0,194.8 L 251.4,202.5 M 259.6,189.8 L 248.0,197.5 M 256.3,184.8 L 244.7,192.5 M 161.0,264.6 L 166.5,261.0 M 164.0,269.2 L 169.5,265.6 M 167.1,273.8 L 172.6,270.2 M 170.1,278.4 L 175.6,274.8 M 173.1,283.0 L 178.6,279.4 M 176.1,287.6 L 181.6,284.0 M 179.1,292.1 L 184.6,288.5 M 182.1,296.7 L 187.6,293.1 M 185.2,301.3 L 190.7,297.7 M 188.2,305.9 L 193.7,302.3 M 191.2,310.5 L 196.7,306.9 M 194.2,315.1 L 199.7,311.5 M 197.2,319.7 L 202.7,316.1 M 200.2,324.3 L 205.7,320.7 M 203.3,328.9 L 208.8,325.3 M 206.3,333.5 L 211.8,329.9 M 209.3,338.1 L 214.8,334.5" stroke="#94a3b8" stroke-opacity="0.45" stroke-width="1" />
+
+              <!-- 5. Sam Furr Rd (NC-73) 4-Lane Highway -->
+              <path d="M 190.0,673.0 L 251.7,622.5 L 276.8,602.1 L 314.2,572.2 L 352.8,543.1 L 445.0,479.0" fill="none" stroke="#334155" stroke-width="28" />
+              <path d="M 190.0,673.0 L 251.7,622.5 L 276.8,602.1 L 314.2,572.2 L 352.8,543.1 L 445.0,479.0" fill="none" stroke="#475569" stroke-width="24" />
+              <path d="M 190.0,673.0 L 251.7,622.5 L 276.8,602.1 L 314.2,572.2 L 352.8,543.1 L 445.0,479.0" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6 4" />
+              <text x="345" y="562" fill="#e2e8f0" font-size="11" font-weight="700" transform="rotate(-36 345 562)">Sam Furr Rd (NC-73)</text>
+
+              <!-- 6. Actual 62-Vertex Building Footprint (OSM Way 334506005: 69,537 sq ft footprint / 80,081 gross sq ft) -->
+              <path d="M 243.3,241.5 L 254.1,256.6 L 256.9,260.6 L 266.6,254.0 L 268.8,257.3 L 291.4,291.2 L 297.4,287.1 L 312.4,309.6 L 306.3,313.5 L 320.0,333.9 L 309.2,341.1 L 310.5,342.8 L 309.0,343.7 L 306.2,345.5 L 304.6,346.5 L 303.5,345.0 L 297.2,349.2 L 301.0,354.7 L 298.4,356.6 L 299.8,358.4 L 302.0,361.2 L 298.5,363.6 L 302.7,369.5 L 310.0,379.9 L 304.8,383.3 L 302.6,384.7 L 297.4,388.1 L 290.2,377.9 L 286.1,372.2 L 283.8,373.8 L 281.5,370.9 L 280.1,369.1 L 278.0,370.6 L 273.5,365.1 L 267.6,369.1 L 268.8,370.7 L 266.7,372.2 L 264.7,373.6 L 262.7,375.0 L 261.5,373.2 L 250.9,380.3 L 236.1,358.0 L 232.5,360.1 L 218.1,338.9 L 221.7,336.4 L 214.5,325.5 L 213.2,323.5 L 211.7,321.3 L 209.6,318.1 L 205.9,320.7 L 199.4,311.1 L 203.1,308.4 L 198.0,300.6 L 202.3,297.7 L 207.5,294.2 L 205.5,291.4 L 196.3,278.8 L 194.9,276.8 L 187.0,265.9 L 236.1,231.5 L 241.7,239.3 Z" fill="#1e3a8a" fill-opacity="0.85" stroke="#60a5fa" stroke-width="1.8" />
+              <line x1="221.7" y1="336.4" x2="297.4" y2="287.1" stroke="#60a5fa" stroke-opacity="0.45" stroke-width="1" stroke-dasharray="3 3" />
+              <text x="245" y="286" text-anchor="middle" fill="#bfdbfe" font-size="9.5" font-weight="600" transform="rotate(-34 245 286)">GYM &amp; CLASSROOMS</text>
+              <text x="272" y="336" text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="700" transform="rotate(-34 272 336)">2,100-SEAT</text>
+              <text x="280" y="348" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="700" transform="rotate(-34 280 348)">AUDITORIUM</text>
+
+              <text x="152" y="315" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="700" transform="rotate(55 152 315)">ZONE A (~90)</text>
+              <text x="348" y="245" text-anchor="middle" fill="#34d399" font-size="10.5" font-weight="700" transform="rotate(56 348 245)">ZONE B (~210)</text>
+              <text x="168" y="82" text-anchor="middle" fill="#34d399" font-size="10.5" font-weight="700" transform="rotate(-55 168 82)">ZONE C (~150)</text>
+
+              <!-- PHASE 1: ARRIVAL + PASSENGER-SIDE DROP-OFF + ESCAPE LANE -->
+              <g id="layer-ingress">
+                <polygon points="244.6,94.6 298.9,107.5 345.0,155.0 250.6,160.6 228.0,95.0" fill="#f59e0b" fill-opacity="0.14" stroke="#f59e0b" stroke-opacity="0.6" stroke-width="1.2" stroke-dasharray="4 3" />
+                <text x="292" y="128" text-anchor="middle" fill="#fcd34d" font-size="10.5" font-weight="700">ZONE D: DREAM TEAM</text>
+                <text x="292" y="140" text-anchor="middle" fill="#fde68a" font-size="9.5">Turf Overflow (+90–100)</text>
+
+                <path d="M 350.0,541.0 L 279.8,599.7 L 238.1,547.3 L 233.4,537.0 L 230.2,525.3 L 228.6,513.8 L 228.9,502.4 L 232.0,490.9 L 238.6,479.6 L 246.3,471.0 L 260.0,460.1 L 276.3,448.6 L 361.5,383.8 L 364.5,373.6 L 346.8,333.6 L 367.1,317.8 L 380.8,287.5 L 347.0,227.8 L 313.3,178.7 L 249.7,166.8" fill="none" stroke="#10b981" stroke-width="3.2" class="flow-line" marker-end="url(#arr-green)" />
+                <path d="M 367.1,317.8 L 323.1,245.6 L 282.0,183.0" fill="none" stroke="#10b981" stroke-width="2.5" class="flow-line" marker-end="url(#arr-green)" />
+                <!-- Passenger-Side Portico Drop-Off Loop (NE -> SW) -->
+                <path d="M 346.8,333.6 L 324.3,354.0 L 318.8,364.2 L 325.3,383.1 L 299.6,402.4 L 280.5,388.6 L 243.3,402.8" fill="none" stroke="#38bdf8" stroke-width="3" class="flow-line" marker-end="url(#arr-blue)" />
+                <!-- Option A: Turn Right to Park in Zone A -->
+                <path d="M 243.3,402.8 L 201.6,346.8 L 145.0,255.0" fill="none" stroke="#38bdf8" stroke-width="2.5" class="flow-line" marker-end="url(#arr-blue)" />
+                <!-- Option B: Always-Open Outbound Escape Lane down West S-Curve -->
+                <path d="M 243.3,402.8 L 271.9,442.4 L 255.4,454.1 L 241.1,465.4 L 232.4,475.2 L 225.0,487.9 L 221.3,501.2 L 221.0,514.2 L 222.8,526.9 L 226.2,539.6 L 231.9,551.9 L 273.8,604.5 L 222.0,645.0" fill="none" stroke="#f59e0b" stroke-width="2.6" class="flow-line" marker-end="url(#arr-amber)" />
+                <g fill="#f97316">
+                  <circle cx="255.0" cy="575.0" r="3" /><circle cx="235.0" cy="549.6" r="3" /><circle cx="228.0" cy="532.0" r="3" /><circle cx="224.8" cy="514.0" r="3" /><circle cx="226.8" cy="495.5" r="3" /><circle cx="235.5" cy="477.4" r="3" /><circle cx="257.7" cy="457.1" r="3" /><circle cx="274.1" cy="445.5" r="3.5" />
+                </g>
+              </g>
+
+              <!-- PHASE 2: 9:45 & 11:45 TURNAROUND SWAP (PING-PONG ZONES) -->
+              <g id="layer-swap" class="hidden">
+                <path d="M 249.7,166.8 L 211.2,193.1 L 138.8,243.7 L 201.6,346.8 L 243.3,402.8 L 271.9,442.4 L 255.4,454.1 L 241.1,465.4 L 232.4,475.2 L 225.0,487.9 L 221.3,501.2 L 221.0,514.2 L 222.8,526.9 L 226.2,539.6 L 231.9,551.9 L 273.8,604.5 L 222.0,645.0" fill="none" stroke="#f59e0b" stroke-width="3.2" class="flow-line" marker-end="url(#arr-amber)" />
+                <path d="M 350.0,541.0 L 279.8,599.7 L 238.1,547.3 L 233.4,537.0 L 230.2,525.3 L 228.6,513.8 L 228.9,502.4 L 232.0,490.9 L 238.6,479.6 L 246.3,471.0 L 260.0,460.1 L 276.3,448.6 L 361.5,383.8 L 364.5,373.6 L 346.8,333.6 L 367.1,317.8 L 380.8,287.5 L 347.0,227.8 L 313.3,178.7 L 249.7,166.8 L 231.4,110.3 L 206.5,35.5" fill="none" stroke="#10b981" stroke-width="3.2" class="flow-line" marker-end="url(#arr-green)" />
+                <path d="M 346.8,333.6 L 318.8,364.2 L 299.6,402.4 L 243.3,402.8" fill="none" stroke="#38bdf8" stroke-width="2.6" class="flow-line" marker-end="url(#arr-blue)" />
+                <g fill="#f97316">
+                  <circle cx="255.0" cy="575.0" r="3" /><circle cx="235.0" cy="549.6" r="3" /><circle cx="224.8" cy="514.0" r="3" /><circle cx="235.5" cy="477.4" r="3" /><circle cx="257.7" cy="457.1" r="3" /><circle cx="274.1" cy="445.5" r="3.5" /><circle cx="290.0" cy="434.0" r="3.5" />
+                </g>
+              </g>
+
+              <!-- PHASE 3: 1:45 PM FINAL EGRESS (DUAL OUTBOUND FLUSH) -->
+              <g id="layer-egress" class="hidden">
+                <path d="M 206.5,35.5 L 145.4,111.9 L 192.8,168.0 L 138.8,243.7 L 201.6,346.8 L 243.3,402.8 L 271.9,442.4 L 255.4,454.1 L 241.1,465.4 L 232.4,475.2 L 225.0,487.9 L 221.3,501.2 L 221.0,514.2 L 222.8,526.9 L 226.2,539.6 L 231.9,551.9 L 273.8,604.5 L 218.0,648.0" fill="none" stroke="#f59e0b" stroke-width="3.2" class="flow-line" marker-end="url(#arr-amber)" />
+                <path d="M 276.0,174.6 L 323.1,245.6 L 367.1,317.8 L 346.8,333.6 L 364.5,373.6 L 361.5,383.8 L 276.3,448.6 L 260.0,460.1 L 246.3,471.0 L 238.6,479.6 L 232.0,490.9 L 228.9,502.4 L 228.6,513.8 L 230.2,525.3 L 233.4,537.0 L 238.1,547.3 L 279.8,599.7 L 365.0,536.0" fill="none" stroke="#38bdf8" stroke-width="3.2" class="flow-line" marker-end="url(#arr-blue)" />
+                <g fill="#f97316">
+                  <circle cx="255.0" cy="575.0" r="3" /><circle cx="235.0" cy="549.6" r="3" /><circle cx="224.8" cy="514.0" r="3" /><circle cx="235.5" cy="477.4" r="3" /><circle cx="257.7" cy="457.1" r="3" />
+                </g>
+              </g>
+
+              <!-- PHASE 4: +400 STALL EXPANSION ZONES (E1, E2, E3) -->
+              <g id="layer-expand" class="hidden">
+                <polygon points="210.5,30.9 250.6,160.6 322.7,175.7 348.0,145.0 298.9,85.0" fill="#a855f7" fill-opacity="0.34" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" class="marker-btn" onclick="selectPost('e1')" />
+                <path d="M 347.0,227.8 L 318.0,182.2 L 285.0,105.0 L 210.5,30.9" fill="none" stroke="#c084fc" stroke-width="3" class="flow-line" marker-end="url(#arr-purple)" />
+                <text x="282" y="112" text-anchor="middle" fill="#f3e8ff" font-size="11" font-weight="700" class="pointer-events-none">E1: NE WEDGE</text>
+                <text x="282" y="125" text-anchor="middle" fill="#e9d5ff" font-size="10" font-weight="600" class="pointer-events-none">+175 Stalls (1.38 ac)</text>
+
+                <polygon points="145.4,111.9 169.8,153.6 139.6,193.2 123.4,232.0 138.8,243.7 103.5,263.7 72.0,205.0 95.0,140.0" fill="#a855f7" fill-opacity="0.34" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" class="marker-btn" onclick="selectPost('e2')" />
+                <text x="108" y="188" text-anchor="middle" fill="#f3e8ff" font-size="10.5" font-weight="700" transform="rotate(-55 108 188)" class="pointer-events-none">E2: NW PAD (+145)</text>
+
+                <polygon points="322.7,175.7 374.1,241.0 382.5,278.2 379.7,314.6 402.0,305.0 405.0,265.0 392.0,225.0 348.0,165.0" fill="#a855f7" fill-opacity="0.34" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" class="marker-btn" onclick="selectPost('e3')" />
+                <text x="392" y="248" text-anchor="middle" fill="#f3e8ff" font-size="10" font-weight="700" transform="rotate(56 392 248)" class="pointer-events-none">E3: +80</text>
+              </g>
+
+              <!-- CLICKABLE POLICE & VOLUNTEER POST MARKERS -->
+              <g id="marker-hpd" class="marker-btn" onclick="selectPost('hpd')">
+                <circle cx="276.8" cy="602.1" r="14" fill="#1d4ed8" stroke="#ffffff" stroke-width="2" />
+                <text x="276.8" y="606.1" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="700">P1</text>
+              </g>
+              <g id="marker-split" class="marker-btn" onclick="selectPost('split')">
+                <circle cx="274.1" cy="445.5" r="13.5" fill="#d97706" stroke="#ffffff" stroke-width="2" />
+                <text x="274.1" y="449.5" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="700">V1</text>
+              </g>
+              <g id="marker-crosswalk" class="marker-btn marker-active" onclick="selectPost('crosswalk')">
+                <circle cx="305.0" cy="396.0" r="13.5" fill="#dc2626" stroke="#ffffff" stroke-width="2" />
+                <text x="305.0" y="400.0" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="700">V2</text>
+              </g>
+              <g id="marker-east" class="marker-btn" onclick="selectPost('east')">
+                <circle cx="362.0" cy="295.0" r="13.5" fill="#059669" stroke="#ffffff" stroke-width="2" />
+                <text x="362.0" y="299.0" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="700">V3</text>
+              </g>
+              <g id="marker-north" class="marker-btn" onclick="selectPost('north')">
+                <circle cx="235.0" cy="145.0" r="13.5" fill="#7c3aed" stroke="#ffffff" stroke-width="2" />
+                <text x="235.0" y="149.0" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="700">V4</text>
+              </g>
+
+              <!-- North Compass Badge -->
+              <g transform="translate(92, 46)">
+                <circle cx="0" cy="0" r="14" fill="#1e293b" stroke="#475569" stroke-width="1.2" />
+                <path d="M 0 -9 L 4 5 L 0 2 L -4 5 Z" fill="#10b981" />
+                <text x="0" y="11" text-anchor="middle" fill="#cbd5e1" font-size="8.5" font-weight="700">N</text>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Map Legend & Inspector Box -->
+          <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3 bg-slate-950 border border-slate-800 rounded-xl p-3.5">
+            <div>
+              <div class="flex items-center gap-2">
+                <span id="phase-badge" class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400">Phase 1: Arrival + Escape</span>
+              </div>
+              <div id="info-title" class="text-sm font-bold text-white mt-1.5">Counter-Clockwise Ring + Always-Open Exit</div>
+              <p id="info-desc" class="text-xs text-slate-300 mt-1 leading-relaxed">
+                Inbound cars climb the East S-curve lane and turn RIGHT at V1. Drop-offs enter the NE→SW Portico Loop (passenger door to curb!) and either park in Zone A or exit down the always-open West S-curve lane.
+              </p>
+            </div>
+            <div class="border-t md:border-t-0 md:border-l border-slate-800 md:pl-3.5 pt-2.5 md:pt-0 flex flex-col justify-between">
+              <div>
+                <div class="text-xs font-semibold text-slate-400">Selected Map Post / Zone Inspector:</div>
+                <div id="post-title" class="text-sm font-bold text-amber-400 mt-0.5">V2: Chick-fil-A Portico Drop-Off (NE → SW)</div>
+                <p id="post-detail" class="text-xs text-slate-300 mt-1 leading-relaxed">
+                  Runs NE-to-SW so children exit on the right (curb) side. Inner lane unloads 6–8 cars at once; outer bypass lane lets unloaded cars exit immediately to Zone A (park) or West S-Curve (leave campus).
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-1.5 mt-2.5">
+                <button onclick="selectPost('hpd')" class="px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800 text-xs font-medium hover:bg-blue-900">P1: NC-73 HPD</button>
+                <button onclick="selectPost('split')" class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800 text-xs font-medium hover:bg-amber-900">V1: Y-Split</button>
+                <button onclick="selectPost('crosswalk')" class="px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800 text-xs font-medium hover:bg-rose-900">V2: Portico</button>
+                <button onclick="selectPost('east')" class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800 text-xs font-medium hover:bg-emerald-900">V3: East Lot</button>
+                <button onclick="selectPost('north')" class="px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-800 text-xs font-medium hover:bg-purple-900">V4: North Lot</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 5 Columns: Live Surge Modeler & Quick Summary -->
+        <div class="lg:col-span-5 space-y-5">
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4 shadow-lg">
+            <div class="flex items-center justify-between">
+              <h2 class="text-base font-bold text-white">Interactive Surge &amp; Capacity Modeler</h2>
+              <span class="text-xs text-emerald-400 font-semibold">Live Math</span>
+            </div>
+            <p class="text-xs text-slate-400">Model single-service attendance (e.g., peak 10:30 AM service), vehicle occupancy, Dream Team parking policy, and the +400-stall expansion plan.</p>
+
+            <div class="space-y-3.5 pt-1">
+              <div>
+                <div class="flex justify-between text-xs font-medium mb-1">
+                  <span>Attendance in Peak Service (People)</span>
+                  <span id="lbl-attendees" class="text-emerald-400 font-bold">1,000</span>
+                </div>
+                <input id="inp-attendees" type="range" min="400" max="2100" step="25" value="1000" oninput="recalc()" class="w-full accent-emerald-500 cursor-pointer" />
+                <div class="flex justify-between text-xs text-slate-500 mt-0.5"><span>400</span><span>1,000 (Target)</span><span>2,100 (Max Seats)</span></div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-medium mb-1">
+                  <span>Avg. Occupants per Vehicle</span>
+                  <span id="lbl-occ" class="text-emerald-400 font-bold">2.2</span>
+                </div>
+                <input id="inp-occ" type="range" min="1.6" max="3.0" step="0.1" value="2.2" oninput="recalc()" class="w-full accent-emerald-500 cursor-pointer" />
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-medium mb-1">
+                  <span>Dream Team / Staff Vehicles</span>
+                  <span id="lbl-vols" class="text-amber-400 font-bold">90 cars</span>
+                </div>
+                <input id="inp-vols" type="range" min="30" max="160" step="5" value="90" oninput="recalc()" class="w-full accent-amber-500 cursor-pointer" />
+              </div>
+
+              <div class="flex items-center justify-between pt-2.5 border-t border-slate-800">
+                <label for="inp-shuttle" class="text-xs font-medium text-slate-200 cursor-pointer">Park Dream Team in Zone D Turf / Shuttle?</label>
+                <input id="inp-shuttle" type="checkbox" checked onchange="recalc()" class="h-4 w-4 accent-emerald-500 rounded cursor-pointer" />
+              </div>
+
+              <div class="flex items-center justify-between pt-2.5 border-t border-slate-800">
+                <label for="inp-expand" class="text-xs font-medium text-purple-300 cursor-pointer">Enable +400 Expansion Stalls (Zones E1+E2+E3)?</label>
+                <input id="inp-expand" type="checkbox" onchange="toggleExpansionCheckbox()" class="h-4 w-4 accent-purple-500 rounded cursor-pointer" />
+              </div>
+            </div>
+
+            <!-- Calculated Output Cards -->
+            <div class="grid grid-cols-2 gap-3 pt-2">
+              <div class="bg-slate-950 border border-slate-800 rounded-xl p-3.5">
+                <div class="text-xs text-slate-400">Stalls Needed vs. Cap</div>
+                <div id="metric-cars" class="text-xl font-bold text-white mt-0.5">455 / 450</div>
+                <div id="metric-status" class="text-xs font-semibold text-amber-400 mt-0.5">101% (Sequential Loading Req.)</div>
+              </div>
+              <div class="bg-slate-950 border border-slate-800 rounded-xl p-3.5">
+                <div class="text-xs text-slate-400">Peak 15-Min Surge Rate</div>
+                <div id="metric-rate" class="text-xl font-bold text-white mt-0.5">21.2 cars/min</div>
+                <div class="text-xs text-slate-400 mt-0.5">1 car every <span id="metric-sec" class="text-emerald-400 font-semibold">2.8s</span> (Cap: 28/min)</div>
+              </div>
+            </div>
+
+            <!-- Zone Inventory Summary -->
+            <div class="pt-3 border-t border-slate-800 space-y-1.5 text-xs">
+              <div class="font-semibold text-slate-200">Existing Paved Sectors (4.29 Acres = ~450 Stalls):</div>
+              <div class="flex justify-between text-slate-400"><span>• <strong class="text-sky-400">Zone A:</strong> SW Side Strip + SE Portico</span><span>~90 stalls</span></div>
+              <div class="flex justify-between text-slate-400"><span>• <strong class="text-emerald-400">Zone B:</strong> East / NE 3-Aisle Fan Lot</span><span>~210 stalls</span></div>
+              <div class="flex justify-between text-slate-400"><span>• <strong class="text-emerald-400">Zone C:</strong> North 4-Rung Triangle + NW Bays</span><span>~150 stalls</span></div>
+              <div class="font-semibold text-purple-300 pt-2">Upland Expansion Zones (3.18 Acres = +400 Stalls):</div>
+              <div class="flex justify-between text-slate-400"><span>• <strong class="text-purple-400">Zone E1:</strong> NE Infill Wedge (339'×190' / 1.38 ac)</span><span>+175 stalls</span></div>
+              <div class="flex justify-between text-slate-400"><span>• <strong class="text-purple-400">Zone E2:</strong> NW Cleared Pad (380'×140' / 1.15 ac)</span><span>+145 stalls</span></div>
+              <div class="flex justify-between text-slate-400"><span>• <strong class="text-purple-400">Zone E3:</strong> East &amp; SW Outer Bays (0.65 ac)</span><span>+80 stalls</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 2: CHICK-FIL-A QUEUING & 3-SERVICE TRAFFIC ENGINEERING      -->
+    <!-- =================================================================== -->
+    <section id="sec-engineering" class="tab-section hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
+        <div class="border-b border-slate-800 pb-4">
+          <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400">Traffic Engineering &amp; Queuing Theory</span>
+          <h2 class="text-xl font-bold text-white mt-1">Solving 3-Service Turnarounds (8:30 AM • 10:30 AM • 12:30 PM) &amp; Chick-fil-A Drop-Off Flow</h2>
+          <p class="text-sm text-slate-400 mt-1">How to handle 1,000 attendees per gathering, maintain an always-open exit lane during arrivals, and prevent turnaround gridlock at 9:45 AM and 11:45 AM.</p>
+        </div>
+
+        <!-- The Drop-Off & Exit Paradox -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+            <div class="text-xs font-bold uppercase tracking-wider text-amber-400">Rule #1 • The Always-Open Escape Lane</div>
+            <h3 class="text-base font-bold text-white">Why the S-Curve Throat Can Never Be 100% Inbound</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              If <strong class="text-white">Ambassador Christian Way</strong> is coned 100% Inbound-Only during arrivals, <strong class="text-rose-400">no vehicle can exit the property</strong>—trapping parents dropping off youth, Rideshare (Uber/Lyft) drivers, early departures, and the entire <strong class="text-white">8:30 AM</strong> congregation when <strong class="text-white">10:30 AM</strong> arrivals begin showing up at 9:45 AM.
+            </p>
+            <ul class="text-xs text-slate-300 space-y-2 pt-1">
+              <li>• <strong class="text-emerald-400">Highway Capacity Manual (HCM) Math:</strong> A single unobstructed lane moving continuously at 15 mph without stop signs or backing-out cars carries <strong class="text-white">1,500–1,800 vehicles/hour (25–30 cars/min)</strong>.</li>
+              <li>• <strong class="text-emerald-400">Dedicated 1-In / 1-Out Throat:</strong> Keep the <strong class="text-white">East (Right) S-Curve Lane Inbound</strong> and the <strong class="text-white">West (Left) S-Curve Lane ALWAYS Outbound</strong> from 7:45 AM to 1:30 PM. Flip to 2 Outbound Lanes only at 1:45 PM after the final 12:30 PM service.</li>
+            </ul>
+          </div>
+
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+            <div class="text-xs font-bold uppercase tracking-wider text-sky-400">Rule #2 • Passenger-Side Curb Geometry</div>
+            <h3 class="text-base font-bold text-white">Running the Curved SE Portico Loop from NE → SW</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Because the 2,100-seat auditorium sits <strong class="text-white">Northwest</strong> of the curved Portico Loop, entering the Portico Loop from the Southwest puts the building on the <strong class="text-rose-400">driver's (left) side</strong>—forcing children to step out into moving traffic.
+            </p>
+            <ul class="text-xs text-slate-300 space-y-2 pt-1">
+              <li>• <strong class="text-sky-400">NE → SW Entry from East Corner (V3):</strong> All inbound vehicles turn <strong class="text-white">Right (Counter-Clockwise) at V1</strong>. At the East Corner, Drop-Offs peel <strong class="text-white">Left into the Portico Loop traveling NE → SW</strong> so the <strong class="text-white">passenger (right) door faces the covered lobby sidewalk</strong>.</li>
+              <li>• <strong class="text-sky-400">Two Zero-Conflict Exit Choices at SW End:</strong> Unloaded cars either turn <strong class="text-white">Right into Zone A</strong> to park on campus OR continue <strong class="text-white">Straight down the West S-Curve Outbound Lane</strong> to leave campus immediately.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Chick-fil-A & ITE 5 Pillars -->
+        <div class="space-y-3">
+          <h3 class="text-base font-bold text-white">5 Chick-fil-A Queuing ($M/M/c$) &amp; ITE Land Use 560 Best Practices</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+              <div class="text-xs font-bold text-emerald-400">1. Upstream Triage (Mobile-Thru Split)</div>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                Chick-fil-A separates high-variance orders from fast app orders upstream. By pulling Drop-Offs, ADA, and First-Time Guests (flashers) into the Portico Loop at the East Corner, 80% of general traffic flows straight into Zone B/C at 15 mph with zero stops.
+              </p>
+            </div>
+            <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+              <div class="text-xs font-bold text-sky-400">2. Dual-Lane Unload + Escape Bypass</div>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                Never unload 1 car at the door while 15 wait behind it. Split the curved Portico drive into an <strong class="text-white">Inner Curb Unloading Lane</strong> (6–8 cars unloading at once) + an <strong class="text-white">Outer Chick-fil-A Bypass Lane</strong> so Car #5 can pull out as soon as it unloads.
+              </p>
+            </div>
+            <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+              <div class="text-xs font-bold text-amber-400">3. Ping-Pong Zone Alternation (B ↔ C)</div>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                During the <strong class="text-white">9:45–10:25 AM</strong> and <strong class="text-white">11:45 AM–12:25 PM</strong> swaps, never send arriving cars into an aisle where departing cars are backing out. Park 8:30 AM in <strong class="text-white">Zone B</strong>; route early 10:30 AM arrivals (9:45–10:10 AM) past Zone B into <strong class="text-white">Zone C</strong> while Zone B flushes!
+              </p>
+            </div>
+            <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+              <div class="text-xs font-bold text-purple-400">4. Disney-Style Sequential Loading</div>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                An unmanaged lot stalls out at 80% capacity because drivers stop in aisles hunting for spaces. Cone off all inactive rows; direct every car into the active row front-to-back (cutting parking time from 12s to 3s per car).
+              </p>
+            </div>
+            <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+              <div class="text-xs font-bold text-rose-400">5. Platoon / Batch Crosswalks (V2)</div>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                Continuous pedestrian trickle freezes vehicle loops. Stanchions funnel pedestrians to a single crosswalk at V2 where attendants hold walkers for 45–60 seconds and cross platoons of 30+ people in 15-second windows.
+              </p>
+            </div>
+            <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+              <div class="text-xs font-bold text-blue-400">6. Zero-Crossover Ring Circulation</div>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                Inbound stays on the East S-Curve and East/SE perimeter; Outbound drains down the West/NW perimeter and West S-Curve. A continuous cone wall through <strong class="text-white">V1</strong> guarantees zero path intersections.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 3: PARCEL GIS ANALYSIS & +400 STALL EXPANSION STUDY         -->
+    <!-- =================================================================== -->
+    <section id="sec-expansion" class="tab-section hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
+        <div class="border-b border-slate-800 pb-4">
+          <span class="text-xs font-semibold uppercase tracking-wider text-purple-400">Civil &amp; Land-Use GIS Analysis</span>
+          <h2 class="text-xl font-bold text-white mt-1">Why the 2,100-Seat Auditorium Only Has ~450 Stalls Today — and How to Add +400 Stalls</h2>
+          <p class="text-sm text-slate-400 mt-1">Exact polygon area and boundary measurements from OpenStreetMap / Mecklenburg County GIS vectors for 11901 Sam Furr Rd.</p>
+        </div>
+
+        <!-- GIS Area Comparison Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+            <div class="text-xs text-slate-400">Total Deeded Parcel</div>
+            <div class="text-lg font-bold text-white mt-0.5">21.9 – 28.0 Acres</div>
+            <div class="text-xs text-slate-400 mt-1">~954,000–1.22M sq ft total site</div>
+          </div>
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+            <div class="text-xs text-slate-400">Building Footprint (Way 334506005)</div>
+            <div class="text-lg font-bold text-sky-400 mt-0.5">69,537 sq ft (1.60 ac)</div>
+            <div class="text-xs text-slate-400 mt-1">80,081 gross sq ft • 2,100 seats</div>
+          </div>
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+            <div class="text-xs text-slate-400">Current Paved Lots (Ways 979/980)</div>
+            <div class="text-lg font-bold text-emerald-400 mt-0.5">186,875 sq ft (4.29 ac)</div>
+            <div class="text-xs text-slate-400 mt-1">182,234 sq ft Main + 4,641 sq ft SW</div>
+          </div>
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+            <div class="text-xs text-slate-400">ITE 1:2.5–1:3.0 Seat Requirement</div>
+            <div class="text-lg font-bold text-purple-400 mt-0.5">700 – 850 Stalls</div>
+            <div class="text-xs text-slate-400 mt-1">Current deficit: -250 to -400 stalls</div>
+          </div>
+        </div>
+
+        <!-- Expansion Zones Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-slate-800 text-slate-300 bg-slate-950/60">
+                <th class="py-3 px-4 font-bold">Expansion Zone</th>
+                <th class="py-3 px-4 font-bold">Exact Location on Campus Parcel</th>
+                <th class="py-3 px-4 font-bold">Measured GIS Footprint</th>
+                <th class="py-3 px-4 font-bold">New Stalls</th>
+                <th class="py-3 px-4 font-bold">Civil &amp; Circulation Advantage</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800 text-slate-300">
+              <tr class="hover:bg-slate-950/40">
+                <td class="py-3.5 px-4 font-bold text-purple-400">Zone E1: North-East Infill Wedge <span class="block text-emerald-400 font-normal">(Priority #1)</span></td>
+                <td class="py-3.5 px-4">Unpaved V-shaped notch directly between the East edge of the North Triangle Lot (<code class="text-slate-200">339 ft</code>) and the North edge of the East Fan Lot (<code class="text-slate-200">355 ft</code>)</td>
+                <td class="py-3.5 px-4 font-mono">339' × 190'<br/>~60,000 sq ft (1.38 ac)</td>
+                <td class="py-3.5 px-4 font-bold text-white text-sm">+175 Stalls</td>
+                <td class="py-3.5 px-4">Already bordered on 2 sides by existing asphalt roads! Infilling E1 connects Zone B and Zone C into a <strong class="text-white">complete outer ring road</strong> and sits on high ground far north of Ramah Creek.</td>
+              </tr>
+              <tr class="hover:bg-slate-950/40">
+                <td class="py-3.5 px-4 font-bold text-purple-400">Zone E2: Northwest Cleared Terrace Pad <span class="block text-sky-400 font-normal">(Priority #2)</span></td>
+                <td class="py-3.5 px-4">Cleared upland meadow immediately West/Northwest of the NW Curved Bays (<code class="text-slate-200">Ways 679026091–92</code>) before the western tree line</td>
+                <td class="py-3.5 px-4 font-mono">380' × 140'<br/>~50,000 sq ft (1.15 ac)</td>
+                <td class="py-3.5 px-4 font-bold text-white text-sm">+145 Stalls</td>
+                <td class="py-3.5 px-4">Already cleared meadow outside the Ramah Creek floodplain; extends existing parking loops and drains straight into the West Outbound Perimeter Drive.</td>
+              </tr>
+              <tr class="hover:bg-slate-950/40">
+                <td class="py-3.5 px-4 font-bold text-purple-400">Zone E3: East &amp; SW Outer Perimeter Bays <span class="block text-slate-400 font-normal">(Priority #3)</span></td>
+                <td class="py-3.5 px-4">60-ft outer bay along the eastern curve of Zone B (<code class="text-slate-200">Way 679026097</code>) + angled shoulder stalls along the outer SW Drive</td>
+                <td class="py-3.5 px-4 font-mono">400' × 65'<br/>~28,000 sq ft (0.65 ac)</td>
+                <td class="py-3.5 px-4 font-bold text-white text-sm">+80 Stalls</td>
+                <td class="py-3.5 px-4">Fast-in, fast-out perimeter stalls requiring minimal grading.</td>
+              </tr>
+              <tr class="bg-purple-950/20 font-semibold text-white">
+                <td class="py-3.5 px-4">TOTAL EXPANSION</td>
+                <td class="py-3.5 px-4">Upland Infill (E1 + E2 + E3) — 100% Outside Creek Buffer</td>
+                <td class="py-3.5 px-4 font-mono">~138,000 sq ft (3.18 ac)</td>
+                <td class="py-3.5 px-4 text-purple-300 text-sm">+400 Stalls</td>
+                <td class="py-3.5 px-4">Brings total campus parking from <strong class="text-emerald-400">~450 to ~850 Stalls</strong>, unlocking full 2,100-seat auditorium capacity!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 text-xs text-amber-200">
+          <strong class="text-amber-400">Phased Permitting Tip:</strong> Before pouring permanent asphalt (which triggers full Town of Huntersville stormwater detention review), <strong class="text-white">Zone E1 (1.38 acres, +175 stalls)</strong> and <strong class="text-white">Zone E2 (1.15 acres, +145 stalls)</strong> can be activated immediately as <strong class="text-white">stabilized turf / geocell gravel overflow</strong> for Dream Team and dry-weather Sundays while civil engineering permits for permanent paving are processed.
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 4: SUNDAY PLAYBOOK, TIMELINE & VOLUNTEER DUTY CARDS         -->
+    <!-- =================================================================== -->
+    <section id="sec-playbook" class="tab-section hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
+          <div>
+            <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400">Sunday Operations Manual</span>
+            <h2 class="text-xl font-bold text-white mt-1">Master 3-Service Timeline &amp; Volunteer Duty Cards</h2>
+            <p class="text-sm text-slate-400 mt-1">Exact minute-by-minute choreography for 8:30 AM, 10:30 AM, and 12:30 PM gatherings.</p>
+          </div>
+          <button onclick="window.print()" class="px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-xs font-semibold text-white transition no-print">
+            Print Playbook / Save PDF
+          </button>
+        </div>
+
+        <!-- Master 3-Service Timeline Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-slate-800 text-slate-300 bg-slate-950/60">
+                <th class="py-3 px-4 font-bold w-36">Clock Time</th>
+                <th class="py-3 px-4 font-bold w-48">Operational Phase</th>
+                <th class="py-3 px-4 font-bold">Action Items &amp; Lane Configuration</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800 text-slate-300">
+              <tr>
+                <td class="py-3 px-4 font-mono font-bold text-emerald-400">7:15 AM</td>
+                <td class="py-3 px-4 font-semibold text-white">Cone &amp; Sign Setup</td>
+                <td class="py-3 px-4">Place 45 cones: divide <strong class="text-white">Ambassador Christian Way (S-Curve)</strong> and <strong class="text-white">V1 (South Y-Junction)</strong> into <strong class="text-emerald-400">East Inbound Lane</strong> + <strong class="text-amber-400">West Always-Open Outbound Lane</strong>. Close inactive parking aisles; set stanchions at V2 Crosswalk.</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-mono font-bold text-emerald-400">7:30 AM</td>
+                <td class="py-3 px-4 font-semibold text-white">Dream Team Arrival</td>
+                <td class="py-3 px-4">100% of staff and Dream Team park in <strong class="text-amber-400">Zone D / E1 Turf Overflow</strong> (or off-site shuttle lot) so zero paved stalls are consumed before guests arrive.</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-mono font-bold text-emerald-400">8:00 – 8:35 AM</td>
+                <td class="py-3 px-4 font-semibold text-white">Service 1 Arrival (8:30 AM)</td>
+                <td class="py-3 px-4">Inbound climbs East S-Curve Lane, turns <strong class="text-white">Right at V1</strong>, and loads sequentially into <strong class="text-emerald-400">Zone B (East 3-Aisle Lot)</strong> &amp; <strong class="text-sky-400">Zone A</strong>. Drop-offs peel left at East Corner into the <strong class="text-sky-400">NE→SW Portico Loop</strong> and either park in Zone A or exit down the West S-Curve Outbound Lane.</td>
+              </tr>
+              <tr class="bg-amber-950/15">
+                <td class="py-3 px-4 font-mono font-bold text-amber-400">9:40 – 10:25 AM</td>
+                <td class="py-3 px-4 font-semibold text-amber-300">Swap #1 (8:30 Out / 10:30 In)</td>
+                <td class="py-3 px-4">
+                  • <strong class="text-amber-400">8:30 AM Egress:</strong> Drains from Zone B &amp; Zone A counter-clockwise around the North/West loop down the <strong class="text-white">West S-Curve Outbound Lane</strong> to NC-73.<br/>
+                  • <strong class="text-emerald-400">10:30 AM Early Ingress (9:45–10:10 AM):</strong> Climbs East S-Curve Lane, bypasses Zone B, and loads sequentially into <strong class="text-white">Zone C (North 4-Rung Triangle Lot)</strong>.<br/>
+                  • <strong class="text-sky-400">10:10 AM Flip:</strong> Once Zone B finishes emptying, V3 re-opens freshly emptied <strong class="text-white">Zone B</strong> for 10:10–10:30 AM arrivals.
+                </td>
+              </tr>
+              <tr class="bg-amber-950/15">
+                <td class="py-3 px-4 font-mono font-bold text-amber-400">11:40 AM – 12:25 PM</td>
+                <td class="py-3 px-4 font-semibold text-amber-300">Swap #2 (10:30 Out / 12:30 In)</td>
+                <td class="py-3 px-4">
+                  • <strong class="text-amber-400">10:30 AM Egress:</strong> Drains counter-clockwise down the West Perimeter Drive and West S-Curve Outbound Lane.<br/>
+                  • <strong class="text-emerald-400">12:30 PM Ingress:</strong> Climbs East S-Curve Lane and loads sequentially into the first-cleared lot (alternating Zone B &amp; Zone C).
+                </td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-mono font-bold text-sky-400">1:40 – 2:05 PM</td>
+                <td class="py-3 px-4 font-semibold text-white">Final Egress (12:30 PM Dismissal)</td>
+                <td class="py-3 px-4">With no 4th service arriving, V1 flips the S-Curve cones to <strong class="text-sky-400">Dual Outbound Lanes</strong>: West Drive feeds Left Turn (Westbound NC-73); East Lot feeds Right Turn (Eastbound toward I-77) under HPD batch control.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Position-by-Position Duty Cards & Equipment Checklist -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">
+            <div class="text-xs font-bold text-blue-400">P1: Huntersville PD (2 Sworn Officers)</div>
+            <p class="text-xs text-slate-300 leading-relaxed">Stationed at Sam Furr Rd (NC-73) &amp; Ambassador Christian Way apron. Flushes westbound NC-73 left-turn pocket during arrivals; batch-releases outbound traffic every 60–90s during 9:45 AM, 11:45 AM, and 1:45 PM dismissals.</p>
+          </div>
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">
+            <div class="text-xs font-bold text-amber-400">V1: South Y-Junction Divider (2 Vols)</div>
+            <p class="text-xs text-slate-300 leading-relaxed">Guards the cone wall separating Inbound (East side turning Right) from Outbound (West side draining straight down S-Curve). Keeps inbound cars rolling at 15 mph without stopping.</p>
+          </div>
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">
+            <div class="text-xs font-bold text-rose-400">V2: Portico Drop-Off &amp; Crosswalk (2 Vols)</div>
+            <p class="text-xs text-slate-300 leading-relaxed">Pulls NE→SW drop-off cars all the way forward in the inner curb lane, keeps outer Chick-fil-A bypass lane clear, and batch-crosses pedestrians in platoons every 60 seconds.</p>
+          </div>
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">
+            <div class="text-xs font-bold text-emerald-400">V3: East 3-Aisle Fan Lot Team (3 Vols)</div>
+            <p class="text-xs text-slate-300 leading-relaxed">Splits Drop-Off/ADA left into the Portico Loop at the East Corner and loads Zone B's 3 aisles sequentially front-to-back. Locks Zone B during 9:45–10:10 AM while 8:30 AM cars flush out.</p>
+          </div>
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">
+            <div class="text-xs font-bold text-purple-400">V4: North 4-Rung Triangle Team (3 Vols)</div>
+            <p class="text-xs text-slate-300 leading-relaxed">Loads the 4 parallel NE–SW ladder aisles and 2 NW curved bays sequentially. Primary receiving lot during the 9:45–10:10 AM turnaround window while Zone B empties.</p>
+          </div>
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">
+            <div class="text-xs font-bold text-slate-200">Equipment &amp; Signage Kit</div>
+            <p class="text-xs text-slate-300 leading-relaxed">• 45x 28" reflective traffic cones<br/>• 6x A-Frame directional signs<br/>• 14x High-vis vests + 28x LED wands<br/>• 6x Two-way radios (Channel 3)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-900 bg-slate-950 py-4 px-6 text-center text-xs text-slate-500 no-print">
+    Union Church CLT • Huntersville Campus Traffic &amp; Parking Study (11901 Sam Furr Rd / 2520 Ambassador Christian Way) • Built for Cloudflare Workers SPA Deployment
+  </footer>
+
+  <script>
+    // SPA Navigation Logic
+    function switchTab(tab) {
+      const tabs = ['map', 'engineering', 'expansion', 'playbook'];
+      tabs.forEach(t => {
+        const sec = document.getElementById('sec-' + t);
+        const nav = document.getElementById('nav-' + t);
+        if (tab === 'all') {
+          sec.classList.remove('hidden');
+          nav.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition';
+        } else {
+          sec.classList.toggle('hidden', t !== tab);
+          nav.className = (t === tab)
+            ? 'px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 text-white transition'
+            : 'px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition';
+        }
+      });
+      document.getElementById('nav-all').className = (tab === 'all')
+        ? 'px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-500 text-slate-950 transition'
+        : 'px-3 py-1.5 rounded-lg text-xs font-semibold text-amber-400 hover:text-amber-300 transition';
+    }
+
+    // Surge & Capacity Modeler Logic
+    function toggleExpansionCheckbox() {
+      const exp = document.getElementById('inp-expand').checked;
+      if (exp) {
+        setPhase('expand');
+      } else {
+        setPhase('ingress');
+      }
+      recalc();
+    }
+
+    function recalc() {
+      const attendees = parseInt(document.getElementById('inp-attendees').value, 10);
+      const occ = parseFloat(document.getElementById('inp-occ').value);
+      const vols = parseInt(document.getElementById('inp-vols').value, 10);
+      const shuttle = document.getElementById('inp-shuttle').checked;
+      const expand = document.getElementById('inp-expand').checked;
+
+      document.getElementById('lbl-attendees').textContent = attendees.toLocaleString();
+      document.getElementById('lbl-occ').textContent = occ.toFixed(1);
+      document.getElementById('lbl-vols').textContent = vols + ' cars';
+
+      const cap = expand ? 850 : 450;
+      const guestCars = Math.round(attendees / occ);
+      const pavedNeeded = shuttle ? guestCars : (guestCars + vols);
+      const pct = Math.round((pavedNeeded / cap) * 100);
+
+      document.getElementById('metric-cars').textContent = pavedNeeded + ' / ' + cap;
+      const statusEl = document.getElementById('metric-status');
+      if (pavedNeeded <= cap * 0.85) {
+        statusEl.textContent = pct + '% (Smooth Free-Flow)';
+        statusEl.className = 'text-xs font-semibold text-emerald-400 mt-0.5';
+      } else if (pavedNeeded <= cap) {
+        statusEl.textContent = pct + '% (Sequential Loading Req.)';
+        statusEl.className = 'text-xs font-semibold text-amber-400 mt-0.5';
+      } else {
+        statusEl.textContent = pct + '% (OVERFLOW: +' + (pavedNeeded - cap) + ' cars over cap)';
+        statusEl.className = 'text-xs font-semibold text-rose-400 mt-0.5';
+      }
+
+      const peakWindowCars = guestCars * 0.7;
+      const carsPerMin = (peakWindowCars / 15).toFixed(1);
+      const secPerCar = (60 / carsPerMin).toFixed(1);
+      document.getElementById('metric-rate').textContent = carsPerMin + ' cars/min';
+      document.getElementById('metric-sec').textContent = secPerCar + 's';
+    }
+
+    const phaseData = {
+      ingress: {
+        badge: 'Phase 1: 8:30 Arrival + Drop-Off',
+        badgeClass: 'text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400',
+        title: 'Counter-Clockwise Ring + Always-Open Exit',
+        desc: 'Inbound cars climb the East S-curve lane and turn RIGHT at V1. At the East Corner, drop-offs peel left into the NE→SW Portico Loop (passenger door to curb!) and either turn right to park in Zone A or continue straight down the always-open West S-curve Outbound Lane.'
+      },
+      swap: {
+        badge: 'Phase 2: 9:45 & 11:45 Turnaround Swap',
+        badgeClass: 'text-xs font-semibold px-2 py-0.5 rounded bg-amber-500/15 text-amber-400',
+        title: 'Zero-Crossover Ping-Pong Swap (Zone B ↔ C)',
+        desc: 'Departing 8:30 (or 10:30) cars exit counter-clockwise down the West Drive and West S-curve lane. Simultaneously, arriving 10:30 (or 12:30) cars climb the East S-curve lane and bypass the emptying lot to fill the fresh lot—zero path crossover!'
+      },
+      egress: {
+        badge: 'Phase 3: 1:45 PM Final Egress Flush',
+        badgeClass: 'text-xs font-semibold px-2 py-0.5 rounded bg-sky-500/15 text-sky-400',
+        title: 'Dual-Outbound S-Curve Flush onto NC-73',
+        desc: 'After the final 12:30 PM service (no incoming service), cones flip so BOTH lanes of the Ambassador Christian Way S-curve run outbound: West Drive feeds Left Turn (Westbound NC-73); East Drive feeds Right Turn (Eastbound toward I-77).'
+      },
+      expand: {
+        badge: 'Phase 4: +400 Stall Expansion Plan',
+        badgeClass: 'text-xs font-semibold px-2 py-0.5 rounded bg-purple-500/20 text-purple-300',
+        title: '450 → 850 Stalls (Matching 2,100 Seats)',
+        desc: 'Only 4.29 acres of the ~22–28 acre parcel are paved today. Adding E1 (NE Wedge, +175 stalls), E2 (NW Cleared Pad, +145 stalls), and E3 (East/SW Outer Bays, +80 stalls) brings total capacity to ~850 stalls and completes a true outer ring road!'
+      }
+    };
+
+    const postData = {
+      hpd: {
+        title: 'P1: Sam Furr Rd (NC-73) Apron (2 HPD Officers)',
+        detail: 'Maintains two-way flow at the NC-73 throat during the 9:45–10:25 AM and 11:45 AM–12:25 PM service swaps, prioritizing the westbound left-turn pocket and batch-releasing outbound cars.'
+      },
+      split: {
+        title: 'V1: South Y-Junction Divider (2 Volunteers)',
+        detail: 'Maintains the physical cone wall separating Inbound (East side turning right toward East Corner) from Outbound (West side draining down to NC-73). Zero crossover.'
+      },
+      crosswalk: {
+        title: 'V2: Chick-fil-A Portico Drop-Off (NE → SW)',
+        detail: 'Runs NE-to-SW so children exit on the right (curb) side. Inner lane unloads 6–8 cars at once; outer bypass lane lets unloaded cars exit immediately to Zone A (park) or West S-Curve (leave campus).'
+      },
+      east: {
+        title: 'V3: Zone B East 3-Aisle Fan Lot (~210 Stalls)',
+        detail: 'Primary lot for 8:30 AM and 12:30 PM services. Also serves as the split point at the East Corner (347, 334) where Drop-Off/VIP cars peel left into the NE→SW Portico Loop.'
+      },
+      north: {
+        title: 'V4: Zone C North 4-Rung Triangle Lot (~150 Stalls)',
+        detail: 'Primary target lot for early 10:30 AM arrivals (9:50–10:15 AM) while Zone B is still flushing 8:30 AM departures, preventing incoming cars from entering aisles with backing-out cars.'
+      },
+      e1: {
+        title: 'E1: North-East Infill Wedge (+175 Stalls / 1.38 Acres)',
+        detail: '339 ft × 190 ft unpaved notch directly between Zone B and Zone C. Already bordered on 2 sides by asphalt roads! Paving/gravelling E1 adds ~175 stalls AND connects the East Lot outer loop directly to the North Triangle apex.'
+      },
+      e2: {
+        title: 'E2: Northwest Cleared Terrace Pad (+145 Stalls / 1.15 Acres)',
+        detail: '380 ft × 140 ft cleared upland meadow directly west of the NW curved bays (outside the Ramah Creek buffer). Extending the NW parking loops into this pad adds ~145 stalls.'
+      },
+      e3: {
+        title: 'E3: East & SW Outer Perimeter Bays (+80 Stalls / 0.65 Acres)',
+        detail: 'Adding a single 60-ft parking bay along the eastern curve of Zone B and an outer shoulder row along the West Drive adds ~80 fast-exit perimeter stalls.'
+      }
+    };
+
+    function setPhase(phase) {
+      ['ingress', 'swap', 'egress', 'expand'].forEach(p => {
+        document.getElementById('layer-' + p).classList.toggle('hidden', p !== phase);
+        const btn = document.getElementById('btn-' + p);
+        btn.className = (p === phase)
+          ? 'px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 text-white transition'
+          : 'px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition';
+      });
+      document.getElementById('phase-badge').className = phaseData[phase].badgeClass;
+      document.getElementById('phase-badge').textContent = phaseData[phase].badge;
+      document.getElementById('info-title').textContent = phaseData[phase].title;
+      document.getElementById('info-desc').textContent = phaseData[phase].desc;
+      if (phase === 'expand') selectPost('e1');
+    }
+
+    function selectPost(post) {
+      ['hpd', 'split', 'crosswalk', 'east', 'north'].forEach(id => {
+        const el = document.getElementById('marker-' + id);
+        if (el) el.classList.toggle('marker-active', id === post);
+      });
+      document.getElementById('post-title').textContent = postData[post].title;
+      document.getElementById('post-detail').textContent = postData[post].detail;
+    }
+
+    recalc();
+  </script>
+</body>
+</html>

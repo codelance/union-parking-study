@@ -1,0 +1,14 @@
+{
+  "name": "union-parking-study",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Union Church CLT — Huntersville Campus GIS Traffic, 3-Service Chick-fil-A Flow & +400 Stall Parking Expansion SPA",
+  "scripts": {
+    "dev": "npx wrangler dev",
+    "build": "mkdir -p dist && cp -R public/* dist/ && cp public/index.html index.html",
+    "deploy": "npx wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
