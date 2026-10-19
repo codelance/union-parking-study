@@ -1,0 +1,87 @@
+:root {
+  --uc-emerald: #10b981;
+  --uc-sky: #0ea5e9;
+  --uc-amber: #f59e0b;
+  --uc-purple: #a855f7;
+}
+
+body.body--dark {
+  background-color: #020617;
+  color: #f8fafc;
+}
+
+body.body--light {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+.uc-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.uc-card {
+  border-radius: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.body--dark .uc-card {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+}
+
+body.body--light .uc-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+}
+
+body.body--dark .uc-subcard {
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+}
+
+body.body--light .uc-subcard {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+}
+
+@keyframes dashFlow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+.flow-line {
+  stroke-dasharray: 8 5;
+  animation: dashFlow 0.85s linear infinite;
+}
+
+.marker-btn {
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.marker-btn:hover {
+  transform: scale(1.22);
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.85));
+}
+
+.marker-active circle {
+  stroke: #fde047 !important;
+  stroke-width: 3.5px !important;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .print-show {
+    display: block !important;
+  }
+}

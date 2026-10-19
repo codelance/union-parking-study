@@ -1,28 +1,37 @@
-# Union Church CLT — Huntersville Campus Traffic & Parking Study SPA
+# Union Church CLT — Huntersville Campus Traffic, Parking & Expansion Study (Vue 3 + Quasar SPA)
 
-Interactive Single-Page Application (SPA) and civil/traffic engineering study for **Union Church CLT's Huntersville Campus** at **Ambassador Christian School** (`11901 Sam Furr Rd / 2520 Ambassador Christian Way, Huntersville, NC 28078`).
+Interactive Single-Page Application built with **Vue 3**, **Quasar Framework**, and **Vite**, ready for **Cloudflare Workers** deployment.
 
-## Features Included in the SPA
+**Campus Location:** `11901 Sam Furr Rd (NC-73) / 2520 Ambassador Christian Way, Huntersville, NC 28078`  
+**Sunday Service Times:** `8:30 AM` • `10:30 AM` • `12:30 PM`
 
-1. **GIS-Accurate Interactive Campus Map (Loaded Immediately on Start):**
-   - Traced directly from real OpenStreetMap / Mecklenburg County GIS satellite vectors (**North ↑**).
-   - Displays the **62-vertex building footprint** (`69,537 sq ft` ground footprint / `80,081 gross sq ft`, `2,100-seat auditorium`), **Sam Furr Rd (NC-73)** 4-lane highway corridor, **Ambassador Christian Way** S-curve over the **Ramah Creek culvert bridge**, **Curved SE Portico Drop-Off Loop**, and all **3 paved parking sectors (`~450 stalls / 4.29 acres`)**.
-   - **4 Interactive Operational Modes:**
-     - `1. Arrival + Drop-Off (8:30 AM)`
-     - `2. 9:45 & 11:45 AM Service Swap (8:30 ↔ 10:30 ↔ 12:30)`
-     - `3. 1:45 PM Final Egress Flush`
-     - `4. +400 Stall Upland Expansion Plan (Zones E1, E2, E3)`
-2. **Interactive Surge & Capacity Modeler:**
-   - Live calculators for peak service attendance (`400–2,100` people), average vehicle occupancy, Dream Team parking policy, and the `+400 stall` expansion toggle.
-3. **Complete Supporting Documentation Tabs + Full Print View:**
-   - **Chick-fil-A Queuing ($M/M/c$) & 3-Service Flow:** Always-open West S-Curve escape lane, NE→SW passenger-side Portico Drop-Off with bypass lane, and Ping-Pong (`Zone B ↔ Zone C`) turnaround alternation.
-   - **Parcel GIS & +400 Stall Expansion Study:** Exact square footage and acreage analysis explaining how to expand from `~450` to `~850` stalls across **Zone E1 (+175)**, **Zone E2 (+145)**, and **Zone E3 (+80)**.
-   - **Sunday Operations Playbook:** Master minute-by-minute timeline (`7:15 AM – 2:05 PM`), volunteer duty cards (`P1`, `V1–V4`), and equipment checklist. Also available in standalone markdown at [`SUNDAY_PARKING_PLAYBOOK.md`](./SUNDAY_PARKING_PLAYBOOK.md).
+---
 
-## Deploying to Cloudflare Workers
+## Features & Architecture
 
-This repository is pre-configured for **Cloudflare Workers Static Assets** via [`wrangler.jsonc`](./wrangler.jsonc):
+- **Framework:** Vue 3 (`<script setup>`) + Quasar Framework (`QLayout`, `QHeader`, `QCard`, `QSlider`, `QToggle`, `QLinearProgress`, `QBanner`, `QMarkupTable`, `QTimeline`) + Vite
+- **Clergy & Leadership Friendly UX:**
+  - **60-Second Executive Briefing** (`src/components/ExecutiveBriefing.vue`): Plain-English summary of the 4 core operational & expansion solutions.
+  - **Interactive GIS Campus Map & Sunday Calculator** (`src/components/CampusMapSimulator.vue`): Real OpenStreetMap satellite-traced campus vectors, 4 guided Sunday views (`Arrival & Drop-Off`, `9:45 & 11:45 Swap`, `1:45 PM Final Dismissal`, `+400 New Spaces`), clickable station badges (`P1`, `V1–V4`, `E1–E3`), and 1-click attendance scenario presets (`800`, `1,000`, `1,350`, `1,850+`).
+  - **Chick-fil-A Drop-Off & 3-Service Flow** (`src/components/TrafficEngineeringSection.vue`): Explains the Always-Open Outbound Escape Lane, Passenger-Side Canopy Drop-Off (`NE → SW`), and 6 Chick-fil-A / Disney parking best practices.
+  - **Total Parcel GIS & +400 Space Expansion** (`src/components/ExpansionStudySection.vue`): Breakdown of the `~22–28 acre` parcel, existing `4.29 acres` (`~450` spaces), and `3.18 acres` of upland infill (`Zone E1: +175`, `Zone E2: +145`, `Zone E3: +80` = `850` total spaces).
+  - **Sunday Morning Playbook & Team Schedule** (`src/components/SundayPlaybookSection.vue`): Quasar `QTimeline` for `8:30 AM`, `10:30 AM`, and `12:30 PM` services plus printable Police & Dream Team station cards.
+  - **Light / Dark Mode Toggle & Print View:** Built-in Quasar `$q.dark.toggle()` button in the top toolbar plus 1-click PDF printing.
 
-- **Build Command:** `npm run build` (or leave blank for direct static asset deploy)
-- **Deploy Command:** `npx wrangler deploy`
-- **Static Assets Directory:** `./public` (`not_found_handling: "single-page-application"`)
+---
+
+## Local Development & Cloudflare Workers Deployment
+
+```bash
+# Install dependencies
+npm install
+
+# Start Vite + Quasar local dev server
+npm run dev
+
+# Build production SPA into ./dist
+npm run build
+
+# Deploy to Cloudflare Workers (automatically runs npm run build via wrangler.jsonc)
+npm run deploy
+```

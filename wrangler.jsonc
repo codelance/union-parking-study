@@ -1,9 +1,12 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "union-parking-study",
-  "compatibility_date": "2025-10-01",
+  "compatibility_date": "2025-04-01",
+  "build": {
+    "command": "npm run build"
+  },
   "assets": {
-    "directory": "./public",
+    "directory": "./dist",
     "not_found_handling": "single-page-application"
   }
 }
