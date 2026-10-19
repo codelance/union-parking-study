@@ -1,197 +1,231 @@
 <template>
   <q-layout view="hHh lpR fFf">
-    <!-- Sticky Quasar Top Header & Navigation Bar -->
-    <q-header
-      elevated
-      :class="$q.dark.isActive ? 'bg-slate-950 text-white' : 'bg-white text-dark'"
-      style="border-bottom: 1px solid rgba(148, 163, 184, 0.2)"
-    >
+    <!-- Union Church CLT Monochrome Black Header -->
+    <q-header class="uc-header">
       <div class="uc-container q-px-md q-py-sm">
         <div class="row items-center justify-between q-col-gutter-sm">
-          <!-- Brand Title -->
+          <!-- Brand Identity -->
           <div class="col-12 col-md-auto row items-center no-wrap">
-            <q-avatar
-              rounded
-              color="primary"
-              text-color="white"
-              font-size="16px"
-              size="40px"
-              class="text-weight-bolder q-mr-sm shadow-2"
+            <div
+              class="row items-center justify-center q-mr-md"
+              style="background: #ffffff; color: #09090b; font-weight: 900; font-size: 13px; letter-spacing: 0.08em; padding: 8px 12px; border-radius: 6px"
             >
-              UC
-            </q-avatar>
+              UNION
+            </div>
             <div>
               <div class="row items-center q-gutter-x-sm">
-                <span class="text-subtitle1 text-weight-bolder" style="line-height: 1.2">
-                  Union Church CLT — Huntersville Campus Parking Plan
+                <span class="text-subtitle1 text-weight-bolder text-white" style="letter-spacing: -0.01em">
+                  Huntersville Campus Parking &amp; Traffic Plan
                 </span>
-                <q-badge color="positive" class="text-weight-bold q-py-xs q-px-sm">
-                  Sundays: 8:30 • 10:30 • 12:30
-                </q-badge>
+                <span
+                  style="background: #27272a; color: #fafafa; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px"
+                >
+                  8:30 • 10:30 • 12:30
+                </span>
               </div>
-              <div class="text-caption" style="opacity: 0.75">
-                11901 Sam Furr Rd (NC-73) / 2520 Ambassador Christian Way, Huntersville, NC 28078
+              <div class="text-caption" style="color: #a1a1aa">
+                11901 Sam Furr Rd (NC-73) / 2520 Ambassador Christian Way, Huntersville, NC
               </div>
             </div>
           </div>
 
-          <!-- Quasar Navigation & Utility Buttons -->
+          <!-- Clean Monochrome Tab Bar + Theme Toggle -->
           <div class="col-12 col-md-auto row items-center q-gutter-xs no-print">
             <q-btn
-              :unelevated="activeNav === 'overview'"
-              :flat="activeNav !== 'overview'"
-              :color="activeNav === 'overview' ? 'primary' : undefined"
-              icon="map"
-              label="1. Campus Map"
+              v-for="tab in navTabs"
+              :key="tab.id"
+              :unelevated="activeTab === tab.id"
+              :flat="activeTab !== tab.id"
+              :style="activeTab === tab.id ? 'background: #ffffff; color: #09090b' : 'color: #d4d4d8'"
+              :label="tab.label"
               no-caps
               dense
-              class="q-px-sm text-weight-bold"
-              @click="scrollToSection('sec-overview', 'overview')"
-            />
-            <q-btn
-              :unelevated="activeNav === 'engineering'"
-              :flat="activeNav !== 'engineering'"
-              :color="activeNav === 'engineering' ? 'primary' : undefined"
-              icon="alt_route"
-              label="2. Drop-Off & Swaps"
-              no-caps
-              dense
-              class="q-px-sm text-weight-bold"
-              @click="scrollToSection('sec-engineering', 'engineering')"
-            />
-            <q-btn
-              :unelevated="activeNav === 'expansion'"
-              :flat="activeNav !== 'expansion'"
-              :color="activeNav === 'expansion' ? 'accent' : undefined"
-              icon="add_road"
-              label="3. +400 Spaces"
-              no-caps
-              dense
-              class="q-px-sm text-weight-bold"
-              @click="scrollToSection('sec-expansion', 'expansion')"
-            />
-            <q-btn
-              :unelevated="activeNav === 'playbook'"
-              :flat="activeNav !== 'playbook'"
-              :color="activeNav === 'playbook' ? 'primary' : undefined"
-              icon="schedule"
-              label="4. Sunday Schedule"
-              no-caps
-              dense
-              class="q-px-sm text-weight-bold"
-              @click="scrollToSection('sec-playbook', 'playbook')"
+              class="q-px-md q-py-xs text-weight-bold"
+              style="border-radius: 8px"
+              @click="switchTab(tab.id)"
             />
 
-            <q-separator vertical inset class="q-mx-xs gt-xs" />
+            <q-separator dark vertical inset class="q-mx-xs gt-xs" />
 
-            <!-- Light / Dark Theme Toggle for Clergy Readability -->
             <q-btn
-              outline
+              flat
               dense
-              no-caps
-              :color="$q.dark.isActive ? 'amber-4' : 'slate-8'"
+              round
+              color="white"
               :icon="$q.dark.isActive ? 'light_mode' : 'dark_mode'"
-              :label="$q.dark.isActive ? 'Light Mode' : 'Dark Mode'"
-              class="q-px-sm text-weight-bold"
+              :title="$q.dark.isActive ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
               @click="toggleDarkMode"
             />
-
-            <!-- Print / PDF Handout Button -->
             <q-btn
-              outline
+              flat
               dense
-              no-caps
-              color="primary"
+              round
+              color="white"
               icon="print"
-              label="Print PDF"
-              class="q-px-sm text-weight-bold gt-xs"
-              @click="printPage"
+              title="Print Full Study"
+              class="gt-xs"
+              @click="printFullStudy"
             />
           </div>
         </div>
       </div>
     </q-header>
 
-    <!-- Main Quasar Page Container -->
+    <!-- Main Page Content -->
     <q-page-container>
       <q-page class="q-py-lg q-px-md">
-        <div class="uc-container column q-gutter-y-xl">
-          <!-- Section 1: Executive Briefing + Interactive GIS Campus Map & Simulator -->
-          <section id="sec-overview" class="column q-gutter-y-lg">
-            <ExecutiveBriefing
-              @scroll-to="scrollToElement"
-              @show-expansion="handleShowExpansion"
-            />
+        <div class="uc-container">
+          <!-- TAB 1: INTERACTIVE CAMPUS MAP & SIMULATOR (ON LOAD) -->
+          <div v-show="activeTab === 'map' || activeTab === 'all'" class="q-mb-xl">
             <CampusMapSimulator ref="mapSimRef" />
-          </section>
+            <div v-if="activeTab === 'map'" class="row justify-end q-mt-lg no-print">
+              <q-btn
+                unelevated
+                :color="$q.dark.isActive ? 'white' : 'dark'"
+                :text-color="$q.dark.isActive ? 'dark' : 'white'"
+                icon-right="arrow_forward"
+                label="Next: 2. Traffic & Drop-Off Strategy"
+                no-caps
+                class="text-weight-bold q-px-lg q-py-sm"
+                style="border-radius: 10px"
+                @click="switchTab('engineering')"
+              />
+            </div>
+          </div>
 
-          <!-- Section 2: Chick-fil-A Drop-Off & 3-Service Turnaround Engineering -->
-          <section id="sec-engineering">
+          <!-- TAB 2: TRAFFIC & DROP-OFF PLAN -->
+          <div v-show="activeTab === 'engineering' || activeTab === 'all'" class="q-mb-xl">
             <TrafficEngineeringSection />
-          </section>
+            <div v-if="activeTab === 'engineering'" class="row justify-between q-mt-lg no-print">
+              <q-btn
+                outline
+                :color="$q.dark.isActive ? 'white' : 'dark'"
+                icon="arrow_back"
+                label="Back to Campus Map"
+                no-caps
+                class="text-weight-bold q-px-md q-py-sm"
+                style="border-radius: 10px"
+                @click="switchTab('map')"
+              />
+              <q-btn
+                unelevated
+                :color="$q.dark.isActive ? 'white' : 'dark'"
+                :text-color="$q.dark.isActive ? 'dark' : 'white'"
+                icon-right="arrow_forward"
+                label="Next: 3. +400 Space Expansion Plan"
+                no-caps
+                class="text-weight-bold q-px-lg q-py-sm"
+                style="border-radius: 10px"
+                @click="switchTab('expansion')"
+              />
+            </div>
+          </div>
 
-          <!-- Section 3: Total Parcel GIS & +400 Stall Expansion Study -->
-          <section id="sec-expansion">
+          <!-- TAB 3: +400 SPACE EXPANSION STUDY -->
+          <div v-show="activeTab === 'expansion' || activeTab === 'all'" class="q-mb-xl">
             <ExpansionStudySection @show-expansion="handleShowExpansion" />
-          </section>
+            <div v-if="activeTab === 'expansion'" class="row justify-between q-mt-lg no-print">
+              <q-btn
+                outline
+                :color="$q.dark.isActive ? 'white' : 'dark'"
+                icon="arrow_back"
+                label="Back to Traffic & Drop-Off Plan"
+                no-caps
+                class="text-weight-bold q-px-md q-py-sm"
+                style="border-radius: 10px"
+                @click="switchTab('engineering')"
+              />
+              <q-btn
+                unelevated
+                :color="$q.dark.isActive ? 'white' : 'dark'"
+                :text-color="$q.dark.isActive ? 'dark' : 'white'"
+                icon-right="arrow_forward"
+                label="Next: 4. Sunday Team Playbook"
+                no-caps
+                class="text-weight-bold q-px-lg q-py-sm"
+                style="border-radius: 10px"
+                @click="switchTab('playbook')"
+              />
+            </div>
+          </div>
 
-          <!-- Section 4: Sunday Morning Playbook, Timeline & Station Duty Cards -->
-          <section id="sec-playbook">
+          <!-- TAB 4: SUNDAY TEAM PLAYBOOK -->
+          <div v-show="activeTab === 'playbook' || activeTab === 'all'" class="q-mb-xl">
             <SundayPlaybookSection />
-          </section>
+            <div v-if="activeTab === 'playbook'" class="row justify-between q-mt-lg no-print">
+              <q-btn
+                outline
+                :color="$q.dark.isActive ? 'white' : 'dark'"
+                icon="arrow_back"
+                label="Back to +400 Space Expansion"
+                no-caps
+                class="text-weight-bold q-px-md q-py-sm"
+                style="border-radius: 10px"
+                @click="switchTab('expansion')"
+              />
+              <q-btn
+                outline
+                :color="$q.dark.isActive ? 'white' : 'dark'"
+                icon="visibility"
+                label="View All Sections on One Page"
+                no-caps
+                class="text-weight-bold q-px-md q-py-sm"
+                style="border-radius: 10px"
+                @click="switchTab('all')"
+              />
+            </div>
+          </div>
+
+          <!-- Subtle Bottom Footer (Non-Sticky) -->
+          <div class="text-center text-caption uc-muted q-pt-lg q-pb-md no-print" style="border-top: 1px solid rgba(113, 113, 122, 0.2)">
+            Union Church CLT • Huntersville Campus Traffic, Parking &amp; Expansion Study (11901 Sam Furr Rd / 2520 Ambassador Christian Way)
+          </div>
         </div>
       </q-page>
     </q-page-container>
-
-    <!-- Quasar Footer -->
-    <q-footer
-      bordered
-      :class="$q.dark.isActive ? 'bg-slate-950 text-grey-5' : 'bg-grey-2 text-grey-8'"
-      class="q-py-md q-px-md text-center text-caption no-print"
-    >
-      Union Church CLT • Huntersville Campus Traffic, Parking &amp; Expansion Study (11901 Sam Furr Rd / 2520 Ambassador Christian Way) • Built with Vue 3 &amp; Quasar Framework
-    </q-footer>
   </q-layout>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, nextTick } from 'vue'
 import { useQuasar } from 'quasar'
-import ExecutiveBriefing from './components/ExecutiveBriefing.vue'
 import CampusMapSimulator from './components/CampusMapSimulator.vue'
 import TrafficEngineeringSection from './components/TrafficEngineeringSection.vue'
 import ExpansionStudySection from './components/ExpansionStudySection.vue'
 import SundayPlaybookSection from './components/SundayPlaybookSection.vue'
 
 const $q = useQuasar()
-const activeNav = ref('overview')
+const activeTab = ref('map')
 const mapSimRef = ref(null)
+
+const navTabs = [
+  { id: 'map', label: '1. Campus Map' },
+  { id: 'engineering', label: '2. Traffic & Drop-Off' },
+  { id: 'expansion', label: '3. +400 Expansion' },
+  { id: 'playbook', label: '4. Sunday Playbook' },
+  { id: 'all', label: 'Full Report' }
+]
 
 function toggleDarkMode() {
   $q.dark.toggle()
 }
 
-function printPage() {
-  window.print()
-}
-
-function scrollToElement(id) {
-  const el = document.getElementById(id)
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
-}
-
-function scrollToSection(sectionId, navKey) {
-  activeNav.value = navKey
-  scrollToElement(sectionId)
+function switchTab(tabId) {
+  activeTab.value = tabId
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 function handleShowExpansion() {
-  activeNav.value = 'overview'
+  activeTab.value = 'map'
   if (mapSimRef.value) {
     mapSimRef.value.activateExpansionView()
   }
-  scrollToElement('campus-map-section')
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+async function printFullStudy() {
+  activeTab.value = 'all'
+  await nextTick()
+  window.print()
 }
 </script>

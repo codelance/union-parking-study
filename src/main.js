@@ -17,17 +17,17 @@ app.use(Quasar, {
     Dark
   },
   config: {
-    dark: true,
+    dark: false,
     brand: {
-      primary: '#10b981',
-      secondary: '#0ea5e9',
-      accent: '#a855f7',
-      dark: '#0f172a',
-      'dark-page': '#020617',
-      positive: '#10b981',
-      negative: '#f43f5e',
-      info: '#38bdf8',
-      warning: '#f59e0b'
+      primary: '#111111',
+      secondary: '#3f3f46',
+      accent: '#18181b',
+      dark: '#09090b',
+      'dark-page': '#000000',
+      positive: '#16a34a',
+      negative: '#dc2626',
+      info: '#2563eb',
+      warning: '#d97706'
     }
   }
 })
