@@ -35,3 +35,4 @@ npm run build
 # Deploy to Cloudflare Workers (automatically runs npm run build via wrangler.jsonc)
 npm run deploy
 ```
+<!-- Cloudflare Workers Build Trigger -->
