@@ -82,10 +82,10 @@
             style="background: #0b1120; border: 1px solid #27272a; border-radius: 12px"
           >
             <svg
-              viewBox="55 15 395 612"
+              viewBox="45 10 435 615"
               style="width: 100%; max-height: 510px; height: auto; user-select: none"
               role="img"
-              aria-label="Campus Map of 11901 Sam Furr Rd"
+              aria-label="Campus Map of 11901 Sam Furr Rd with Mecklenburg County GIS Parcel Boundaries"
             >
               <defs>
                 <marker id="arr-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse">
@@ -106,7 +106,43 @@
               <path d="M 372.3,2.1 L 318.4,36.4 L 298.9,107.5 L 244.6,94.6 L 223.1,25.9 L 146.3,-25.1 L 19.6,161.9 L 56.1,229.3 L 103.5,263.7 L 134.2,280.6 L 216.9,400.3 L 233.5,428.8 L 240.8,448.8 L 234.6,463.6 L 218.1,480.2 L 204.3,511.7 L 208.9,543.0 L 223.1,573.4 L 239.7,597.2 L 60,640 L 60,2.1 Z" fill="#064e3b" fill-opacity="0.3" stroke="#059669" stroke-opacity="0.2" stroke-width="1" />
               <path d="M 259.9,559.7 L 291.1,560.5 L 357.3,515.2 L 355.2,490.4 L 348.6,437.3 L 341.0,426.8 L 320.0,436.3 L 250.3,490.8 L 243.0,507.5 L 242.7,525.3 L 250.0,545.4 Z" fill="#064e3b" fill-opacity="0.35" stroke="#059669" stroke-opacity="0.25" stroke-width="1" />
 
-              <!-- 1B. Ambassador Christian School Athletic Turf Field (NW Side — Protected) -->
+              <!-- 1A. Official Mecklenburg County GIS Parcel Boundaries -->
+              <!-- Neighboring Private Parcel PID 01123102 (9.20 ac - Paradis - NOT OWNED) in NE Wedge -->
+              <polygon
+                points="219.0,10.0 266.1,154.4 404.1,168.0 412.0,10.0"
+                fill="#7f1d1d"
+                fill-opacity="0.14"
+                stroke="#f87171"
+                stroke-opacity="0.55"
+                stroke-width="1.2"
+                stroke-dasharray="4 3"
+              />
+              <text x="318" y="92" text-anchor="middle" fill="#fca5a5" opacity="0.85" font-size="8.5" font-weight="700">NEIGHBOR PARCEL (PID 01123102)</text>
+              <text x="318" y="103" text-anchor="middle" fill="#fecaca" opacity="0.75" font-size="7.5">Private Property — Not Owned by Campus</text>
+
+              <!-- Campus-Owned Main Parcel PID 01123101 (21.90 ac) + Entry Corridor PID 01123131 (2.11 ac) -->
+              <path
+                d="M 110.0,12.0 L 219.0,12.0 L 266.1,154.4 L 385.2,166.1 L 404.1,168.0 L 394.8,267.6 L 386.7,353.9 L 383.5,388.0 L 376.1,467.8 L 413.0,478.3 L 282.3,573.5 L 268.5,571.8 L 239.5,521.9 L 258.7,479.6 L 138.6,535.9 L 50.0,450.0 L 50.0,100.0 Z"
+                fill="none"
+                stroke="#34d399"
+                stroke-opacity="0.65"
+                stroke-width="1.5"
+                stroke-dasharray="6 4"
+              />
+              <!-- Campus-Owned SE Corner Parcel PID 01123122 (3.67 ac - Ambassador Christian School Inc) -->
+              <polygon
+                points="394.8,267.6 472.0,267.6 472.0,439.5 450.5,453.3 413.0,478.3 376.1,467.8 383.5,388.0 386.7,353.9"
+                fill="#065f46"
+                fill-opacity="0.18"
+                stroke="#34d399"
+                stroke-opacity="0.75"
+                stroke-width="1.5"
+                stroke-dasharray="6 4"
+              />
+              <text x="433" y="262" text-anchor="middle" fill="#6ee7b7" font-size="7.5" font-weight="700">OWNED PARCEL PID 01123122 (3.67 AC)</text>
+              <text x="115" y="518" text-anchor="middle" fill="#6ee7b7" font-size="8" font-weight="700" transform="rotate(-35 115 518)">MAIN PARCEL PID 01123101 (21.90 AC)</text>
+
+              <!-- 1B. Ambassador Christian School Athletic Turf Field (NW Side — Protected inside PID 01123101) -->
               <g class="marker-btn" @click="selectPost('turf')">
                 <polygon
                   points="135.0,108.0 162.0,126.5 112.0,200.5 85.0,182.0"
@@ -127,7 +163,7 @@
               <path d="M 74.1,274.3 L 96.3,292.0 L 120.2,304.9 L 144.7,331.5 L 169.3,368.4 L 191.6,397.3 L 205.8,419.9 L 236.3,454.1" fill="none" stroke="#0ea5e9" stroke-opacity="0.5" stroke-width="3.5" />
               <path d="M 236.3,454.1 L 260.6,483.4" fill="none" stroke="#38bdf8" stroke-opacity="0.85" stroke-width="3" stroke-dasharray="3 3" />
               <path d="M 260.6,483.4 L 277.2,505.2 L 307.4,530.8 L 319.9,538.3 L 359.4,559.3 L 383.5,565.5 L 429.6,580.0 L 461.4,583.9" fill="none" stroke="#0ea5e9" stroke-opacity="0.5" stroke-width="3.5" />
-              <text x="155" y="390" fill="#38bdf8" opacity="0.85" font-size="10" font-style="italic" transform="rotate(48 155 390)">Ramah Creek &amp; Bridge</text>
+              <text x="155" y="398" fill="#38bdf8" opacity="0.85" font-size="9.5" font-style="italic" transform="rotate(48 155 398)">Ramah Creek &amp; Bridge</text>
 
               <!-- 3. Actual Paved Parking Lot Polygons (~450 Spaces Today) -->
               <path d="M 308.9,171.7 L 265.2,166.1 L 250.6,160.6 L 210.5,30.9 L 149.0,121.6 L 169.8,153.6 L 139.6,193.2 L 139.6,236.1 L 155.7,254.5 L 235.2,205.7 L 332.9,336.3 L 360.0,333.0 L 372.1,322.5 L 379.7,314.6 L 382.5,278.2 L 374.1,241.0 L 322.7,175.7 Z" fill="#1e293b" stroke="#475569" stroke-width="1.5" />
@@ -155,9 +191,9 @@
               <path d="M 168.4,126.7 L 180.2,132.0 M 170.9,121.2 L 182.7,126.5 M 176.2,110.2 L 186.6,118.0 M 179.8,105.4 L 190.2,113.2 M 183.4,100.6 L 193.8,108.4 M 187.0,95.8 L 197.4,103.6 M 190.6,91.0 L 201.0,98.8 M 194.2,86.2 L 204.6,94.0 M 197.8,81.4 L 208.2,89.2 M 201.4,76.6 L 211.8,84.4 M 205.0,71.8 L 215.4,79.6 M 208.6,67.0 L 219.0,74.8 M 178.4,137.8 L 185.6,148.6 M 183.4,134.5 L 190.6,145.3 M 188.4,131.1 L 195.6,141.9 M 193.4,127.8 L 200.6,138.6 M 198.4,124.5 L 205.6,135.3 M 203.4,121.2 L 210.6,132.0 M 208.4,117.8 L 215.6,128.6 M 213.4,114.5 L 220.6,125.3 M 218.4,111.2 L 225.6,122.0 M 196.5,162.3 L 203.6,173.2 M 201.5,159.0 L 208.6,169.9 M 206.6,155.8 L 213.7,166.7 M 211.6,152.5 L 218.7,163.4 M 216.6,149.2 L 223.7,160.1 M 221.7,146.0 L 228.8,156.9 M 226.7,142.7 L 233.8,153.6 M 231.8,139.5 L 238.9,150.4 M 212.8,184.5 L 219.7,195.6 M 217.9,181.4 L 224.8,192.5 M 223.0,178.3 L 229.9,189.4 M 228.1,175.1 L 235.0,186.2 M 233.3,172.0 L 240.2,183.1 M 367.9,302.3 L 353.8,307.5 M 365.9,296.7 L 351.8,301.9 M 365.3,295.9 L 352.8,304.1 M 362.0,290.9 L 349.5,299.1 M 358.7,285.9 L 346.2,294.1 M 355.4,280.9 L 342.9,289.1 M 352.1,275.9 L 339.6,284.1 M 348.8,270.9 L 336.3,279.1 M 345.5,265.9 L 333.0,274.1 M 342.2,260.9 L 329.7,269.1 M 338.9,255.9 L 326.4,264.1 M 335.6,250.9 L 323.1,259.1 M 326.1,236.4 L 313.6,244.6 M 322.8,231.4 L 310.3,239.6 M 319.5,226.4 L 307.0,234.6 M 316.2,221.4 L 303.7,229.6 M 312.9,216.4 L 300.4,224.6 M 309.6,211.4 L 297.1,219.6 M 306.3,206.4 L 293.8,214.6 M 303.0,201.4 L 290.5,209.6 M 299.7,196.4 L 287.2,204.6 M 293.1,186.4 L 280.6,194.6 M 289.8,181.4 L 277.3,189.6 M 349.3,324.8 L 337.7,332.5 M 346.0,319.8 L 334.4,327.5 M 342.6,314.8 L 331.0,322.5 M 339.3,309.8 L 327.7,317.5 M 336.0,304.8 L 324.4,312.5 M 332.7,299.8 L 321.1,307.5 M 329.4,294.8 L 317.8,302.5 M 326.0,289.8 L 314.4,297.5 M 322.7,284.8 L 311.1,292.5 M 319.4,279.8 L 307.8,287.5 M 316.1,274.8 L 304.5,282.5 M 312.8,269.8 L 301.2,277.5 M 306.1,259.8 L 294.5,267.5 M 302.8,254.8 L 291.2,262.5 M 299.5,249.8 L 287.9,257.5 M 296.1,244.8 L 284.5,252.5 M 292.8,239.8 L 281.2,247.5 M 289.5,234.8 L 277.9,242.5 M 286.2,229.8 L 274.6,237.5 M 282.9,224.8 L 271.3,232.5 M 279.5,219.8 L 267.9,227.5 M 276.2,214.8 L 264.6,222.5 M 272.9,209.8 L 261.3,217.5 M 269.6,204.8 L 258.0,212.5 M 266.3,199.8 L 254.7,207.5 M 263.0,194.8 L 251.4,202.5 M 259.6,189.8 L 248.0,197.5 M 256.3,184.8 L 244.7,192.5 M 161.0,264.6 L 166.5,261.0 M 164.0,269.2 L 169.5,265.6 M 167.1,273.8 L 172.6,270.2 M 170.1,278.4 L 175.6,274.8 M 173.1,283.0 L 178.6,279.4 M 176.1,287.6 L 181.6,284.0 M 179.1,292.1 L 184.6,288.5 M 182.1,296.7 L 187.6,293.1 M 185.2,301.3 L 190.7,297.7 M 188.2,305.9 L 193.7,302.3 M 191.2,310.5 L 196.7,306.9 M 194.2,315.1 L 199.7,311.5 M 197.2,319.7 L 202.7,316.1 M 200.2,324.3 L 205.7,320.7 M 203.3,328.9 L 208.8,325.3 M 206.3,333.5 L 211.8,329.9 M 209.3,338.1 L 214.8,334.5" stroke="#94a3b8" stroke-opacity="0.45" stroke-width="1" />
 
               <!-- 5. Sam Furr Rd (NC-73) 4-Lane Highway -->
-              <path d="M 190.0,673.0 L 251.7,622.5 L 276.8,602.1 L 314.2,572.2 L 352.8,543.1 L 445.0,479.0" fill="none" stroke="#334155" stroke-width="28" />
-              <path d="M 190.0,673.0 L 251.7,622.5 L 276.8,602.1 L 314.2,572.2 L 352.8,543.1 L 445.0,479.0" fill="none" stroke="#475569" stroke-width="24" />
-              <path d="M 190.0,673.0 L 251.7,622.5 L 276.8,602.1 L 314.2,572.2 L 352.8,543.1 L 445.0,479.0" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6 4" />
+              <path d="M 190.0,673.0 L 251.7,622.5 L 276.8,602.1 L 314.2,572.2 L 352.8,543.1 L 475.0,458.0" fill="none" stroke="#334155" stroke-width="28" />
+              <path d="M 190.0,673.0 L 251.7,622.5 L 276.8,602.1 L 314.2,572.2 L 352.8,543.1 L 475.0,458.0" fill="none" stroke="#475569" stroke-width="24" />
+              <path d="M 190.0,673.0 L 251.7,622.5 L 276.8,602.1 L 314.2,572.2 L 352.8,543.1 L 475.0,458.0" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6 4" />
               <text x="345" y="562" fill="#e2e8f0" font-size="11" font-weight="700" transform="rotate(-36 345 562)">Sam Furr Rd (NC-73)</text>
 
               <!-- 6. Actual Building Footprint -->
@@ -167,15 +203,16 @@
               <text x="272" y="336" text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="700" transform="rotate(-34 272 336)">2,100-SEAT</text>
               <text x="280" y="348" text-anchor="middle" fill="#e4e4e7" font-size="10" font-weight="700" transform="rotate(-34 280 348)">AUDITORIUM</text>
 
-              <text x="150" y="315" text-anchor="middle" fill="#f4f4f5" font-size="10" font-weight="700" transform="rotate(55 150 315)">WEST LOT (~90)</text>
+              <text x="165" y="322" text-anchor="middle" fill="#f4f4f5" font-size="9.5" font-weight="700" transform="rotate(55 165 322)">WEST LOT (~90)</text>
               <text x="348" y="245" text-anchor="middle" fill="#f4f4f5" font-size="10.5" font-weight="700" transform="rotate(56 348 245)">EAST LOT (~210)</text>
               <text x="172" y="75" text-anchor="middle" fill="#f4f4f5" font-size="10.5" font-weight="700" transform="rotate(-55 172 75)">NORTH LOT (~150)</text>
 
               <!-- PHASE 1: ARRIVAL + PASSENGER-SIDE DROP-OFF + ESCAPE LANE -->
               <g v-show="currentPhase === 'ingress'">
-                <polygon points="244.6,94.6 298.9,107.5 345.0,155.0 250.6,160.6 228.0,95.0" fill="#f59e0b" fill-opacity="0.16" stroke="#f59e0b" stroke-opacity="0.7" stroke-width="1.2" stroke-dasharray="4 3" />
-                <text x="292" y="128" text-anchor="middle" fill="#fcd34d" font-size="10.5" font-weight="700">VOLUNTEER GRASS LOT</text>
-                <text x="292" y="140" text-anchor="middle" fill="#fde68a" font-size="9.5">Dream Team (+90–100 Cars)</text>
+                <!-- Temporary Volunteer Grass Lot inside owned SE Parcel PID 01123122 -->
+                <polygon points="395.5,272.0 462.0,272.0 462.0,395.0 386.5,386.0 389.5,352.0" fill="#f59e0b" fill-opacity="0.18" stroke="#f59e0b" stroke-opacity="0.75" stroke-width="1.2" stroke-dasharray="4 3" />
+                <text x="428" y="325" text-anchor="middle" fill="#fcd34d" font-size="8.5" font-weight="700">VOLUNTEER LOT</text>
+                <text x="428" y="336" text-anchor="middle" fill="#fde68a" font-size="7.5">(PID 01123122)</text>
 
                 <path d="M 350.0,541.0 L 279.8,599.7 L 238.1,547.3 L 233.4,537.0 L 230.2,525.3 L 228.6,513.8 L 228.9,502.4 L 232.0,490.9 L 238.6,479.6 L 246.3,471.0 L 260.0,460.1 L 276.3,448.6 L 361.5,383.8 L 364.5,373.6 L 346.8,333.6 L 367.1,317.8 L 380.8,287.5 L 347.0,227.8 L 313.3,178.7 L 249.7,166.8" fill="none" stroke="#10b981" stroke-width="3.2" class="flow-line" marker-end="url(#arr-green)" />
                 <path d="M 367.1,317.8 L 323.1,245.6 L 282.0,183.0" fill="none" stroke="#10b981" stroke-width="2.5" class="flow-line" marker-end="url(#arr-green)" />
@@ -206,21 +243,22 @@
                 </g>
               </g>
 
-              <!-- PHASE 4: +360 STALL EXPANSION ZONES ON NE & EAST SIDE (PRESERVING TURF FIELD) -->
+              <!-- PHASE 4: +360 STALL EXPANSION ZONES (100% WITHIN OWNED PARCELS PID 01123101 & PID 01123122) -->
               <g v-show="currentPhase === 'expand'">
-                <!-- E1: NE Infill Wedge (+175 Spaces) -->
-                <polygon points="210.5,30.9 250.6,160.6 322.7,175.7 348.0,145.0 298.9,85.0" fill="#a855f7" fill-opacity="0.38" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" class="marker-btn" @click="selectPost('e1')" />
-                <path d="M 347.0,227.8 L 318.0,182.2 L 285.0,105.0 L 210.5,30.9" fill="none" stroke="#c084fc" stroke-width="3" class="flow-line" marker-end="url(#arr-purple)" />
-                <text x="282" y="112" text-anchor="middle" fill="#f3e8ff" font-size="11" font-weight="700" style="pointer-events: none">NEW LOT E1</text>
-                <text x="282" y="125" text-anchor="middle" fill="#e9d5ff" font-size="10" font-weight="600" style="pointer-events: none">+175 Spaces (1.38 ac)</text>
+                <!-- E1: SE Corner Parcel PID 01123122 (+180 Spaces • 1.48 ac of 3.67 ac owned by Ambassador Christian School Inc) -->
+                <polygon points="395.5,272.0 462.0,272.0 462.0,425.0 413.0,462.0 381.0,452.0 386.5,386.0 389.5,352.0" fill="#a855f7" fill-opacity="0.42" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" class="marker-btn" @click="selectPost('e1')" />
+                <path d="M 361.5,383.8 L 422.0,365.0 L 422.0,285.0 L 380.8,287.5" fill="none" stroke="#c084fc" stroke-width="2.6" class="flow-line" marker-end="url(#arr-purple)" />
+                <text x="425" y="345" text-anchor="middle" fill="#f3e8ff" font-size="9.5" font-weight="700" style="pointer-events: none">NEW LOT E1</text>
+                <text x="425" y="357" text-anchor="middle" fill="#e9d5ff" font-size="8.5" font-weight="600" style="pointer-events: none">+180 Spaces</text>
+                <text x="425" y="368" text-anchor="middle" fill="#d8b4fe" font-size="7.5" style="pointer-events: none">(PID 01123122)</text>
 
-                <!-- E2: East Lot Outer Expansion Bays (+125 Spaces) -->
-                <polygon points="322.7,175.7 374.1,241.0 382.5,278.2 379.7,314.6 360.0,333.0 398.0,342.0 426.0,305.0 428.0,255.0 408.0,210.0 355.0,152.0" fill="#a855f7" fill-opacity="0.38" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" class="marker-btn" @click="selectPost('e2')" />
-                <text x="398" y="250" text-anchor="middle" fill="#f3e8ff" font-size="10.5" font-weight="700" transform="rotate(56 398 250)" style="pointer-events: none">NEW LOT E2 (+125)</text>
+                <!-- E2: SW Perimeter Lot inside Main Parcel PID 01123101 (+110 Spaces • 0.95 ac south of Turf Field) -->
+                <polygon points="132.0,248.0 153.0,265.0 208.0,350.0 165.0,385.0 96.0,280.0" fill="#a855f7" fill-opacity="0.42" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" class="marker-btn" @click="selectPost('e2')" />
+                <text x="148" y="318" text-anchor="middle" fill="#f3e8ff" font-size="9.5" font-weight="700" transform="rotate(55 148 318)" style="pointer-events: none">NEW LOT E2 (+110)</text>
 
-                <!-- E3: North Apex & Perimeter Shoulder Bays (+60 Spaces) -->
-                <polygon points="185.0,45.0 210.5,30.9 298.9,85.0 310.0,70.0 215.0,18.0 172.0,32.0" fill="#a855f7" fill-opacity="0.38" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" class="marker-btn" @click="selectPost('e3')" />
-                <text x="245" y="42" text-anchor="middle" fill="#f3e8ff" font-size="9.5" font-weight="700" transform="rotate(30 245 42)" style="pointer-events: none">E3: +60</text>
+                <!-- E3: East Lot NE Corner Infill inside Main Parcel PID 01123101 (+70 Spaces • 0.62 ac) -->
+                <polygon points="322.7,163.0 401.0,170.0 393.5,266.0 381.0,266.0 374.1,241.0 322.7,175.7" fill="#a855f7" fill-opacity="0.42" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" class="marker-btn" @click="selectPost('e3')" />
+                <text x="376" y="205" text-anchor="middle" fill="#f3e8ff" font-size="8.5" font-weight="700" style="pointer-events: none">E3 (+70)</text>
               </g>
 
               <!-- CLICKABLE POLICE & VOLUNTEER POST MARKERS -->
@@ -270,11 +308,15 @@
             </div>
             <div class="row items-center no-wrap">
               <span style="width: 12px; height: 12px; background: rgba(168, 85, 247, 0.45); border: 1px solid #c084fc; border-radius: 3px; display: inline-block" class="q-mr-xs"></span>
-              <span>+360 New Spaces</span>
+              <span>+360 New Spaces (In Parcel)</span>
             </div>
             <div class="row items-center no-wrap">
               <span style="width: 12px; height: 12px; background: rgba(6, 95, 70, 0.85); border: 1px solid #34d399; border-radius: 3px; display: inline-block" class="q-mr-xs"></span>
-              <span>School Turf Field (Protected)</span>
+              <span>School Turf Field</span>
+            </div>
+            <div class="row items-center no-wrap">
+              <span style="width: 14px; height: 0px; border-top: 2px dashed #34d399; display: inline-block" class="q-mr-xs"></span>
+              <span>Owned Parcel Boundary (GIS)</span>
             </div>
           </div>
 

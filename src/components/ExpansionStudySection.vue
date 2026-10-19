@@ -4,15 +4,19 @@
     <div class="uc-card q-pa-lg">
       <div class="row items-center justify-between q-col-gutter-md">
         <div class="col-12 col-md-8">
-          <span class="uc-pill-black">Campus Land &amp; Expansion Study</span>
+          <span class="uc-pill-black">Mecklenburg County GIS Parcel &amp; Expansion Audit</span>
           <div class="text-h5 text-weight-bolder q-mt-sm">
-            Adding +360 Spaces on the East &amp; NE Sides (While Preserving the School Turf Field)
+            100% Within Owned Parcels (PID 01123101 &amp; PID 01123122) + Turf Field Protected
           </div>
           <p class="text-body1 uc-muted q-mt-sm q-mb-none" style="line-height: 1.65">
-            Because the campus was built as a K–12 school, only <strong>4.29 acres</strong> are paved parking today (~450 spaces), and the cleared area on the West side is the
-            <strong>school's dedicated athletic turf field</strong>. By focusing expansion exclusively on the
-            <strong>2.93 acres of open land on the Northeast and East sides</strong>, we can add
-            <strong>+360 spaces</strong> (~810 total spaces) without touching the school turf field or Ramah Creek buffer.
+            Official Mecklenburg County GIS tax parcel records confirm the campus assemblage spans
+            <strong>28.15 owned acres across 4 contiguous parcels</strong>: Main Campus
+            <strong>PID 01123101 (21.90 ac)</strong>, SE Corner Tract
+            <strong>PID 01123122 (3.67 ac, owned by Ambassador Christian School Inc)</strong>, and Entry/Exit parcels
+            <strong>PID 01123131 &amp; 01123132 (2.58 ac)</strong>. Because the Northeast V-wedge
+            (<strong>PID 01123102, 9.20 ac</strong>) is privately owned by a neighbor, all
+            <strong>+360 new spaces</strong> are placed strictly inside owned parcels <strong>01123122</strong> and
+            <strong>01123101</strong> while keeping the <strong>School Turf Field 100% untouched</strong>.
           </p>
         </div>
         <div class="col-12 col-md-4 row justify-end no-print">
@@ -21,7 +25,7 @@
             :color="$q.dark.isActive ? 'white' : 'dark'"
             :text-color="$q.dark.isActive ? 'dark' : 'white'"
             icon="map"
-            label="View New Lots E1–E3 on Map"
+            label="View GIS Parcels &amp; Lots on Map"
             no-caps
             class="text-weight-bold q-px-md q-py-sm"
             @click="$emit('show-expansion')"
@@ -33,23 +37,23 @@
       <div class="row q-col-gutter-md q-mt-md">
         <div class="col-6 col-md-3">
           <div class="uc-subcard q-pa-md full-height">
-            <div class="text-caption uc-muted text-uppercase text-weight-bold">West Athletic Turf</div>
+            <div class="text-caption uc-muted text-uppercase text-weight-bold">Owned Campus Land</div>
+            <div class="text-h5 text-weight-bolder q-mt-xs">28.15 Acres</div>
+            <div class="text-caption uc-muted q-mt-xs">PIDs 01123101, -122, -131, -132</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="uc-subcard q-pa-md full-height">
+            <div class="text-caption uc-muted text-uppercase text-weight-bold">School Turf Field</div>
             <div class="text-h5 text-weight-bolder q-mt-xs">100% Protected</div>
-            <div class="text-caption uc-muted q-mt-xs">Preserved for school athletics</div>
+            <div class="text-caption uc-muted q-mt-xs">Preserved inside PID 01123101</div>
           </div>
         </div>
         <div class="col-6 col-md-3">
           <div class="uc-subcard q-pa-md full-height">
-            <div class="text-caption uc-muted text-uppercase text-weight-bold">Paved Lot Today</div>
-            <div class="text-h5 text-weight-bolder q-mt-xs">~450 Spaces</div>
-            <div class="text-caption uc-muted q-mt-xs">4.29 acres (186,875 sq ft)</div>
-          </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="uc-subcard q-pa-md full-height">
-            <div class="text-caption uc-muted text-uppercase text-weight-bold">East &amp; NE Infill</div>
+            <div class="text-caption uc-muted text-uppercase text-weight-bold">In-Parcel Expansion</div>
             <div class="text-h5 text-weight-bolder q-mt-xs">+360 Spaces</div>
-            <div class="text-caption uc-muted q-mt-xs">2.93 acres on East &amp; NE sides</div>
+            <div class="text-caption uc-muted q-mt-xs">3.05 ac inside 01123122 &amp; 01123101</div>
           </div>
         </div>
         <div class="col-6 col-md-3">

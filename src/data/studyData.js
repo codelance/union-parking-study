@@ -70,9 +70,9 @@ export const phaseOptions = [
     stepLabel: 'View 4 • Future',
     label: '+360 New Spaces',
     color: 'accent',
-    badge: 'Viewing: View 4 • Future +360 Space Expansion (450 → 810 Spaces)',
-    title: 'Adding +360 Spaces on the NE & East Side (Preserving the School Turf Field)',
-    desc: 'Because the West side is the school\'s athletic turf field, all parking expansion happens on the Northeast & East side: New Lot E1 (+175 spaces in the NE Wedge), New Lot E2 (+125 spaces expanding the East Lot), and E3 (+60 perimeter stalls).'
+    badge: 'Viewing: View 4 • Parcel-Verified +360 Space Expansion (450 → 810 Spaces)',
+    title: '100% Within Owned Parcels (PID 01123101 & PID 01123122) + Protects Turf Field',
+    desc: 'Per Mecklenburg County GIS, the NE V-wedge (PID 01123102) is privately owned by a neighbor. All +360 new spaces are placed 100% inside campus-owned parcels: E1 (+180 in SE Parcel PID 01123122), E2 (+110 in SW Parcel PID 01123101), and E3 (+70 in the NE corner of PID 01123101).'
   }
 ]
 
@@ -120,43 +120,43 @@ export const postData = {
     color: 'purple-8',
     title: 'V4: North Parking Lot (~150 Spaces)',
     detail:
-      'Has 4 parallel rows plus curved west bays adjacent to the school turf field. During the 9:45 AM turnaround (while 8:30 AM is leaving the East Lot), early 10:30 AM arrivals are sent straight here so they park effortlessly.'
+      'Has 4 parallel rows plus curved west bays adjacent to the school turf field. Note: Mecklenburg County GIS shows the eastern tree line of the North Lot is the exact parcel boundary with neighboring PID 01123102.'
   },
   turf: {
     id: 'turf',
     code: 'TURF',
     shortLabel: 'School Turf Field',
     color: 'green-8',
-    title: 'Ambassador Christian School Athletic Turf Field (Protected — Do Not Pave)',
+    title: 'Ambassador Christian School Athletic Turf Field (PID 01123101 — Protected)',
     detail:
-      'Located immediately West/Northwest of the building and NW parking bays. This is the school\'s dedicated athletic turf field and is 100% preserved in our expansion plan—all new parking is placed on the Northeast and East sides of campus instead.'
+      'Located inside main parcel PID 01123101 immediately Northwest of the building and NW parking bays. This is the school\'s dedicated athletic turf field and is 100% preserved—zero parking expansion encroaches on the field.'
   },
   e1: {
     id: 'e1',
     code: 'E1',
-    shortLabel: 'E1: +175 Spaces',
+    shortLabel: 'E1: +180 Spaces',
     color: 'purple-6',
-    title: 'New Lot E1: North-East Wedge (+175 Spaces • Priority #1)',
+    title: 'New Lot E1: Southeast Corner Parcel (+180 Spaces • PID 01123122)',
     detail:
-      '1.38-acre V-shaped grass area right between the East Lot and North Lot (on the opposite side of campus from the school turf field). Because it already touches our existing asphalt roads on two sides, gravelling or paving E1 adds +175 spaces AND connects the East and North lots into a complete outer loop!'
+      'Located 100% inside PID 01123122 (the 3.67-acre corner parcel at 12015 Sam Furr Rd owned by Ambassador Christian School Inc, purchased July 2023). Developing 1.48 acres immediately SE of the East Fan Lot adds +180 spaces with direct tie-in to the East Lot and South Entry Drive!'
   },
   e2: {
     id: 'e2',
     code: 'E2',
-    shortLabel: 'E2: +125 Spaces',
+    shortLabel: 'E2: +110 Spaces',
     color: 'purple-6',
-    title: 'New Lot E2: East Lot Outer Expansion Bays (+125 Spaces • Priority #2)',
+    title: 'New Lot E2: Southwest Perimeter Expansion (+110 Spaces • PID 01123101)',
     detail:
-      '1.05-acre upland corridor (480 ft × 95 ft) immediately East of the existing East Fan Lot. Adding two outer parking bays along the East side expands our closest lot by +125 spaces without touching the school\'s athletic turf field on the West side.'
+      'Located 100% inside main campus parcel PID 01123101 (within the 8.81-acre wooded SW tract). Adds two parallel parking bays (0.95 acres) along the West Service Road & SW Lot—completely south of the protected School Turf Field and north of Ramah Creek.'
   },
   e3: {
     id: 'e3',
     code: 'E3',
-    shortLabel: 'E3: +60 Spaces',
+    shortLabel: 'E3: +70 Spaces',
     color: 'purple-6',
-    title: 'New Lot E3: North Apex & Perimeter Shoulder Stalls (+60 Spaces • Priority #3)',
+    title: 'New Lot E3: East Lot NE Corner Infill (+70 Spaces • PID 01123101)',
     detail:
-      '0.50-acre perimeter expansion adding angled spaces around the North Lot apex and outer drive shoulders, yielding +60 fast-exit spaces with minimal grading.'
+      'Located 100% inside the square Northeast property corner of main parcel PID 01123101 (0.62 acres between the curved East Fan Lot curb and the PID 01123102/01123123 property line), plus North Lot apex stalls.'
   }
 }
 
@@ -212,19 +212,19 @@ export const roadmapPhases = [
     phase: 'Phase 1: Day-One Sunday Launch (~$2,500 Gear)',
     color: 'text-positive',
     icon: 'flag',
-    desc: 'Place 45 cones to keep 1 Lane In / 1 Lane Out on the entrance drive, run the front canopy drop-off NE→SW, and park all 90 Dream Team cars on the North-East grass wedge (Zone E1).'
+    desc: 'Place 45 cones to keep 1 Lane In / 1 Lane Out on the entrance drive, run the front canopy drop-off NE→SW, and park Dream Team cars in the owned NE corner infill (PID 01123101) & SE tract (PID 01123122).'
   },
   {
-    phase: 'Phase 2: Quick Gravel/Geocell on NE Wedge (+175 Spaces)',
+    phase: 'Phase 2: SE Corner Parcel PID 01123122 (+180 Spaces)',
     color: 'text-info',
     icon: 'terrain',
-    desc: 'Stabilize the 1.38-acre V-shaped grass notch between the East and North lots (Zone E1) with gravel/geocell so it works in rainy weather and connects both lots into a full loop.'
+    desc: 'Clear and stabilize 1.48 acres of the 3.67-acre SE Corner Parcel (PID 01123122, owned by Ambassador Christian School Inc) immediately SE of the East Fan Lot, adding +180 spaces on 100% owned land.'
   },
   {
-    phase: 'Phase 3: Pave East & NE Expansion (+360 Spaces → 810 Total)',
+    phase: 'Phase 3: Full In-Parcel Expansion (+360 Spaces → 810 Total)',
     color: 'text-accent',
     icon: 'construction',
-    desc: 'Pave Zone E1 (+175 in NE Wedge), Zone E2 (+125 expanding East Lot), and Zone E3 (+60 perimeter stalls) while 100% preserving the school\'s athletic turf field on the West side.'
+    desc: 'Pave Zone E1 (+180 in SE Parcel PID 01123122), Zone E2 (+110 in SW Parcel PID 01123101), and Zone E3 (+70 in NE corner of PID 01123101) while 100% preserving the school\'s athletic turf field.'
   }
 ]
 
@@ -276,33 +276,33 @@ export const chickFilAPrinciples = [
 export const expansionZones = [
   {
     id: 'e1',
-    name: 'Zone E1: North-East Wedge',
-    priority: '★ Priority #1 (Best ROI)',
+    name: 'Zone E1: SE Corner Parcel (PID 01123122)',
+    priority: '★ Priority #1 (100% Owned)',
     priorityColor: 'positive',
-    location: 'Open grass V-notch right between the East Lot and the North Lot (away from the school turf field)',
-    size: "339' × 190' (1.38 Acres)",
-    spaces: '+175 Spaces',
-    why: 'Already bordered on 2 sides by our existing asphalt roads! Connecting this wedge links the East and North lots into a complete outer ring road and can be used immediately as grass/gravel overflow.'
+    location: '3.67-acre corner parcel (12015 Sam Furr Rd) owned by Ambassador Christian School Inc, immediately SE of the East Fan Lot',
+    size: "420' × 155' (1.48 Acres of 3.67 ac)",
+    spaces: '+180 Spaces',
+    why: '100% owned by Ambassador Christian School Inc (Deed 38268/53, July 2023). Directly contiguous with the East Fan Lot (PID 01123101) and South Entry Drive (PID 01123131), avoiding the privately owned NE neighbor parcel (PID 01123102).'
   },
   {
     id: 'e2',
-    name: 'Zone E2: East Lot Outer Expansion',
-    priority: 'Priority #2',
+    name: 'Zone E2: SW Perimeter Lot (PID 01123101)',
+    priority: 'Priority #2 (100% Owned)',
     priorityColor: 'info',
-    location: 'Upland corridor along the eastern curve of the East Fan Lot (preserving the West school turf field)',
-    size: "480' × 95' (1.05 Acres)",
-    spaces: '+125 Spaces',
-    why: 'Extends our main East Lot outward by two double-loaded bays right next to the auditorium entrance while keeping 100% of the school\'s athletic turf field untouched.'
+    location: 'Inside the 8.81-acre wooded Southwest section of Main Parcel PID 01123101, parallel to the West Service Loop (south of the School Turf Field)',
+    size: "410' × 100' (0.95 Acres)",
+    spaces: '+110 Spaces',
+    why: '100% inside Main Campus Parcel PID 01123101 (Workmanship LLC). Expands the West/SW Lot by two double-loaded bays with immediate egress to the West Service Road while keeping 100% of the School Turf Field protected.'
   },
   {
     id: 'e3',
-    name: 'Zone E3: North Apex & Perimeter Bays',
-    priority: 'Priority #3',
+    name: 'Zone E3: East Lot NE Corner & Apex Infill (PID 01123101)',
+    priority: 'Priority #3 (100% Owned)',
     priorityColor: 'grey-6',
-    location: 'Angled perimeter bays around the North Lot apex and outer drive shoulders',
-    size: "360' × 60' (0.50 Acres)",
-    spaces: '+60 Spaces',
-    why: 'Easy perimeter spaces along existing drive lanes requiring minimal grading and zero impact on athletic facilities.'
+    location: 'Unpaved square NE corner of Main Parcel PID 01123101 (between curved East Fan Lot curb and property line) + North Lot apex',
+    size: "290' × 93' (0.62 Acres)",
+    spaces: '+70 Spaces',
+    why: 'Uses the exact unbuilt Northeast corner triangle inside PID 01123101 right up to (but never crossing) the Paradis property boundary (PID 01123102 / 01123123).'
   }
 ]
 
@@ -319,7 +319,7 @@ export const sundayTimeline = [
     title: 'Dream Team & Staff Arrival',
     color: 'positive',
     icon: 'groups',
-    desc: 'All staff & volunteers park on the North-East Grass Wedge (Zone E1) or off-site shuttle lot—saving 100% of paved spaces for guests.'
+    desc: 'All staff & volunteers park in the North Lot Apex / East NE Corner Infill (Zone E3 inside PID 01123101) or off-site shuttle lot—saving 100% of main paved spaces for guests.'
   },
   {
     time: '8:00 – 8:35 AM',
