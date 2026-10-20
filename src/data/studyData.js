@@ -33,7 +33,7 @@ export const executiveTakeaways = [
     icon: 'add_road',
     title: '+360 New Spaces 100% Inside Owned GIS Parcels',
     description:
-      'While the School Turf Field (west of P9 Exit) is 100% protected, we can add Proposed Lot 11 (+180 spaces at P12 in SE Parcel PID 01123122), Lot 12 (+110 west of Exit Lot 1), and Lot 13 (+70 outside Lot 4/P5)—bringing campus parking from ~450 to ~810 spaces.'
+      'While the School Turf Field (west of P9 Exit) is 100% protected, we can add Proposed Lot 11 (+180 spaces via Post P2 in SE Parcel PID 01123122), Lot 12 (+110 west of Exit Lot 1), and Lot 13 (+70 outside Lot 4/P5)—bringing campus parking from ~450 to ~810 spaces.'
   }
 ]
 
@@ -72,7 +72,7 @@ export const phaseOptions = [
     color: 'accent',
     badge: 'Viewing: View 4 • Proposed Lots 11, 12 & 13 (+360 New Spaces Inside Owned GIS Parcels)',
     title: 'Proposed Lots 11, 12 & 13 (+360 Spaces → 810 Total) 100% Inside Owned Parcels + Turf Field Protected',
-    desc: 'Notice how ⑩ Brick Wall follows our exact eastern GIS property line with neighbor PID 01123102, and ⑨ Grass Lot sits inside our owned North Apex! Proposed expansion adds ⑪ Lot 11 (+180 spaces in owned SE Parcel PID 01123122 at P12, unlocking a 2nd exit to Hwy 2145), ⑫ Lot 12 (+110 spaces west of ① Exit Lot 1), and ⑬ Lot 13 (+70 spaces outside ④ Lot 4 & P5).'
+    desc: 'Notice how ⑩ Brick Wall follows our exact eastern GIS property line with neighbor PID 01123102, and ⑨ Grass Lot sits inside our owned North Apex! Proposed expansion adds ⑪ Lot 11 (+180 spaces in owned SE Parcel PID 01123122 connected directly to Post P2 on the main campus drive—keeping P12 🚫 closed since the track below P12 is not a usable road), ⑫ Lot 12 (+110 spaces west of ① Exit Lot 1), and ⑬ Lot 13 (+70 spaces outside ④ Lot 4 & P5).'
   }
 ]
 
@@ -158,12 +158,12 @@ export const postData = {
     shortLabel: 'P12 (🚫) & Hwy 2145',
     category: 'posts',
     badge: 'HIGHWAY 2145 (SAM FURR RD) & POST P12 (🚫)',
-    title: 'Post P12 (🚫 Blocked SE Road), University City Church Dr & Hwy 2145',
-    metrics: ['2 Police Officers (Hwy 2145)', 'P12 Barricade Cones', 'Future 2nd Exit to 2145'],
+    title: 'Post P12 (🚫 Not a Usable Road), University City Church Dr & Hwy 2145',
+    metrics: ['2 Police Officers (Hwy 2145)', 'P12 (🚫) Permanently Closed', 'All Entry/Exit via P1'],
     week12:
-      'Cars enter from Hwy 2145 (Sam Furr Rd) onto University City Church Dr past P1 to P12 (🚫), where the unpaved Southeast road down to Hwy 2145 is currently blocked off.',
+      'Cars enter from Hwy 2145 (Sam Furr Rd) onto University City Church Dr past P1 and curve past P12 (🚫) toward P2. The path south of P12 is not a usable road and should not be considered for campus traffic.',
     week3Fix:
-      'FUTURE EXPANSION ADVANTAGE: P12 (🚫) sits directly adjacent to our owned 3.67-acre SE Corner Parcel (PID 01123122). When ⑪ Proposed Lot 11 (+180 spaces) is built there, paving 180 ft from P12 to Hwy 2145 creates a dedicated 2nd campus exit!',
+      'KEEP P12 (🚫) CONED CLOSED: Maintain the cone barricade at P12 (🚫) at all times so vehicles never turn off the paved curve between P1 and P2, while 2 Police Officers at Hwy 2145 & University City Church Dr pulse entry and exit waves.',
     detail:
       'At Hwy 2145 (Sam Furr Rd) & University City Church Dr, police hold highway traffic for 60–90s waves so Green Exit Flow flushes freely while Light Blue Entry Flow turns in smoothly.'
   },
@@ -208,7 +208,7 @@ export const postData = {
     week12:
       'Notice how ⑩ Brick Wall on the Pastor\'s map follows the exact angled property line separating our campus (PID 01123101) from the private neighbor to the East (PID 01123102 — Paradis).',
     week3Fix:
-      '100% IN-PARCEL VERIFIED: The campus owns 4 contiguous parcels totaling 28.15 acres, including the 3.67-acre SE Corner Parcel (PID 01123122, purchased July 2023 by Ambassador Christian School Inc) right next to P12 and P2.',
+      '100% IN-PARCEL VERIFIED: The campus owns 4 contiguous parcels totaling 28.15 acres, including the 3.67-acre SE Corner Parcel (PID 01123122, purchased July 2023 by Ambassador Christian School Inc) right next to Post P2.',
     detail:
       'Verified via Mecklenburg County GIS: Main Parcel PID 01123101 (21.90 ac, Workmanship LLC), SE Corner Parcel PID 01123122 (3.67 ac, Ambassador Christian School Inc), University City Church Dr Entry PID 01123131 (2.11 ac), and SW Spur PID 01123132 (0.47 ac).'
   },
@@ -218,14 +218,14 @@ export const postData = {
     shortLabel: '⑪ New Lot 11 (+180)',
     category: 'land',
     badge: 'PRIORITY #1 EXPANSION • ⑪ PROPOSED LOT 11 (PID 01123122)',
-    title: '⑪ Proposed Lot 11: SE Corner Parcel at P12 & P2 (+180 Spaces)',
-    metrics: ['+180 New Spaces', '1.48 Ac of 3.67 Ac Parcel', 'Unlocks P12 Exit to 2145'],
+    title: '⑪ Proposed Lot 11: SE Corner Parcel via Post P2 (+180 Spaces)',
+    metrics: ['+180 New Spaces', '1.48 Ac of 3.67 Ac Parcel', 'Connects via Post P2 (P12 🚫 Closed)'],
     week12:
-      'Located immediately Southeast of Post P12 (🚫), Post P2, and ④ Lot 4 inside the school\'s owned 3.67-acre SE Corner Parcel (PID 01123122, 12015 Sam Furr Rd).',
+      'Located immediately Southeast of Post P2 and ④ Lot 4 inside the school\'s owned 3.67-acre SE Corner Parcel (PID 01123122, 12015 Sam Furr Rd). Because the track at P12 (🚫) is not a usable road, Lot 11 does not use P12.',
     week3Fix:
-      'EXPANSION PHASE 1: Builds +180 new paved spaces in double-loaded bays right next to P2/P12 and paves the 180-ft P12 corridor down to Hwy 2145 (Sam Furr Rd) as a dedicated 2nd exit!',
+      'EXPANSION PHASE 1: Builds +180 new paved spaces in double-loaded bays connecting directly into the existing paved campus drive at Post P2 (entering and exiting via P1 ↔ P12 ↔ P2 while P12 🚫 stays closed).',
     detail:
-      'Continues the Pastor\'s 1–10 lot numbering as ⑪ Lot 11 (+180 spaces). Sits 100% inside owned parcel PID 01123122 and gives ②–④ Lots 2–4 and ⑪ Lot 11 direct exit access via P12 to Hwy 2145.'
+      'Continues the Pastor\'s 1–10 lot numbering as ⑪ Lot 11 (+180 spaces). Sits 100% inside owned parcel PID 01123122 and ties directly into the main East spine at Post P2.'
   },
   e2: {
     id: 'e2',
@@ -314,10 +314,10 @@ export const roadmapPhases = [
     desc: 'Extend the center cone line 50 ft past P1 toward P12 to eliminate the P1/P11 bottleneck, park 90 Dream Team cars in Lot 9 (Grass Lot) & Lot 10 (Brick Wall), flush Lots 2–4 South via P4/P3/P2 for 12 mins at dismissal, and close the P6→P10 cut-through.'
   },
   {
-    phase: 'Phase 2: Proposed Lot 11 at P12 (+180 Spaces • PID 01123122)',
+    phase: 'Phase 2: Proposed Lot 11 via Post P2 (+180 Spaces • PID 01123122)',
     color: 'text-info',
     icon: 'terrain',
-    desc: 'Clear and pave 1.48 acres of the owned 3.67-acre SE Corner Parcel (PID 01123122) beside P12 (🚫) and P2 to create Lot 11 (+180 spaces) and open P12 as a second exit to Hwy 2145 (Sam Furr Rd).'
+    desc: 'Clear and pave 1.48 acres of the owned 3.67-acre SE Corner Parcel (PID 01123122) adjacent to Post P2 and ④ Lot 4 to create Lot 11 (+180 spaces), connecting directly into the existing paved campus drive at P2 (with P12 🚫 remaining closed).'
   },
   {
     phase: 'Phase 3: Proposed Lots 12 & 13 (+180 Spaces → 810 Total across Lots 1–13)',
@@ -375,13 +375,13 @@ export const chickFilAPrinciples = [
 export const expansionZones = [
   {
     id: 'e1',
-    name: '⑪ Proposed Lot 11: SE Corner Parcel at P12 (PID 01123122)',
+    name: '⑪ Proposed Lot 11: SE Corner Parcel via Post P2 (PID 01123122)',
     priority: '★ Priority #1 (100% Owned)',
     priorityColor: 'positive',
-    location: '3.67-acre SE corner parcel (12015 Sam Furr Rd) owned by Ambassador Christian School Inc, immediately Southeast of Post P12 (🚫), Post P2, and ④ Lot 4',
+    location: '3.67-acre SE corner parcel (12015 Sam Furr Rd) owned by Ambassador Christian School Inc, immediately Southeast of Post P2 and ④ Lot 4',
     size: "420' × 155' (1.48 Acres of 3.67 ac)",
     spaces: '+180 Spaces',
-    why: '100% owned by Ambassador Christian School Inc (Deed 38268/53, July 2023). Connects directly to ④ Lot 4 (at P2) and Post P12 (🚫), allowing P12 to open as a second paved exit to Hwy 2145 (Sam Furr Rd)!'
+    why: '100% owned by Ambassador Christian School Inc (Deed 38268/53, July 2023). Connects directly into the existing paved campus drive at Post P2 alongside ④ Lot 4 (entering and exiting via University City Church Dr at P1, while P12 🚫 remains closed since it is not a usable road).'
   },
   {
     id: 'e2',
@@ -440,11 +440,11 @@ export const pastorMapTweaks = [
   },
   {
     num: '5',
-    postKey: 'e1',
-    phase: 'expand',
-    badge: 'Fix #5 • P12 (🚫) & New Lot 11',
-    title: 'Build ⑪ Lot 11 (+180 Spaces) in SE Parcel & Open P12 as 2nd Exit to Hwy 2145',
-    desc: 'P12 (🚫) sits at the top of the unpaved SE corridor bordering the school\'s owned 3.67-acre SE parcel (PID 01123122). When ⑪ Proposed Lot 11 (+180 spaces) is built in PID 01123122, paving the 180-ft P12 leg down to Hwy 2145 (Sam Furr Rd) gives Lots 2–4 & Lot 11 their own dedicated exit—cutting P1 traffic in half!'
+    postKey: 'grass10',
+    phase: 'ingress',
+    badge: 'Fix #5 • Lots 9–10 & P12 (🚫)',
+    title: 'Park 90 Dream Team Cars in ⑨ Grass Lot & ⑩ Brick Wall + Keep P12 (🚫) Coned Closed',
+    desc: 'Having all ~90 Dream Team volunteers and staff park in ⑨ Grass Lot (between P8 & P7) and ⑩ Brick Wall (between P6 & P7) at 7:30 AM keeps 100% of paved spaces in Lots 1–8 open for Sunday guests. Meanwhile, keep P12 (🚫) coned off at all times since the track south of P12 is not a usable road.'
   }
 ]
 
@@ -524,10 +524,10 @@ export const stationDutyCards = [
   },
   {
     code: 'Post P12 (🚫) & Hwy 2145',
-    title: 'SE Cut-Through Block & Hwy 2145 Police (2 Officers + Cones)',
+    title: 'P12 (🚫) Barricade Cones & Hwy 2145 Police (2 Officers + Cones)',
     color: 'blue-5',
     icon: 'local_police',
-    desc: 'P12 cones block the unpaved SE road (adjacent to ⑪ Proposed Lot 11), while 2 Huntersville Police officers at Hwy 2145 (Sam Furr Rd) & University City Church Dr hold highway traffic for 60–90s exit waves.'
+    desc: 'P12 (🚫) cones permanently block off the unusable southern track so all traffic stays on the paved P1 ↔ P12 ↔ P2 curve, while 2 Huntersville Police officers at Hwy 2145 (Sam Furr Rd) & University City Church Dr hold highway traffic for 60–90s exit waves.'
   },
   {
     code: '3 Greeter Posts (G)',

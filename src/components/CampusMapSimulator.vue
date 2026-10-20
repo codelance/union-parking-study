@@ -181,7 +181,7 @@
                     <div class="text-weight-bolder text-uppercase" style="font-size: 9.5px; color: #d8b4fe">
                       +360 In-Parcel Expansion
                     </div>
-                    <div><span class="lot-mini-badge" style="background: #9333ea">11</span> Lot 11 (+180 at P12)</div>
+                    <div><span class="lot-mini-badge" style="background: #9333ea">11</span> Lot 11 (+180 by P2)</div>
                     <div><span class="lot-mini-badge" style="background: #9333ea">12</span> Lot 12 (+110 by Lot 1)</div>
                     <div><span class="lot-mini-badge" style="background: #9333ea">13</span> Lot 13 (+70 by Lot 4)</div>
                   </div>
@@ -300,8 +300,6 @@
                     <!-- University City Church Dr (Main Entrance/Exit Road) -->
                     <path d="M 276.8,602.1 L 235.0,549.6 L 229.8,538.3 L 226.5,526.1 L 224.8,514.0 L 225.1,501.8 L 228.5,489.4 L 235.5,477.4 L 243.7,468.2 L 257.7,457.1 L 274.1,445.5" fill="none" stroke="#334155" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
                     <path d="M 276.8,602.1 L 235.0,549.6 L 229.8,538.3 L 226.5,526.1 L 224.8,514.0 L 225.1,501.8 L 228.5,489.4 L 235.5,477.4 L 243.7,468.2 L 257.7,457.1 L 274.1,445.5" fill="none" stroke="#475569" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" />
-                    <!-- Unpaved SE Cut-Through Road from P12 to Hwy 2145 -->
-                    <path d="M 341.7,405.8 L 365.0,455.0 L 385.0,515.0" fill="none" stroke="#3f3f46" stroke-width="9" stroke-dasharray="4 3" />
 
                     <!-- Campus Drive Aisles -->
                     <path d="M 257.7,457.1 L 274.1,445.5 L 361.5,383.8 L 363.8,378.3 L 364.5,373.6 L 363.6,368.5 L 346.8,333.6 L 299.5,262.6 L 241.1,174.8 L 249.7,166.8 L 241.3,146.7 L 240.0,141.9 L 236.1,127.8 L 231.4,110.3 L 217.9,60.0 L 213.9,45.6 L 212.3,41.2 L 209.5,37.2 L 206.5,35.5 L 199.1,35.4 L 195.7,38.5 L 145.4,111.9 L 144.0,114.5 L 143.3,117.7 L 143.7,120.9 L 145.2,124.0 L 165.3,137.9 L 167.2,139.0 L 174.8,143.4 L 177.0,146.5 L 192.8,168.0 L 195.0,171.0 L 211.2,193.1 L 138.8,243.7 L 201.6,346.8 L 230.1,384.5 L 243.3,402.8 L 274.1,445.5" fill="none" stroke="#334155" stroke-width="11" stroke-linejoin="round" />
@@ -352,11 +350,12 @@
                     <!-- PROPOSED LOTS 11, 12, 13 (+360 NEW SPACES WITH VISIBLE PARKING STALLS) -->
                     <!-- ====================================================================== -->
                     <g v-show="layerExpansion || currentPhase === 'expand'">
-                      <!-- ⑪ Proposed Lot 11: SE Corner Parcel PID 01123122 (+180 Spaces at P12/P2) -->
+                      <!-- ⑪ Proposed Lot 11: SE Corner Parcel PID 01123122 (+180 Spaces via P2) -->
                       <g class="marker-btn" @click="selectPost('e1')">
                         <polygon points="395.5,272.0 462.0,272.0 462.0,425.0 413.0,462.0 381.0,452.0 386.5,386.0 389.5,352.0" fill="#581c87" fill-opacity="0.52" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" />
                         <path d="M 420.0,282.4 L 404.0,281.6 M 419.6,290.9 L 403.6,290.1 M 419.2,299.4 L 403.2,298.6 M 418.8,307.9 L 402.8,307.1 M 418.4,316.4 L 402.5,315.6 M 418.0,324.9 L 402.1,324.1 M 417.7,333.4 L 401.7,332.6 M 417.3,341.9 L 401.3,341.1 M 416.9,350.4 L 400.9,349.6 M 416.5,358.9 L 400.5,358.1 M 416.1,367.4 L 400.1,366.6 M 415.7,375.9 L 399.7,375.1 M 415.3,384.4 L 399.3,383.6 M 414.9,392.9 L 399.0,392.1 M 414.5,401.4 L 398.6,400.6 M 414.2,409.9 L 398.2,409.1 M 413.8,418.4 L 397.8,417.6 M 413.4,426.9 L 397.4,426.1 M 413.0,435.4 L 397.0,434.6 M 450.0,282.4 L 434.0,281.6 M 449.6,290.8 L 433.6,290.0 M 449.2,299.2 L 433.2,298.4 M 448.8,307.6 L 432.8,306.8 M 448.3,316.0 L 432.4,315.3 M 447.9,324.4 L 432.0,323.7 M 447.5,332.9 L 431.5,332.1 M 447.1,341.3 L 431.1,340.5 M 446.7,349.7 L 430.7,348.9 M 446.3,358.1 L 430.3,357.3 M 445.9,366.5 L 429.9,365.7 M 445.5,374.9 L 429.5,374.1 M 445.0,383.3 L 429.1,382.6 M 444.6,391.7 L 428.7,391.0 M 444.2,400.2 L 428.2,399.4 M 443.8,408.6 L 427.8,407.8 M 443.4,417.0 L 427.4,416.2 M 443.0,425.4 L 427.0,424.6" stroke="#e9d5ff" stroke-opacity="0.7" stroke-width="1.1" />
-                        <path d="M 422.0,285.0 L 422.0,380.0 L 348.0,412.0 L 382.0,510.0" fill="none" stroke="#22c55e" stroke-width="2.8" class="flow-line" marker-end="url(#arr-exit-green)" />
+                        <!-- Lot 11 internal drive connects into P2 on the existing campus drive (NOT P12) -->
+                        <path d="M 424.0,420.0 L 424.0,315.0 L 376.0,322.0" fill="none" stroke="#c084fc" stroke-width="2.4" class="flow-line" marker-end="url(#arr-expand-purple)" />
                         <g :transform="uprightMode ? 'rotate(-33.6, 428, 355)' : ''">
                           <circle cx="428" cy="340" r="9.5" fill="#9333ea" stroke="#ffffff" stroke-width="1.5" />
                           <text x="428" y="343.5" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="800">11</text>
@@ -974,7 +973,7 @@ const inspectorQuickItems = [
   { key: 'east', label: '②–④ Lots 2–4' },
   { key: 'north', label: '⑤–⑧ Lots 5–8' },
   { key: 'grass10', label: '⑨–⑩ Grass/Wall' },
-  { key: 'hpd', label: 'P12 & Hwy 2145' },
+  { key: 'hpd', label: 'P12 (🚫) & 2145' },
   { key: 'greeters', label: 'G: Greeters' },
   { key: 'e1', label: '⑪ Lot 11 (+180)', isExpand: true },
   { key: 'e2', label: '⑫ Lot 12 (+110)', isExpand: true },
