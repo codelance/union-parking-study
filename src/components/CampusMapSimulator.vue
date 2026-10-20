@@ -37,18 +37,47 @@
       <!-- Left 7 Columns: Interactive Campus Map -->
       <div class="col-12 col-md-7">
         <div class="uc-card q-pa-md q-pa-md-lg">
-          <div class="row items-center justify-between q-mb-md">
-            <div>
-              <div class="text-h6 text-weight-bolder">Campus Traffic &amp; Parking Map</div>
+          <div class="row items-center justify-between q-mb-md q-col-gutter-sm">
+            <div class="col-12 col-sm">
+              <div class="text-h6 text-weight-bolder">Campus Traffic &amp; Parking Map (Lots 1–10 &amp; Posts P1–P12)</div>
               <div class="text-body2 uc-muted">
-                Select a Sunday phase below or click any numbered circle (<strong>P1, V1–V4</strong>) on the map.
+                Select a Sunday phase below or click any station pin (<strong>P1/P11, P2–P5, P6–P9, P10/G, P12</strong>) on the map.
               </div>
             </div>
-            <span class="uc-pill-outline gt-xs">North ↑ • Satellite Geometry</span>
+            <div class="col-auto">
+              <q-btn
+                outline
+                dense
+                no-caps
+                :color="$q.dark.isActive ? 'white' : 'dark'"
+                :icon="showPastorPhoto ? 'map' : 'photo_library'"
+                :label="showPastorPhoto ? 'Back to Interactive Map' : 'View Pastor\'s Week 1–2 Map'"
+                class="q-px-sm text-weight-bold"
+                style="border-radius: 8px"
+                @click="showPastorPhoto = !showPastorPhoto"
+              />
+            </div>
+          </div>
+
+          <!-- Optional Toggle: Campus Pastor's Actual Week 1-2 Handout Photo -->
+          <div
+            v-if="showPastorPhoto"
+            class="q-pa-md q-mb-md text-center"
+            style="background: #0b1120; border: 1px solid #27272a; border-radius: 12px"
+          >
+            <div class="row items-center justify-between q-mb-sm">
+              <span class="uc-pill-black">Campus Pastor's Current Week 1–2 Flow Map (Lots 1–10 &amp; P1–P12)</span>
+              <span class="text-caption text-grey-4">See Tab 2 for the 5 Week 3+ Bottleneck Tweaks</span>
+            </div>
+            <img
+              src="/pastor-flow-map.jpg"
+              alt="Campus Pastor Parking Flow Map (Lots 1-10 and P1-P12)"
+              style="max-width: 100%; max-height: 520px; border-radius: 8px; border: 1px solid #3f3f46"
+            />
           </div>
 
           <!-- Clean Monochrome 4-Step Segmented Selector -->
-          <div class="row q-col-gutter-sm q-mb-md">
+          <div v-show="!showPastorPhoto" class="row q-col-gutter-sm q-mb-md">
             <div
               v-for="opt in phaseOptions"
               :key="opt.value"
@@ -78,6 +107,7 @@
 
           <!-- SVG Map Viewport -->
           <div
+            v-show="!showPastorPhoto"
             class="q-pa-sm flex flex-center overflow-hidden"
             style="background: #0b1120; border: 1px solid #27272a; border-radius: 12px"
           >
@@ -203,15 +233,17 @@
               <text x="272" y="336" text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="700" transform="rotate(-34 272 336)">2,100-SEAT</text>
               <text x="280" y="348" text-anchor="middle" fill="#e4e4e7" font-size="10" font-weight="700" transform="rotate(-34 280 348)">AUDITORIUM</text>
 
-              <text x="165" y="322" text-anchor="middle" fill="#f4f4f5" font-size="9.5" font-weight="700" transform="rotate(55 165 322)">WEST LOT (~90)</text>
-              <text x="348" y="245" text-anchor="middle" fill="#f4f4f5" font-size="10.5" font-weight="700" transform="rotate(56 348 245)">EAST LOT (~210)</text>
-              <text x="172" y="75" text-anchor="middle" fill="#f4f4f5" font-size="10.5" font-weight="700" transform="rotate(-55 172 75)">NORTH LOT (~150)</text>
+              <text x="165" y="322" text-anchor="middle" fill="#f4f4f5" font-size="9" font-weight="700" transform="rotate(55 165 322)">1: EXIT LOT 1 (~90)</text>
+              <text x="348" y="245" text-anchor="middle" fill="#f4f4f5" font-size="10" font-weight="700" transform="rotate(56 348 245)">LOTS 2 • 3 • 4 (~210)</text>
+              <text x="172" y="75" text-anchor="middle" fill="#f4f4f5" font-size="9.5" font-weight="700" transform="rotate(-55 172 75)">LOTS 5•6•7•8 (~150)</text>
+              <text x="195" y="26" text-anchor="middle" fill="#fcd34d" font-size="8" font-weight="700">9: GRASS LOT</text>
+              <text x="242" y="96" text-anchor="middle" fill="#93c5fd" font-size="7.5" font-weight="700" transform="rotate(72 242 96)">10: BRICK WALL</text>
 
               <!-- PHASE 1: ARRIVAL + PASSENGER-SIDE DROP-OFF + ESCAPE LANE -->
               <g v-show="currentPhase === 'ingress'">
                 <!-- Temporary Volunteer Grass Lot inside owned SE Parcel PID 01123122 -->
                 <polygon points="395.5,272.0 462.0,272.0 462.0,395.0 386.5,386.0 389.5,352.0" fill="#f59e0b" fill-opacity="0.18" stroke="#f59e0b" stroke-opacity="0.75" stroke-width="1.2" stroke-dasharray="4 3" />
-                <text x="428" y="325" text-anchor="middle" fill="#fcd34d" font-size="8.5" font-weight="700">VOLUNTEER LOT</text>
+                <text x="428" y="325" text-anchor="middle" fill="#fcd34d" font-size="8.5" font-weight="700">SE OVERFLOW</text>
                 <text x="428" y="336" text-anchor="middle" fill="#fde68a" font-size="7.5">(PID 01123122)</text>
 
                 <path d="M 350.0,541.0 L 279.8,599.7 L 238.1,547.3 L 233.4,537.0 L 230.2,525.3 L 228.6,513.8 L 228.9,502.4 L 232.0,490.9 L 238.6,479.6 L 246.3,471.0 L 260.0,460.1 L 276.3,448.6 L 361.5,383.8 L 364.5,373.6 L 346.8,333.6 L 367.1,317.8 L 380.8,287.5 L 347.0,227.8 L 313.3,178.7 L 249.7,166.8" fill="none" stroke="#10b981" stroke-width="3.2" class="flow-line" marker-end="url(#arr-green)" />
@@ -261,26 +293,32 @@
                 <text x="376" y="205" text-anchor="middle" fill="#f3e8ff" font-size="8.5" font-weight="700" style="pointer-events: none">E3 (+70)</text>
               </g>
 
-              <!-- CLICKABLE POLICE & VOLUNTEER POST MARKERS -->
+              <!-- CLICKABLE POLICE & VOLUNTEER POST MARKERS (MATCHING CAMPUS PASTOR P1-P12 & G) -->
+              <!-- P12 (🚫) & Hwy 2145 -->
               <g :class="['marker-btn', { 'marker-active': selectedPostKey === 'hpd' }]" @click="selectPost('hpd')">
-                <circle cx="276.8" cy="602.1" r="14" fill="#18181b" stroke="#ffffff" stroke-width="2" />
-                <text x="276.8" y="606.1" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="700">P1</text>
+                <circle cx="352.0" cy="402.0" r="13.5" fill="#18181b" stroke="#f87171" stroke-width="2" />
+                <text x="352.0" y="405.5" text-anchor="middle" fill="#fca5a5" font-size="9.5" font-weight="700">P12🚫</text>
               </g>
+              <!-- P1 / P11 Bottleneck Junction (with glowing orange/red bottleneck indicator) -->
               <g :class="['marker-btn', { 'marker-active': selectedPostKey === 'split' }]" @click="selectPost('split')">
-                <circle cx="274.1" cy="445.5" r="13.5" fill="#18181b" stroke="#ffffff" stroke-width="2" />
-                <text x="274.1" y="449.5" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="700">V1</text>
+                <circle cx="255.0" cy="430.0" r="9" fill="#f59e0b" stroke="#ef4444" stroke-width="2.5" />
+                <circle cx="274.1" cy="445.5" r="14.5" fill="#18181b" stroke="#f59e0b" stroke-width="2.2" />
+                <text x="274.1" y="449.0" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="700">P1/11</text>
               </g>
+              <!-- P10 & Greeter G (Exit Lot 1 & Canopy) -->
               <g :class="['marker-btn', { 'marker-active': selectedPostKey === 'crosswalk' }]" @click="selectPost('crosswalk')">
-                <circle cx="305.0" cy="396.0" r="13.5" fill="#18181b" stroke="#ffffff" stroke-width="2" />
-                <text x="305.0" y="400.0" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="700">V2</text>
+                <circle cx="145.0" cy="240.0" r="13.5" fill="#18181b" stroke="#ffffff" stroke-width="2" />
+                <text x="145.0" y="243.5" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="700">P10/G</text>
               </g>
+              <!-- P2-P5 (East Lots 2, 3, 4) -->
               <g :class="['marker-btn', { 'marker-active': selectedPostKey === 'east' }]" @click="selectPost('east')">
-                <circle cx="362.0" cy="295.0" r="13.5" fill="#18181b" stroke="#ffffff" stroke-width="2" />
-                <text x="362.0" y="299.0" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="700">V3</text>
+                <circle cx="362.0" cy="295.0" r="14" fill="#18181b" stroke="#ffffff" stroke-width="2" />
+                <text x="362.0" y="298.5" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="700">P2–5</text>
               </g>
+              <!-- P6-P9 (North Lots 5-8, Lot 9 Grass, Lot 10 Brick Wall) -->
               <g :class="['marker-btn', { 'marker-active': selectedPostKey === 'north' }]" @click="selectPost('north')">
-                <circle cx="235.0" cy="145.0" r="13.5" fill="#18181b" stroke="#ffffff" stroke-width="2" />
-                <text x="235.0" y="149.0" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="700">V4</text>
+                <circle cx="235.0" cy="145.0" r="14" fill="#18181b" stroke="#ffffff" stroke-width="2" />
+                <text x="235.0" y="148.5" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="700">P6–9</text>
               </g>
 
               <!-- North Compass Badge -->
@@ -473,8 +511,9 @@ import { useQuasar } from 'quasar'
 import { phaseOptions, postData, attendancePresets } from '../data/studyData'
 
 const $q = useQuasar()
+const showPastorPhoto = ref(false)
 const currentPhase = ref('ingress')
-const selectedPostKey = ref('crosswalk')
+const selectedPostKey = ref('split')
 
 const attendees = ref(1000)
 const occ = ref(2.2)
