@@ -231,10 +231,11 @@
                 <!-- Interactive SVG Campus Map -->
                 <svg
                   :viewBox="computedViewBox"
+                  preserveAspectRatio="xMidYMid meet"
                   :style="{
                     width: '100%',
-                    height: 'auto',
-                    maxHeight: fullWidthMap ? '800px' : '670px',
+                    height: fullWidthMap ? '740px' : '610px',
+                    display: 'block',
                     userSelect: 'none'
                   }"
                   role="img"
@@ -277,9 +278,9 @@
                         stroke-width="1.3"
                         stroke-dasharray="4 3"
                       />
-                      <g :transform="uprightMode ? 'rotate(-33.6, 325, 95)' : ''">
-                        <text x="325" y="92" text-anchor="middle" fill="#fca5a5" opacity="0.9" font-size="8" font-weight="700">NEIGHBOR PARCEL (PID 01123102)</text>
-                        <text x="325" y="102" text-anchor="middle" fill="#fecaca" opacity="0.8" font-size="7">Private — Outside 10: Brick Wall</text>
+                      <g :transform="uprightMode ? 'rotate(-33.6, 330, 95)' : ''">
+                        <text x="330" y="92" text-anchor="middle" fill="#fca5a5" opacity="0.9" font-size="8" font-weight="700">NEIGHBOR PARCEL (PID 01123102)</text>
+                        <text x="330" y="102" text-anchor="middle" fill="#fecaca" opacity="0.8" font-size="7">Private — Outside 10: Brick Wall</text>
                       </g>
 
                       <!-- Campus-Owned Main Parcel PID 01123101 (21.90 ac) + Entry Drive PID 01123131 (2.11 ac) -->
@@ -304,21 +305,21 @@
                       />
                     </g>
 
-                    <!-- 1B. Ambassador Christian School Athletic Turf Field (Protected inside PID 01123101) -->
+                    <!-- 1B. Ambassador Christian School Athletic Turf Field (Protected inside PID 01123101, West of P8/P9) -->
                     <g class="marker-btn" @click="selectPost('turf')">
                       <polygon
-                        points="135.0,108.0 162.0,126.5 112.0,200.5 85.0,182.0"
+                        points="105.0,115.0 132.0,133.5 92.0,195.0 65.0,176.5"
                         fill="#065f46"
                         fill-opacity="0.82"
                         stroke="#34d399"
                         stroke-opacity="0.9"
                         stroke-width="1.6"
                       />
-                      <line x1="110.0" y1="145.0" x2="137.0" y2="163.5" stroke="#a7f3d0" stroke-opacity="0.55" stroke-width="1" />
-                      <circle cx="123.5" cy="154.2" r="6" fill="none" stroke="#a7f3d0" stroke-opacity="0.55" stroke-width="1" />
-                      <g :transform="uprightMode ? 'rotate(-33.6, 123, 154)' : 'rotate(-56, 123, 154)'">
-                        <text x="123" y="151" text-anchor="middle" fill="#ecfdf5" font-size="7.5" font-weight="800">SCHOOL TURF</text>
-                        <text x="123" y="160" text-anchor="middle" fill="#a7f3d0" font-size="6.5" font-weight="700">FIELD (PROTECTED)</text>
+                      <line x1="85.0" y1="145.8" x2="112.0" y2="164.2" stroke="#a7f3d0" stroke-opacity="0.55" stroke-width="1" />
+                      <circle cx="98.5" cy="155.0" r="6" fill="none" stroke="#a7f3d0" stroke-opacity="0.55" stroke-width="1" />
+                      <g :transform="uprightMode ? 'rotate(-33.6, 98.5, 155)' : 'rotate(-56, 98.5, 155)'">
+                        <text x="98.5" y="152" text-anchor="middle" fill="#ecfdf5" font-size="7" font-weight="800">SCHOOL TURF</text>
+                        <text x="98.5" y="160.5" text-anchor="middle" fill="#a7f3d0" font-size="6" font-weight="700">FIELD (PROTECTED)</text>
                       </g>
                     </g>
 
@@ -357,8 +358,7 @@
                     <path d="M 347.0,227.8 L 323.1,245.6 L 299.5,262.6" fill="none" stroke="#334155" stroke-width="7.5" />
 
                     <!-- 4B. VISIBLE INDIVIDUAL PARKING SPACES (STALL STRIPES) ACROSS ALL LOTS 1–10 -->
-                    <!-- Paved Stalls in Lots 1, 2, 3, 4, 5, 6, 7, 8 -->
-                    <path d="M 168.4,126.7 L 180.2,132.0 M 170.9,121.2 L 182.7,126.5 M 176.2,110.2 L 186.6,118.0 M 179.8,105.4 L 190.2,113.2 M 183.4,100.6 L 193.8,108.4 M 187.0,95.8 L 197.4,103.6 M 190.6,91.0 L 201.0,98.8 M 194.2,86.2 L 204.6,94.0 M 197.8,81.4 L 208.2,89.2 M 201.4,76.6 L 211.8,84.4 M 205.0,71.8 L 215.4,79.6 M 208.6,67.0 L 219.0,74.8 M 178.4,137.8 L 185.6,148.6 M 183.4,134.5 L 190.6,145.3 M 188.4,131.1 L 195.6,141.9 M 193.4,127.8 L 200.6,138.6 M 198.4,124.5 L 205.6,135.3 M 203.4,121.2 L 210.6,132.0 M 208.4,117.8 L 215.6,128.6 M 213.4,114.5 L 220.6,125.3 M 218.4,111.2 L 225.6,122.0 M 196.5,162.3 L 203.6,173.2 M 201.5,159.0 L 208.6,169.9 M 206.6,155.8 L 213.7,166.7 M 211.6,152.5 L 218.7,163.4 M 216.6,149.2 L 223.7,160.1 M 221.7,146.0 L 228.8,156.9 M 226.7,142.7 L 233.8,153.6 M 231.8,139.5 L 238.9,150.4 M 212.8,184.5 L 219.7,195.6 M 217.9,181.4 L 224.8,192.5 M 223.0,178.3 L 229.9,189.4 M 228.1,175.1 L 235.0,186.2 M 233.3,172.0 L 240.2,183.1 M 367.9,302.3 L 353.8,307.5 M 365.9,296.7 L 351.8,301.9 M 365.3,295.9 L 352.8,304.1 M 362.0,290.9 L 349.5,299.1 M 358.7,285.9 L 346.2,294.1 M 355.4,280.9 L 342.9,289.1 M 352.1,275.9 L 339.6,284.1 M 348.8,270.9 L 336.3,279.1 M 345.5,265.9 L 333.0,274.1 M 342.2,260.9 L 329.7,269.1 M 338.9,255.9 L 326.4,264.1 M 335.6,250.9 L 323.1,259.1 M 326.1,236.4 L 313.6,244.6 M 322.8,231.4 L 310.3,239.6 M 319.5,226.4 L 307.0,234.6 M 316.2,221.4 L 303.7,229.6 M 312.9,216.4 L 300.4,224.6 M 309.6,211.4 L 297.1,219.6 M 306.3,206.4 L 293.8,214.6 M 303.0,201.4 L 290.5,209.6 M 299.7,196.4 L 287.2,204.6 M 293.1,186.4 L 280.6,194.6 M 289.8,181.4 L 277.3,189.6 M 349.3,324.8 L 337.7,332.5 M 346.0,319.8 L 334.4,327.5 M 342.6,314.8 L 331.0,322.5 M 339.3,309.8 L 327.7,317.5 M 336.0,304.8 L 324.4,312.5 M 332.7,299.8 L 321.1,307.5 M 329.4,294.8 L 317.8,302.5 M 326.0,289.8 L 314.4,297.5 M 322.7,284.8 L 311.1,292.5 M 319.4,279.8 L 307.8,287.5 M 316.1,274.8 L 304.5,282.5 M 312.8,269.8 L 301.2,277.5 M 306.1,259.8 L 294.5,267.5 M 302.8,254.8 L 291.2,262.5 M 299.5,249.8 L 287.9,257.5 M 296.1,244.8 L 284.5,252.5 M 292.8,239.8 L 281.2,247.5 M 289.5,234.8 L 277.9,242.5 M 286.2,229.8 L 274.6,237.5 M 282.9,224.8 L 271.3,232.5 M 279.5,219.8 L 267.9,227.5 M 276.2,214.8 L 264.6,222.5 M 272.9,209.8 L 261.3,217.5 M 269.6,204.8 L 258.0,212.5 M 266.3,199.8 L 254.7,207.5 M 263.0,194.8 L 251.4,202.5 M 259.6,189.8 L 248.0,197.5 M 256.3,184.8 L 244.7,192.5 M 161.0,264.6 L 166.5,261.0 M 164.0,269.2 L 169.5,265.6 M 167.1,273.8 L 172.6,270.2 M 170.1,278.4 L 175.6,274.8 M 173.1,283.0 L 178.6,279.4 M 176.1,287.6 L 181.6,284.0 M 179.1,292.1 L 184.6,288.5 M 182.1,296.7 L 187.6,293.1 M 185.2,301.3 L 190.7,297.7 M 188.2,305.9 L 193.7,302.3 M 191.2,310.5 L 196.7,306.9 M 194.2,315.1 L 199.7,311.5 M 197.2,319.7 L 202.7,316.1 M 200.2,324.3 L 205.7,320.7 M 203.3,328.9 L 208.8,325.3 M 206.3,333.5 L 211.8,329.9 M 209.3,338.1 L 214.8,334.5 M 256.9,191.6 L 247.1,198.4 M 261.3,197.8 L 251.5,204.7 M 265.7,204.1 L 255.8,210.9 M 270.0,210.3 L 260.2,217.2 M 274.4,216.6 L 264.6,223.4 M 278.8,222.8 L 269.0,229.7 M 283.2,229.1 L 273.3,235.9 M 287.5,235.3 L 277.7,242.2 M 291.9,241.6 L 282.1,248.4 M 296.3,247.8 L 286.5,254.7 M 300.7,254.1 L 290.8,260.9 M 305.0,260.3 L 295.2,267.2 M 309.4,266.6 L 299.6,273.4 M 313.8,272.8 L 304.0,279.7 M 318.2,279.1 L 308.3,285.9 M 322.5,285.3 L 312.7,292.2 M 326.9,291.6 L 317.1,298.4" stroke="#cbd5e1" stroke-opacity="0.72" stroke-width="1.15" />
+                    <path d="M 168.4,126.7 L 180.2,132.0 M 170.9,121.2 L 182.7,126.5 M 176.2,110.2 L 186.6,118.0 M 179.8,105.4 L 190.2,113.2 M 183.4,100.6 L 193.8,108.4 M 187.0,95.8 L 197.4,103.6 M 190.6,91.0 L 201.0,98.8 M 194.2,86.2 L 204.6,94.0 M 197.8,81.4 L 208.2,89.2 M 201.4,76.6 L 211.8,84.4 M 205.0,71.8 L 215.4,79.6 M 208.6,67.0 L 219.0,74.8 M 178.4,137.8 L 185.6,148.6 M 183.4,134.5 L 190.6,145.3 M 188.4,131.1 L 195.6,141.9 M 193.4,127.8 L 200.6,138.6 M 198.4,124.5 L 205.6,135.3 M 203.4,121.2 L 210.6,132.0 M 208.4,117.8 L 215.6,128.6 M 213.4,114.5 L 220.6,125.3 M 218.4,111.2 L 225.6,122.0 M 196.5,162.3 L 203.6,173.2 M 201.5,159.0 L 208.6,169.9 M 206.6,155.8 L 213.7,166.7 M 211.6,152.5 L 218.7,163.4 M 216.6,149.2 L 223.7,160.1 M 221.7,146.0 L 228.8,156.9 M 226.7,142.7 L 233.8,153.6 M 231.8,139.5 L 238.9,150.4 M 212.8,184.5 L 219.7,195.6 M 217.9,181.4 L 224.8,192.5 M 223.0,178.3 L 229.9,189.4 M 228.1,175.1 L 235.0,186.2 M 233.3,172.0 L 240.2,183.1 M 367.9,302.3 L 353.8,307.5 M 365.9,296.7 L 351.8,301.9 M 365.3,295.9 L 352.8,304.1 M 362.0,290.9 L 349.5,299.1 M 358.7,285.9 L 346.2,294.1 M 355.4,280.9 L 342.9,289.1 M 352.1,275.9 L 339.6,284.1 M 348.8,270.9 L 336.3,279.1 M 345.5,265.9 L 333.0,274.1 M 342.2,260.9 L 329.7,269.1 M 338.9,255.9 L 326.4,264.1 M 335.6,250.9 L 323.1,259.1 M 326.1,236.4 L 313.6,244.6 M 322.8,231.4 L 310.3,239.6 M 319.5,226.4 L 307.0,234.6 M 316.2,221.4 L 303.7,229.6 M 312.9,216.4 L 300.4,224.6 M 309.6,211.4 L 297.1,219.6 M 306.3,206.4 L 293.8,214.6 M 303.0,201.4 L 290.5,209.6 M 299.7,196.4 L 287.2,204.6 M 293.1,186.4 L 280.6,194.6 M 289.8,181.4 L 277.3,189.6 M 349.3,324.8 L 337.7,332.5 M 346.0,319.8 L 334.4,327.5 M 342.6,314.8 L 331.0,322.5 M 339.3,309.8 L 327.7,317.5 M 336.0,304.8 L 324.4,312.5 M 332.7,299.8 L 321.1,307.5 M 329.4,294.8 L 317.8,302.5 M 326.0,289.8 L 314.4,297.5 M 322.7,284.8 L 311.1,292.5 M 319.4,279.8 L 307.8,287.5 M 316.1,274.8 L 304.5,282.5 M 312.8,269.8 L 301.2,277.5 M 306.1,259.8 L 294.5,267.5 M 302.8,254.8 L 291.2,262.5 M 299.5,249.8 L 287.9,257.5 M 296.1,244.8 L 284.5,252.5 M 292.8,239.8 L 281.2,247.5 M 289.5,234.8 L 277.9,242.5 M 286.2,229.8 L 274.6,237.5 M 282.9,224.8 L 271.3,232.5 M 279.5,219.8 L 267.9,227.5 M 276.2,214.8 L 264.6,222.5 M 272.9,209.8 L 261.3,217.5 M 269.6,204.8 L 258.0,212.5 M 266.3,199.8 L 254.7,207.5 M 263.0,194.8 L 251.4,202.5 M 259.6,189.8 L 248.0,197.5 M 256.3,184.8 L 244.7,192.5 M 161.0,264.6 L 166.5,261.0 M 164.0,269.2 L 169.5,265.6 M 167.1,273.8 L 172.6,270.2 M 170.1,278.4 L 175.6,274.8 M 173.1,283.0 L 178.6,279.4 M 176.1,287.6 L 181.6,284.0 M 179.1,292.1 L 184.6,288.5 M 182.1,296.7 L 187.6,293.1 M 185.2,301.3 L 190.7,297.7 M 188.2,305.9 L 193.7,302.3 M 191.2,310.5 L 196.7,306.9 M 194.2,315.1 L 199.7,311.5 M 197.2,319.7 L 202.7,316.1 M 200.2,324.3 L 205.7,320.7 M 203.3,328.9 L 208.8,325.3 M 206.3,333.5 L 211.8,329.9 M 209.3,338.1 L 214.8,334.5 M 305.0,182.0 L 315.0,176.0 M 309.0,188.0 L 319.0,182.0 M 313.0,194.0 L 323.0,188.0 M 317.0,200.0 L 327.0,194.0 M 321.0,206.0 L 331.0,200.0 M 325.0,212.0 L 335.0,206.0 M 329.0,218.0 L 339.0,212.0 M 333.0,224.0 L 343.0,218.0 M 341.0,236.0 L 351.0,230.0 M 345.0,242.0 L 355.0,236.0 M 349.0,248.0 L 359.0,242.0 M 353.0,254.0 L 363.0,248.0 M 357.0,260.0 L 367.0,254.0 M 361.0,266.0 L 371.0,260.0 M 365.0,272.0 L 375.0,266.0 M 369.0,278.0 L 379.0,272.0" stroke="#cbd5e1" stroke-opacity="0.72" stroke-width="1.15" />
 
                     <!-- Grass Lot 9 & Brick Wall Lot 10 Stall Markings -->
                     <path d="M 153.4,91.2 L 162.6,98.8 M 157.3,86.4 L 166.5,94.1 M 161.2,81.7 L 170.5,89.3 M 165.1,76.9 L 174.4,84.6 M 169.0,72.2 L 178.3,79.8 M 173.0,67.4 L 182.2,75.1 M 176.9,62.7 L 186.1,70.3 M 180.8,57.9 L 190.0,65.6 M 184.7,53.2 L 194.0,60.8 M 188.6,48.4 L 197.9,56.1 M 192.5,43.7 L 201.8,51.3 M 196.5,38.9 L 205.7,46.6 M 200.4,34.2 L 209.6,41.8" stroke="#86efac" stroke-opacity="0.7" stroke-width="1.1" />
@@ -368,13 +368,16 @@
                     <path d="M 190.0,673.0 L 251.7,622.5 L 276.8,602.1 L 314.2,572.2 L 352.8,543.1 L 475.0,458.0" fill="none" stroke="#334155" stroke-width="28" />
                     <path d="M 190.0,673.0 L 251.7,622.5 L 276.8,602.1 L 314.2,572.2 L 352.8,543.1 L 475.0,458.0" fill="none" stroke="#475569" stroke-width="24" />
                     <path d="M 190.0,673.0 L 251.7,622.5 L 276.8,602.1 L 314.2,572.2 L 352.8,543.1 L 475.0,458.0" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6 4" />
-                    <!-- Hwy 2145 Shield Badge (Matching Pastor's Map) -->
-                    <g transform="translate(338, 554)" :transform="uprightMode ? 'translate(338, 554) rotate(-33.6)' : 'translate(338, 554) rotate(-36)'">
-                      <rect x="-48" y="-9" width="96" height="17" rx="4" fill="#ffffff" stroke="#09090b" stroke-width="1.5" />
-                      <text x="0" y="3" text-anchor="middle" fill="#09090b" font-size="9" font-weight="800">2145 • SAM FURR RD</text>
+                    <!-- Hwy 2145 Shield Badge (Shifted Right of Entry Arrow so Zero Overlap) -->
+                    <g :transform="uprightMode ? 'translate(396, 512) rotate(-33.6)' : 'translate(396, 512) rotate(-36)'">
+                      <rect x="-50" y="-9" width="100" height="17" rx="4" fill="#ffffff" stroke="#09090b" stroke-width="1.5" />
+                      <text x="0" y="3" text-anchor="middle" fill="#09090b" font-size="8.5" font-weight="900">2145 • SAM FURR RD</text>
                     </g>
                     <!-- University City Church Dr Label -->
-                    <text x="242" y="518" text-anchor="middle" fill="#e2e8f0" font-size="8" font-weight="700" transform="rotate(-78 242 518)">University City Church Dr</text>
+                    <g :transform="uprightMode ? 'translate(208, 515) rotate(-33.6)' : 'translate(208, 515)'">
+                      <text x="0" y="0" text-anchor="middle" fill="#cbd5e1" font-size="7.5" font-weight="700">University City</text>
+                      <text x="0" y="9" text-anchor="middle" fill="#cbd5e1" font-size="7.5" font-weight="700">Church Dr</text>
+                    </g>
 
                     <!-- 6. Actual Building Footprint (80,081 sq ft • 2,100-Seat Auditorium) -->
                     <path d="M 243.3,241.5 L 254.1,256.6 L 256.9,260.6 L 266.6,254.0 L 268.8,257.3 L 291.4,291.2 L 297.4,287.1 L 312.4,309.6 L 306.3,313.5 L 320.0,333.9 L 309.2,341.1 L 310.5,342.8 L 309.0,343.7 L 306.2,345.5 L 304.6,346.5 L 303.5,345.0 L 297.2,349.2 L 301.0,354.7 L 298.4,356.6 L 299.8,358.4 L 302.0,361.2 L 298.5,363.6 L 302.7,369.5 L 310.0,379.9 L 304.8,383.3 L 302.6,384.7 L 297.4,388.1 L 290.2,377.9 L 286.1,372.2 L 283.8,373.8 L 281.5,370.9 L 280.1,369.1 L 278.0,370.6 L 273.5,365.1 L 267.6,369.1 L 268.8,370.7 L 266.7,372.2 L 264.7,373.6 L 262.7,375.0 L 261.5,373.2 L 250.9,380.3 L 236.1,358.0 L 232.5,360.1 L 218.1,338.9 L 221.7,336.4 L 214.5,325.5 L 213.2,323.5 L 211.7,321.3 L 209.6,318.1 L 205.9,320.7 L 199.4,311.1 L 203.1,308.4 L 198.0,300.6 L 202.3,297.7 L 207.5,294.2 L 205.5,291.4 L 196.3,278.8 L 194.9,276.8 L 187.0,265.9 L 236.1,231.5 L 241.7,239.3 Z" fill="#e4e4e7" fill-opacity="0.95" stroke="#18181b" stroke-width="1.6" />
@@ -393,43 +396,39 @@
                       <!-- ⑪ Proposed Lot 11: SE Corner Parcel PID 01123122 (+180 Spaces at P12/P2) -->
                       <g class="marker-btn" @click="selectPost('e1')">
                         <polygon points="395.5,272.0 462.0,272.0 462.0,425.0 413.0,462.0 381.0,452.0 386.5,386.0 389.5,352.0" fill="#581c87" fill-opacity="0.52" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" />
-                        <!-- Visible Parking Spaces inside Lot 11 -->
                         <path d="M 420.0,282.4 L 404.0,281.6 M 419.6,290.9 L 403.6,290.1 M 419.2,299.4 L 403.2,298.6 M 418.8,307.9 L 402.8,307.1 M 418.4,316.4 L 402.5,315.6 M 418.0,324.9 L 402.1,324.1 M 417.7,333.4 L 401.7,332.6 M 417.3,341.9 L 401.3,341.1 M 416.9,350.4 L 400.9,349.6 M 416.5,358.9 L 400.5,358.1 M 416.1,367.4 L 400.1,366.6 M 415.7,375.9 L 399.7,375.1 M 415.3,384.4 L 399.3,383.6 M 414.9,392.9 L 399.0,392.1 M 414.5,401.4 L 398.6,400.6 M 414.2,409.9 L 398.2,409.1 M 413.8,418.4 L 397.8,417.6 M 413.4,426.9 L 397.4,426.1 M 413.0,435.4 L 397.0,434.6 M 450.0,282.4 L 434.0,281.6 M 449.6,290.8 L 433.6,290.0 M 449.2,299.2 L 433.2,298.4 M 448.8,307.6 L 432.8,306.8 M 448.3,316.0 L 432.4,315.3 M 447.9,324.4 L 432.0,323.7 M 447.5,332.9 L 431.5,332.1 M 447.1,341.3 L 431.1,340.5 M 446.7,349.7 L 430.7,348.9 M 446.3,358.1 L 430.3,357.3 M 445.9,366.5 L 429.9,365.7 M 445.5,374.9 L 429.5,374.1 M 445.0,383.3 L 429.1,382.6 M 444.6,391.7 L 428.7,391.0 M 444.2,400.2 L 428.2,399.4 M 443.8,408.6 L 427.8,407.8 M 443.4,417.0 L 427.4,416.2 M 443.0,425.4 L 427.0,424.6" stroke="#e9d5ff" stroke-opacity="0.7" stroke-width="1.1" />
-                        <!-- P12 2nd Exit Flow Arrow to Hwy 2145 -->
                         <path d="M 422.0,285.0 L 422.0,380.0 L 348.0,412.0 L 382.0,510.0" fill="none" stroke="#22c55e" stroke-width="2.8" class="flow-line" marker-end="url(#arr-exit-green)" />
-                        <g :transform="uprightMode ? 'rotate(-33.6, 425, 352)' : ''">
-                          <circle cx="425" cy="336" r="10" fill="#9333ea" stroke="#ffffff" stroke-width="1.5" />
-                          <text x="425" y="339.5" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800">11</text>
-                          <rect x="392" y="348" width="66" height="22" rx="4" fill="#18181b" fill-opacity="0.88" stroke="#c084fc" stroke-width="1" />
-                          <text x="425" y="358" text-anchor="middle" fill="#f3e8ff" font-size="7.5" font-weight="800">LOT 11 (+180)</text>
-                          <text x="425" y="366.5" text-anchor="middle" fill="#d8b4fe" font-size="6.5">PID 01123122</text>
+                        <g :transform="uprightMode ? 'rotate(-33.6, 428, 355)' : ''">
+                          <circle cx="428" cy="340" r="9.5" fill="#9333ea" stroke="#ffffff" stroke-width="1.5" />
+                          <text x="428" y="343.5" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="800">11</text>
+                          <rect x="396" y="352" width="64" height="20" rx="4" fill="#18181b" fill-opacity="0.9" stroke="#c084fc" stroke-width="1" />
+                          <text x="428" y="361.5" text-anchor="middle" fill="#f3e8ff" font-size="7.2" font-weight="800">LOT 11 (+180)</text>
+                          <text x="428" y="369.5" text-anchor="middle" fill="#d8b4fe" font-size="6.2">PID 01123122</text>
                         </g>
                       </g>
 
                       <!-- ⑫ Proposed Lot 12: West of Exit Lot 1 inside PID 01123101 (+110 Spaces) -->
                       <g class="marker-btn" @click="selectPost('e2')">
                         <polygon points="132.0,248.0 153.0,265.0 208.0,350.0 165.0,385.0 96.0,280.0" fill="#581c87" fill-opacity="0.52" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" />
-                        <!-- Visible Parking Spaces inside Lot 12 -->
                         <path d="M 143.5,261.5 L 132.5,268.5 M 147.2,267.3 L 136.2,274.3 M 150.9,273.1 L 140.0,280.1 M 154.6,278.8 L 143.7,285.9 M 158.3,284.6 L 147.4,291.7 M 162.0,290.4 L 151.1,297.4 M 165.8,296.2 L 154.8,303.2 M 169.5,302.0 L 158.5,309.0 M 173.2,307.8 L 162.2,314.8 M 176.9,313.6 L 166.0,320.6 M 180.6,319.3 L 169.7,326.4 M 184.3,325.1 L 173.4,332.2 M 188.0,330.9 L 177.1,337.9 M 191.8,336.7 L 180.8,343.7 M 195.5,342.5 L 184.5,349.5 M 123.5,275.5 L 112.5,282.5 M 127.2,281.3 L 116.2,288.3 M 130.9,287.1 L 120.0,294.1 M 134.6,292.8 L 123.7,299.9 M 138.3,298.6 L 127.4,305.7 M 142.0,304.4 L 131.1,311.4 M 145.8,310.2 L 134.8,317.2 M 149.5,316.0 L 138.5,323.0 M 153.2,321.8 L 142.2,328.8 M 156.9,327.6 L 146.0,334.6 M 160.6,333.3 L 149.7,340.4 M 164.3,339.1 L 153.4,346.2 M 168.0,344.9 L 157.1,351.9 M 171.8,350.7 L 160.8,357.7 M 175.5,356.5 L 164.5,363.5" stroke="#e9d5ff" stroke-opacity="0.7" stroke-width="1.1" />
-                        <g :transform="uprightMode ? 'rotate(-33.6, 148, 318)' : ''">
-                          <circle cx="148" cy="306" r="10" fill="#9333ea" stroke="#ffffff" stroke-width="1.5" />
-                          <text x="148" y="309.5" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800">12</text>
-                          <rect x="115" y="318" width="66" height="20" rx="4" fill="#18181b" fill-opacity="0.88" stroke="#c084fc" stroke-width="1" />
-                          <text x="148" y="328" text-anchor="middle" fill="#f3e8ff" font-size="7.5" font-weight="800">LOT 12 (+110)</text>
-                          <text x="148" y="335.5" text-anchor="middle" fill="#d8b4fe" font-size="6.2">West of Exit Lot 1</text>
+                        <g :transform="uprightMode ? 'rotate(-33.6, 134, 318)' : ''">
+                          <circle cx="134" cy="306" r="9.5" fill="#9333ea" stroke="#ffffff" stroke-width="1.5" />
+                          <text x="134" y="309.5" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="800">12</text>
+                          <rect x="103" y="318" width="62" height="19" rx="4" fill="#18181b" fill-opacity="0.9" stroke="#c084fc" stroke-width="1" />
+                          <text x="134" y="327.5" text-anchor="middle" fill="#f3e8ff" font-size="7.2" font-weight="800">LOT 12 (+110)</text>
+                          <text x="134" y="335" text-anchor="middle" fill="#d8b4fe" font-size="6">PID 01123101</text>
                         </g>
                       </g>
 
                       <!-- ⑬ Proposed Lot 13: East of Lot 4 & P5 inside PID 01123101 (+70 Spaces) -->
                       <g class="marker-btn" @click="selectPost('e3')">
                         <polygon points="322.7,163.0 401.0,170.0 393.5,266.0 381.0,266.0 374.1,241.0 322.7,175.7" fill="#581c87" fill-opacity="0.52" stroke="#c084fc" stroke-width="2" stroke-dasharray="5 3" />
-                        <!-- Visible Parking Spaces inside Lot 13 -->
                         <path d="M 353.7,170.9 L 342.3,177.1 M 357.1,177.1 L 345.6,183.3 M 360.4,183.2 L 348.9,189.4 M 363.7,189.4 L 352.3,195.6 M 367.1,195.6 L 355.6,201.8 M 370.4,201.7 L 358.9,207.9 M 373.7,207.9 L 362.3,214.1 M 377.1,214.1 L 365.6,220.3 M 380.4,220.2 L 368.9,226.4 M 383.7,226.4 L 372.3,232.6 M 387.1,232.6 L 375.6,238.8 M 390.4,238.7 L 378.9,244.9 M 393.7,244.9 L 382.3,251.1" stroke="#e9d5ff" stroke-opacity="0.7" stroke-width="1.1" />
-                        <g :transform="uprightMode ? 'rotate(-33.6, 376, 206)' : ''">
-                          <circle cx="376" cy="195" r="9.5" fill="#9333ea" stroke="#ffffff" stroke-width="1.5" />
-                          <text x="376" y="198.5" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="800">13</text>
-                          <rect x="347" y="206" width="58" height="14" rx="3.5" fill="#18181b" fill-opacity="0.88" stroke="#c084fc" stroke-width="1" />
-                          <text x="376" y="215.5" text-anchor="middle" fill="#f3e8ff" font-size="7.2" font-weight="800">LOT 13 (+70)</text>
+                        <g :transform="uprightMode ? 'rotate(-33.6, 376, 198)' : ''">
+                          <circle cx="376" cy="187" r="9" fill="#9333ea" stroke="#ffffff" stroke-width="1.5" />
+                          <text x="376" y="190.5" text-anchor="middle" fill="#ffffff" font-size="7.8" font-weight="800">13</text>
+                          <rect x="348" y="198" width="56" height="13.5" rx="3.5" fill="#18181b" fill-opacity="0.9" stroke="#c084fc" stroke-width="1" />
+                          <text x="376" y="207" text-anchor="middle" fill="#f3e8ff" font-size="7" font-weight="800">LOT 13 (+70)</text>
                         </g>
                       </g>
                     </g>
@@ -437,43 +436,31 @@
                     <!-- ====================================================================== -->
                     <!-- ANIMATED TRAFFIC FLOW ARROWS (MATCHING PASTOR'S COLORS: BLUE IN / GREEN OUT) -->
                     <!-- ====================================================================== -->
-                    <!-- VIEW 1: ENTRY FLOW (Lots 1 -> 10 Fill Order in Light Blue + Green Exit Lane) -->
-                    <g v-show="currentPhase === 'ingress'">
-                      <!-- Light Blue Entry Flow: Hwy 2145 -> University City Church Dr -> P1 -> P12 -> P2 -> P5 -> P6 -> P7 -->
+                    <!-- VIEW 1 & VIEW 4: ENTRY FLOW (Lots 1 -> 10 Fill Order in Light Blue + Green Exit Lane) -->
+                    <g v-show="currentPhase === 'ingress' || currentPhase === 'expand'">
                       <path d="M 350.0,541.0 L 279.8,599.7 L 238.1,547.3 L 233.4,537.0 L 230.2,525.3 L 228.6,513.8 L 228.9,502.4 L 232.0,490.9 L 238.6,479.6 L 246.3,471.0 L 260.0,460.1 L 276.3,448.6 L 361.5,383.8 L 364.5,373.6 L 379.8,303.5 L 376.7,274.4 L 347.0,227.8 L 313.3,178.7 L 249.7,166.8 L 231.4,110.3 L 213.9,45.6" fill="none" stroke="#38bdf8" stroke-width="3.2" class="flow-line" marker-end="url(#arr-entry-blue)" />
-                      <!-- Light Blue Entry into Lots 2, 3, 4 (North-to-South down toward P4, P3, P2) -->
                       <path d="M 313.3,178.7 L 276.0,174.6 L 323.1,245.6 L 362.4,304.9" fill="none" stroke="#38bdf8" stroke-width="2.4" class="flow-line" marker-end="url(#arr-entry-blue)" />
                       <path d="M 262.6,173.2 L 241.1,174.8 L 299.5,262.6 L 342.0,326.0" fill="none" stroke="#38bdf8" stroke-width="2.4" class="flow-line" marker-end="url(#arr-entry-blue)" />
-                      <!-- Light Blue Entry into Lot 1 (via P6 -> P10 -> Exit Lot 1) -->
                       <path d="M 241.1,174.8 L 211.2,193.1 L 155.0,232.0 L 162.0,262.0 L 208.0,335.0" fill="none" stroke="#38bdf8" stroke-width="2.4" class="flow-line" marker-end="url(#arr-entry-blue)" />
-                      <!-- Front Canopy Drop-Off Loop (G -> G) -->
                       <path d="M 346.8,333.6 L 324.3,354.0 L 318.8,364.2 L 325.3,383.1 L 299.6,402.4 L 280.5,388.6 L 243.3,402.8" fill="none" stroke="#facc15" stroke-width="2.6" class="flow-line" marker-end="url(#arr-canopy-gold)" />
-                      <!-- Green Exit Flow down P8 -> P9 Exit -> P10 -> P11 -> P1 -> Hwy 2145 -->
                       <path d="M 195.7,38.5 L 145.4,111.9 L 137.0,178.3 L 138.8,243.7 L 201.6,346.8 L 243.3,402.8 L 271.9,442.4 L 255.4,454.1 L 241.1,465.4 L 232.4,475.2 L 225.0,487.9 L 221.3,501.2 L 221.0,514.2 L 222.8,526.9 L 226.2,539.6 L 231.9,551.9 L 273.8,604.5 L 222.0,645.0" fill="none" stroke="#22c55e" stroke-width="2.8" class="flow-line" marker-end="url(#arr-exit-green)" />
                     </g>
 
                     <!-- VIEW 2: 9:45 & 11:45 TURNAROUND SWAP (Eliminating the P1/P11 Bottleneck) -->
                     <g v-show="currentPhase === 'swap'">
-                      <!-- Green Exit #1: West Spine (Lots 1 & 5-10 via P8 -> P9 Exit -> P10 -> P11 -> Left Lane at P1) -->
                       <path d="M 195.7,38.5 L 145.4,111.9 L 137.0,178.3 L 138.8,243.7 L 201.6,346.8 L 243.3,402.8 L 271.9,442.4 L 255.4,454.1 L 241.1,465.4 L 232.4,475.2 L 225.0,487.9 L 221.3,501.2 L 221.0,514.2 L 222.8,526.9 L 226.2,539.6 L 231.9,551.9 L 273.8,604.5 L 222.0,645.0" fill="none" stroke="#22c55e" stroke-width="3.4" class="flow-line" marker-end="url(#arr-exit-green)" />
-                      <!-- Green Exit #2: 12-Minute Southward Flush of Lots 2, 3, 4 via P4/P3/P2 -->
                       <path d="M 299.5,262.6 L 346.8,333.6 L 358.0,375.0 L 272.0,440.0" fill="none" stroke="#22c55e" stroke-width="2.8" class="flow-line" marker-end="url(#arr-exit-green)" />
-                      <!-- Light Blue Entry Bypass up Outer East Lane (P1 -> P12 -> P2 -> P5 -> P6 -> Lots 5-8) -->
                       <path d="M 350.0,541.0 L 279.8,599.7 L 238.1,547.3 L 233.4,537.0 L 230.2,525.3 L 228.6,513.8 L 228.9,502.4 L 232.0,490.9 L 238.6,479.6 L 246.3,471.0 L 260.0,460.1 L 276.3,448.6 L 361.5,383.8 L 364.5,373.6 L 380.8,287.5 L 347.0,227.8 L 313.3,178.7 L 249.7,166.8 L 231.4,110.3 L 206.5,35.5" fill="none" stroke="#38bdf8" stroke-width="3.2" class="flow-line" marker-end="url(#arr-entry-blue)" />
-                      <!-- 50-ft Orange Cone Extension Line past P1 toward P12 -->
                       <g fill="#f97316" stroke="#ffffff" stroke-width="0.6">
                         <circle cx="255.0" cy="575.0" r="3" /><circle cx="235.0" cy="549.6" r="3" /><circle cx="224.8" cy="514.0" r="3" /><circle cx="235.5" cy="477.4" r="3" /><circle cx="257.7" cy="457.1" r="3.2" /><circle cx="274.1" cy="445.5" r="3.5" /><circle cx="292.0" cy="433.0" r="3.5" /><circle cx="308.0" cy="421.0" r="3.5" />
                       </g>
-                      <!-- Red X showing P6 -> G -> P10 cut-through closed during service swap -->
                       <line x1="215" y1="188" x2="227" y2="200" stroke="#ef4444" stroke-width="2.5" />
                       <line x1="227" y1="188" x2="215" y2="200" stroke="#ef4444" stroke-width="2.5" />
                     </g>
 
                     <!-- VIEW 3: 1:45 PM ALL-LOT EXIT FLOW (Both West & East Spines Outbound in Green) -->
                     <g v-show="currentPhase === 'egress'">
-                      <!-- West Exit Spine (Lots 1 & 5-10) -->
                       <path d="M 206.5,35.5 L 145.4,111.9 L 137.0,178.3 L 138.8,243.7 L 201.6,346.8 L 243.3,402.8 L 271.9,442.4 L 255.4,454.1 L 241.1,465.4 L 232.4,475.2 L 225.0,487.9 L 221.3,501.2 L 221.0,514.2 L 222.8,526.9 L 226.2,539.6 L 231.9,551.9 L 273.8,604.5 L 218.0,648.0" fill="none" stroke="#22c55e" stroke-width="3.4" class="flow-line" marker-end="url(#arr-exit-green)" />
-                      <!-- East Exit Spine (Lots 2, 3, 4 drain straight South via P4/P3/P2 -> P12 -> P1) -->
                       <path d="M 276.0,174.6 L 323.1,245.6 L 367.1,317.8 L 346.8,333.6 L 364.5,373.6 L 361.5,383.8 L 276.3,448.6 L 260.0,460.1 L 246.3,471.0 L 238.6,479.6 L 232.0,490.9 L 228.9,502.4 L 228.6,513.8 L 230.2,525.3 L 233.4,537.0 L 238.1,547.3 L 279.8,599.7 L 365.0,536.0" fill="none" stroke="#22c55e" stroke-width="3.4" class="flow-line" marker-end="url(#arr-exit-green)" />
                     </g>
 
@@ -482,77 +469,77 @@
                     <!-- ====================================================================== -->
                     <g v-show="layerLots">
                       <!-- ① Exit Lot 1 -->
-                      <g class="marker-btn" @click="selectPost('lot1')" :transform="uprightMode ? 'rotate(-33.6, 188, 302)' : ''">
-                        <rect x="163" y="294" width="52" height="15" rx="4" fill="#09090b" fill-opacity="0.86" stroke="#38bdf8" stroke-width="1.2" />
-                        <circle cx="171" cy="301.5" r="6.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.2" />
-                        <text x="171" y="304.2" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="900">1</text>
-                        <text x="196" y="304.2" text-anchor="middle" fill="#ffffff" font-size="7" font-weight="800">Exit Lot 1</text>
+                      <g class="marker-btn" @click="selectPost('lot1')" :transform="uprightMode ? 'rotate(-33.6, 200, 326)' : ''">
+                        <rect x="174" y="318.5" width="52" height="15" rx="4" fill="#09090b" fill-opacity="0.88" stroke="#38bdf8" stroke-width="1.2" />
+                        <circle cx="182" cy="326" r="6.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.2" />
+                        <text x="182" y="328.7" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="900">1</text>
+                        <text x="207" y="328.7" text-anchor="middle" fill="#ffffff" font-size="7" font-weight="800">Exit Lot 1</text>
                       </g>
 
                       <!-- ② Lot 2 (Inner East Bay) -->
-                      <g class="marker-btn" @click="selectPost('east')" :transform="uprightMode ? 'rotate(-33.6, 298, 249)' : ''">
-                        <circle cx="298" cy="249" r="8.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.4" />
-                        <text x="298" y="252" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="900">2</text>
+                      <g class="marker-btn" @click="selectPost('east')" :transform="uprightMode ? 'rotate(-33.6, 305, 266)' : ''">
+                        <circle cx="305" cy="266" r="8.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.4" />
+                        <text x="305" y="269" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="900">2</text>
                       </g>
 
                       <!-- ③ Lot 3 (Middle East Bay) -->
-                      <g class="marker-btn" @click="selectPost('east')" :transform="uprightMode ? 'rotate(-33.6, 320, 234)' : ''">
-                        <circle cx="320" cy="234" r="8.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.4" />
-                        <text x="320" y="237" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="900">3</text>
+                      <g class="marker-btn" @click="selectPost('east')" :transform="uprightMode ? 'rotate(-33.6, 331, 250)' : ''">
+                        <circle cx="331" cy="250" r="8.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.4" />
+                        <text x="331" y="253" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="900">3</text>
                       </g>
 
                       <!-- ④ Lot 4 (Outer East Bay) -->
-                      <g class="marker-btn" @click="selectPost('east')" :transform="uprightMode ? 'rotate(-33.6, 342, 220)' : ''">
-                        <circle cx="342" cy="220" r="8.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.4" />
-                        <text x="342" y="223" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="900">4</text>
+                      <g class="marker-btn" @click="selectPost('east')" :transform="uprightMode ? 'rotate(-33.6, 356, 236)' : ''">
+                        <circle cx="356" cy="236" r="8.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.4" />
+                        <text x="356" y="239" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="900">4</text>
                       </g>
 
                       <!-- ⑤ Lot 5 -->
-                      <g class="marker-btn" @click="selectPost('north')" :transform="uprightMode ? 'rotate(-33.6, 220, 168)' : ''">
-                        <rect x="202" y="161" width="38" height="14" rx="4" fill="#09090b" fill-opacity="0.84" stroke="#60a5fa" stroke-width="1" />
-                        <circle cx="210" cy="168" r="6.2" fill="#2563eb" stroke="#ffffff" stroke-width="1.2" />
-                        <text x="210" y="170.5" text-anchor="middle" fill="#ffffff" font-size="7.2" font-weight="900">5</text>
-                        <text x="228" y="170.5" text-anchor="middle" fill="#ffffff" font-size="6.8" font-weight="800">Lot 5</text>
+                      <g class="marker-btn" @click="selectPost('north')" :transform="uprightMode ? 'rotate(-33.6, 218, 178)' : ''">
+                        <rect x="199" y="171" width="38" height="14" rx="4" fill="#09090b" fill-opacity="0.88" stroke="#60a5fa" stroke-width="1" />
+                        <circle cx="207" cy="178" r="6.2" fill="#2563eb" stroke="#ffffff" stroke-width="1.2" />
+                        <text x="207" y="180.5" text-anchor="middle" fill="#ffffff" font-size="7.2" font-weight="900">5</text>
+                        <text x="225" y="180.5" text-anchor="middle" fill="#ffffff" font-size="6.8" font-weight="800">Lot 5</text>
                       </g>
 
                       <!-- ⑥ Lot 6 -->
-                      <g class="marker-btn" @click="selectPost('north')" :transform="uprightMode ? 'rotate(-33.6, 205, 146)' : ''">
-                        <rect x="187" y="139" width="38" height="14" rx="4" fill="#09090b" fill-opacity="0.84" stroke="#60a5fa" stroke-width="1" />
-                        <circle cx="195" cy="146" r="6.2" fill="#2563eb" stroke="#ffffff" stroke-width="1.2" />
-                        <text x="195" y="148.5" text-anchor="middle" fill="#ffffff" font-size="7.2" font-weight="900">6</text>
-                        <text x="213" y="148.5" text-anchor="middle" fill="#ffffff" font-size="6.8" font-weight="800">Lot 6</text>
+                      <g class="marker-btn" @click="selectPost('north')" :transform="uprightMode ? 'rotate(-33.6, 206, 152)' : ''">
+                        <rect x="187" y="145" width="38" height="14" rx="4" fill="#09090b" fill-opacity="0.88" stroke="#60a5fa" stroke-width="1" />
+                        <circle cx="195" cy="152" r="6.2" fill="#2563eb" stroke="#ffffff" stroke-width="1.2" />
+                        <text x="195" y="154.5" text-anchor="middle" fill="#ffffff" font-size="7.2" font-weight="900">6</text>
+                        <text x="213" y="154.5" text-anchor="middle" fill="#ffffff" font-size="6.8" font-weight="800">Lot 6</text>
                       </g>
 
                       <!-- ⑦ Lot 7 -->
-                      <g class="marker-btn" @click="selectPost('north')" :transform="uprightMode ? 'rotate(-33.6, 191, 125)' : ''">
-                        <rect x="173" y="118" width="38" height="14" rx="4" fill="#09090b" fill-opacity="0.84" stroke="#60a5fa" stroke-width="1" />
-                        <circle cx="181" cy="125" r="6.2" fill="#2563eb" stroke="#ffffff" stroke-width="1.2" />
-                        <text x="181" y="127.5" text-anchor="middle" fill="#ffffff" font-size="7.2" font-weight="900">7</text>
-                        <text x="199" y="127.5" text-anchor="middle" fill="#ffffff" font-size="6.8" font-weight="800">Lot 7</text>
+                      <g class="marker-btn" @click="selectPost('north')" :transform="uprightMode ? 'rotate(-33.6, 194, 126)' : ''">
+                        <rect x="175" y="119" width="38" height="14" rx="4" fill="#09090b" fill-opacity="0.88" stroke="#60a5fa" stroke-width="1" />
+                        <circle cx="183" cy="126" r="6.2" fill="#2563eb" stroke="#ffffff" stroke-width="1.2" />
+                        <text x="183" y="128.5" text-anchor="middle" fill="#ffffff" font-size="7.2" font-weight="900">7</text>
+                        <text x="201" y="128.5" text-anchor="middle" fill="#ffffff" font-size="6.8" font-weight="800">Lot 7</text>
                       </g>
 
                       <!-- ⑧ Lot 8 -->
-                      <g class="marker-btn" @click="selectPost('north')" :transform="uprightMode ? 'rotate(-33.6, 177, 103)' : ''">
-                        <rect x="159" y="96" width="38" height="14" rx="4" fill="#09090b" fill-opacity="0.84" stroke="#60a5fa" stroke-width="1" />
-                        <circle cx="167" cy="103" r="6.2" fill="#2563eb" stroke="#ffffff" stroke-width="1.2" />
-                        <text x="167" y="105.5" text-anchor="middle" fill="#ffffff" font-size="7.2" font-weight="900">8</text>
-                        <text x="185" y="105.5" text-anchor="middle" fill="#ffffff" font-size="6.8" font-weight="800">Lot 8</text>
+                      <g class="marker-btn" @click="selectPost('north')" :transform="uprightMode ? 'rotate(-33.6, 182, 98)' : ''">
+                        <rect x="163" y="91" width="38" height="14" rx="4" fill="#09090b" fill-opacity="0.88" stroke="#60a5fa" stroke-width="1" />
+                        <circle cx="171" cy="98" r="6.2" fill="#2563eb" stroke="#ffffff" stroke-width="1.2" />
+                        <text x="171" y="100.5" text-anchor="middle" fill="#ffffff" font-size="7.2" font-weight="900">8</text>
+                        <text x="189" y="100.5" text-anchor="middle" fill="#ffffff" font-size="6.8" font-weight="800">Lot 8</text>
                       </g>
 
                       <!-- ⑨ Grass Lot (North Apex) -->
-                      <g class="marker-btn" @click="selectPost('grass10')" :transform="uprightMode ? 'rotate(-33.6, 178, 65)' : ''">
-                        <rect x="152" y="57" width="54" height="15" rx="4" fill="#09090b" fill-opacity="0.88" stroke="#4ade80" stroke-width="1.2" />
-                        <circle cx="160" cy="64.5" r="6.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.2" />
-                        <text x="160" y="67.2" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="900">9</text>
-                        <text x="186" y="67.2" text-anchor="middle" fill="#86efac" font-size="7" font-weight="800">Grass Lot</text>
+                      <g class="marker-btn" @click="selectPost('grass10')" :transform="uprightMode ? 'rotate(-33.6, 184, 64)' : ''">
+                        <rect x="157" y="56.5" width="54" height="15" rx="4" fill="#09090b" fill-opacity="0.88" stroke="#4ade80" stroke-width="1.2" />
+                        <circle cx="165" cy="64" r="6.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.2" />
+                        <text x="165" y="66.7" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="900">9</text>
+                        <text x="191" y="66.7" text-anchor="middle" fill="#86efac" font-size="7" font-weight="800">Grass Lot</text>
                       </g>
 
                       <!-- ⑩ Brick Wall (Eastern Parcel Line) -->
-                      <g class="marker-btn" @click="selectPost('grass10')" :transform="uprightMode ? 'rotate(-33.6, 250, 110)' : ''">
-                        <rect x="223" y="102" width="54" height="15" rx="4" fill="#09090b" fill-opacity="0.88" stroke="#60a5fa" stroke-width="1.2" />
-                        <circle cx="231" cy="109.5" r="6.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.2" />
-                        <text x="231" y="112.2" text-anchor="middle" fill="#ffffff" font-size="7" font-weight="900">10</text>
-                        <text x="257" y="112.2" text-anchor="middle" fill="#93c5fd" font-size="7" font-weight="800">Brick Wall</text>
+                      <g class="marker-btn" @click="selectPost('grass10')" :transform="uprightMode ? 'rotate(-33.6, 252, 114)' : ''">
+                        <rect x="225" y="106.5" width="54" height="15" rx="4" fill="#09090b" fill-opacity="0.88" stroke="#60a5fa" stroke-width="1.2" />
+                        <circle cx="233" cy="114" r="6.5" fill="#2563eb" stroke="#ffffff" stroke-width="1.2" />
+                        <text x="233" y="116.7" text-anchor="middle" fill="#ffffff" font-size="7" font-weight="900">10</text>
+                        <text x="259" y="116.7" text-anchor="middle" fill="#93c5fd" font-size="7" font-weight="800">Brick Wall</text>
                       </g>
                     </g>
 
@@ -617,9 +604,9 @@
                       </g>
 
                       <!-- P7 (Top-Right by Lot 9 Grass Lot & Lot 10 Brick Wall) -->
-                      <g :class="['marker-btn', { 'marker-active': selectedPostKey === 'north' }]" @click="selectPost('north')" :transform="uprightMode ? 'rotate(-33.6, 224, 52)' : ''">
-                        <circle cx="224" cy="52" r="11" fill="#ffffff" stroke="#09090b" stroke-width="2" />
-                        <text x="224" y="55.5" text-anchor="middle" fill="#09090b" font-size="8.5" font-weight="900">P7</text>
+                      <g :class="['marker-btn', { 'marker-active': selectedPostKey === 'north' }]" @click="selectPost('north')" :transform="uprightMode ? 'rotate(-33.6, 218, 48)' : ''">
+                        <circle cx="218" cy="48" r="11" fill="#ffffff" stroke="#09090b" stroke-width="2" />
+                        <text x="218" y="51.5" text-anchor="middle" fill="#09090b" font-size="8.5" font-weight="900">P7</text>
                       </g>
 
                       <!-- P8 (Top-Left by Lot 9 Grass Lot & Lot 8) -->
@@ -629,10 +616,10 @@
                       </g>
 
                       <!-- P9 Exit (West Exit Spine beside Lots 5-7 & Turf Field) -->
-                      <g :class="['marker-btn', { 'marker-active': selectedPostKey === 'north' }]" @click="selectPost('north')" :transform="uprightMode ? 'rotate(-33.6, 138, 188)' : ''">
-                        <circle cx="138" cy="188" r="12.5" fill="#ffffff" stroke="#09090b" stroke-width="2" />
-                        <text x="138" y="186.5" text-anchor="middle" fill="#09090b" font-size="7.5" font-weight="900">P9</text>
-                        <text x="138" y="194" text-anchor="middle" fill="#16a34a" font-size="6.2" font-weight="900">Exit</text>
+                      <g :class="['marker-btn', { 'marker-active': selectedPostKey === 'north' }]" @click="selectPost('north')" :transform="uprightMode ? 'rotate(-33.6, 134, 188)' : ''">
+                        <circle cx="134" cy="188" r="12.5" fill="#ffffff" stroke="#09090b" stroke-width="2" />
+                        <text x="134" y="186.5" text-anchor="middle" fill="#09090b" font-size="7.5" font-weight="900">P9</text>
+                        <text x="134" y="194" text-anchor="middle" fill="#16a34a" font-size="6.2" font-weight="900">Exit</text>
                       </g>
 
                       <!-- P10 (Top-Left of Building / Top of Exit Lot 1) -->
@@ -650,9 +637,9 @@
                         <circle cx="315" cy="336" r="9.5" fill="#ffffff" stroke="#09090b" stroke-width="1.8" />
                         <text x="315" y="339.2" text-anchor="middle" fill="#09090b" font-size="8" font-weight="900">G</text>
                       </g>
-                      <g :class="['marker-btn', { 'marker-active': selectedPostKey === 'greeters' }]" @click="selectPost('greeters')" :transform="uprightMode ? 'rotate(-33.6, 232, 202)' : ''">
-                        <circle cx="232" cy="202" r="9.5" fill="#ffffff" stroke="#09090b" stroke-width="1.8" />
-                        <text x="232" y="205.2" text-anchor="middle" fill="#09090b" font-size="8" font-weight="900">G</text>
+                      <g :class="['marker-btn', { 'marker-active': selectedPostKey === 'greeters' }]" @click="selectPost('greeters')" :transform="uprightMode ? 'rotate(-33.6, 238, 212)' : ''">
+                        <circle cx="238" cy="212" r="9.5" fill="#ffffff" stroke="#09090b" stroke-width="1.8" />
+                        <text x="238" y="215.2" text-anchor="middle" fill="#09090b" font-size="8" font-weight="900">G</text>
                       </g>
                     </g>
                   </g>

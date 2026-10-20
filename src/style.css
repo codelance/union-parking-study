@@ -119,19 +119,17 @@ body.body--dark .uc-muted {
 
 .marker-btn {
   cursor: pointer;
-  transition: transform 0.15s ease, filter 0.15s ease;
-  transform-box: fill-box;
-  transform-origin: center;
+  transition: filter 0.15s ease, opacity 0.15s ease;
 }
 
 .marker-btn:hover {
-  transform: scale(1.2);
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.75));
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9)) brightness(1.12);
 }
 
-.marker-active circle {
+.marker-active circle,
+.marker-active rect {
   stroke: #fde047 !important;
-  stroke-width: 3.5px !important;
+  stroke-width: 3px !important;
 }
 
 @media print {
