@@ -4,18 +4,18 @@
     <div class="uc-card q-pa-lg">
       <div class="row items-center justify-between q-col-gutter-md">
         <div class="col-12 col-md-8">
-          <span class="uc-pill-black">Mecklenburg County GIS Parcel &amp; Expansion Audit</span>
+          <span class="uc-pill-black">Mecklenburg County GIS Parcel &amp; Expansion Audit (Lots 11–13)</span>
           <div class="text-h5 text-weight-bolder q-mt-sm">
-            100% Within Owned Parcels (PID 01123101 &amp; PID 01123122) + Turf Field Protected
+            Proposed Lots 11, 12 &amp; 13 (+360 Spaces) Inside Owned Parcels + Turf Field Protected
           </div>
           <p class="text-body1 uc-muted q-mt-sm q-mb-none" style="line-height: 1.65">
             Official Mecklenburg County GIS tax parcel records confirm the campus assemblage spans
             <strong>28.15 owned acres across 4 contiguous parcels</strong>: Main Campus
             <strong>PID 01123101 (21.90 ac)</strong>, SE Corner Tract
             <strong>PID 01123122 (3.67 ac, owned by Ambassador Christian School Inc)</strong>, and Entry/Exit parcels
-            <strong>PID 01123131 &amp; 01123132 (2.58 ac)</strong>. Because the Northeast V-wedge
+            <strong>PID 01123131 &amp; 01123132 (2.58 ac)</strong>. Because the land east of <strong>⑩ Brick Wall</strong>
             (<strong>PID 01123102, 9.20 ac</strong>) is privately owned by a neighbor, all
-            <strong>+360 new spaces</strong> are placed strictly inside owned parcels <strong>01123122</strong> and
+            <strong>+360 new spaces (Proposed Lots 11, 12 &amp; 13)</strong> are placed strictly inside owned parcels <strong>01123122</strong> and
             <strong>01123101</strong> while keeping the <strong>School Turf Field 100% untouched</strong>.
           </p>
         </div>
@@ -25,7 +25,7 @@
             :color="$q.dark.isActive ? 'white' : 'dark'"
             :text-color="$q.dark.isActive ? 'dark' : 'white'"
             icon="map"
-            label="View GIS Parcels &amp; Lots on Map"
+            label="View Proposed Lots 11–13 on Map"
             no-caps
             class="text-weight-bold q-px-md q-py-sm"
             @click="$emit('show-expansion')"
@@ -46,19 +46,19 @@
           <div class="uc-subcard q-pa-md full-height">
             <div class="text-caption uc-muted text-uppercase text-weight-bold">School Turf Field</div>
             <div class="text-h5 text-weight-bolder q-mt-xs">100% Protected</div>
-            <div class="text-caption uc-muted q-mt-xs">Preserved inside PID 01123101</div>
+            <div class="text-caption uc-muted q-mt-xs">West of P8 &amp; P9 Exit (PID 01123101)</div>
           </div>
         </div>
         <div class="col-6 col-md-3">
           <div class="uc-subcard q-pa-md full-height">
-            <div class="text-caption uc-muted text-uppercase text-weight-bold">In-Parcel Expansion</div>
+            <div class="text-caption uc-muted text-uppercase text-weight-bold">Proposed Lots 11–13</div>
             <div class="text-h5 text-weight-bolder q-mt-xs">+360 Spaces</div>
             <div class="text-caption uc-muted q-mt-xs">3.05 ac inside 01123122 &amp; 01123101</div>
           </div>
         </div>
         <div class="col-6 col-md-3">
           <div class="uc-subcard q-pa-md full-height">
-            <div class="text-caption uc-muted text-uppercase text-weight-bold">Expanded Total</div>
+            <div class="text-caption uc-muted text-uppercase text-weight-bold">Total Across Lots 1–13</div>
             <div class="text-h5 text-weight-bolder q-mt-xs">~810 Spaces</div>
             <div class="text-caption uc-muted q-mt-xs">Supports 1,800–2,000 ppl/service</div>
           </div>

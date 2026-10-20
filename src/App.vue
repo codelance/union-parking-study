@@ -73,7 +73,7 @@
 
     <!-- Main Page Content -->
     <q-page-container>
-      <q-page class="q-py-lg q-px-md">
+      <q-page class="q-py-md q-px-md">
         <div class="uc-container">
           <!-- TAB 1: INTERACTIVE CAMPUS MAP & SIMULATOR (ON LOAD) -->
           <div v-show="activeTab === 'map' || activeTab === 'all'" class="q-mb-xl">
@@ -84,7 +84,7 @@
                 :color="$q.dark.isActive ? 'white' : 'dark'"
                 :text-color="$q.dark.isActive ? 'dark' : 'white'"
                 icon-right="arrow_forward"
-                label="Next: 2. Traffic & Drop-Off Strategy"
+                label="Next: 2. Flow & Week 3 Tweaks"
                 no-caps
                 class="text-weight-bold q-px-lg q-py-sm"
                 style="border-radius: 10px"
@@ -101,7 +101,7 @@
                 outline
                 :color="$q.dark.isActive ? 'white' : 'dark'"
                 icon="arrow_back"
-                label="Back to Campus Map"
+                label="Back to Interactive Campus Map"
                 no-caps
                 class="text-weight-bold q-px-md q-py-sm"
                 style="border-radius: 10px"
@@ -112,7 +112,7 @@
                 :color="$q.dark.isActive ? 'white' : 'dark'"
                 :text-color="$q.dark.isActive ? 'dark' : 'white'"
                 icon-right="arrow_forward"
-                label="Next: 3. +360 Space Expansion Plan"
+                label="Next: 3. Proposed Lots 11–13 (+360)"
                 no-caps
                 class="text-weight-bold q-px-lg q-py-sm"
                 style="border-radius: 10px"
@@ -129,7 +129,7 @@
                 outline
                 :color="$q.dark.isActive ? 'white' : 'dark'"
                 icon="arrow_back"
-                label="Back to Traffic & Drop-Off Plan"
+                label="Back to Flow & Week 3 Tweaks"
                 no-caps
                 class="text-weight-bold q-px-md q-py-sm"
                 style="border-radius: 10px"
@@ -157,7 +157,7 @@
                 outline
                 :color="$q.dark.isActive ? 'white' : 'dark'"
                 icon="arrow_back"
-                label="Back to +360 Space Expansion"
+                label="Back to Proposed Lots 11–13 (+360)"
                 no-caps
                 class="text-weight-bold q-px-md q-py-sm"
                 style="border-radius: 10px"
@@ -178,7 +178,7 @@
 
           <!-- Subtle Bottom Footer (Non-Sticky) -->
           <div class="text-center text-caption uc-muted q-pt-lg q-pb-md no-print" style="border-top: 1px solid rgba(113, 113, 122, 0.2)">
-            Union Church CLT • Huntersville Campus Traffic, Parking &amp; Expansion Study (11901 Sam Furr Rd / 2520 Ambassador Christian Way)
+            Union Church CLT • Huntersville Campus Traffic, Parking &amp; Expansion Study (Lots 1–13 &amp; Posts P1–P12 • Hwy 2145 / Sam Furr Rd)
           </div>
         </div>
       </q-page>
@@ -199,9 +199,9 @@ const activeTab = ref('map')
 const mapSimRef = ref(null)
 
 const navTabs = [
-  { id: 'map', label: '1. Campus Map' },
-  { id: 'engineering', label: '2. Traffic & Drop-Off' },
-  { id: 'expansion', label: '3. +360 Expansion' },
+  { id: 'map', label: '1. Interactive Map' },
+  { id: 'engineering', label: '2. Flow & Week 3 Tweaks' },
+  { id: 'expansion', label: '3. Lots 11–13 (+360)' },
   { id: 'playbook', label: '4. Sunday Playbook' },
   { id: 'all', label: 'Full Report' }
 ]
