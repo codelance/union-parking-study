@@ -1,20 +1,53 @@
 <template>
   <div>
-    <!-- Sleek Integrated Campus Metrics Ribbon (Keeps Interactive Map Above the Fold) -->
-    <div class="uc-card q-px-md q-py-sm q-mb-md">
-      <div class="row items-center justify-between q-col-gutter-sm">
-        <div class="col-12 col-md-auto row items-center q-gutter-x-sm">
-          <span class="uc-pill-black">Interactive Master Map</span>
-          <span class="text-subtitle2 text-weight-bolder">
-            Lots 1–10 Today (~450 Paved + ~90 Grass/Wall) • Posts P1–P12 &amp; G • Proposed Lots 11–13 (+360 Spaces)
-          </span>
+    <!-- Clean 4-Column Campus Summary Strip -->
+    <div class="row q-col-gutter-sm q-mb-md">
+      <div class="col-6 col-md-3">
+        <div class="uc-card q-px-md q-py-sm full-height">
+          <div class="text-caption uc-muted text-uppercase text-weight-bold" style="font-size: 10px; letter-spacing: 0.05em">
+            ①–⑧ Paved Lots Today
+          </div>
+          <div class="row items-baseline justify-between q-mt-xs">
+            <span class="text-subtitle1 text-weight-bolder">~450 Spaces</span>
+            <span class="text-caption uc-muted">Exit Lot 1 + Lots 2–8</span>
+          </div>
         </div>
-        <div class="col-12 col-md-auto row items-center q-gutter-x-md text-caption">
-          <div><strong>Auditorium:</strong> 2,100 Seats</div>
-          <div><strong>Lots 1–8 (Paved):</strong> ~450 Spaces</div>
-          <div><strong>Lots 9–10 (Grass/Wall):</strong> ~90 Spaces</div>
-          <div><strong>Lots 11–13 (In-Parcel):</strong> +360 Spaces (810 Total)</div>
-          <div><strong>Owned Land:</strong> 28.15 Ac (Turf Protected)</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="uc-card q-px-md q-py-sm full-height">
+          <div class="text-caption uc-muted text-uppercase text-weight-bold" style="font-size: 10px; letter-spacing: 0.05em">
+            ⑨–⑩ Grass &amp; Brick Wall
+          </div>
+          <div class="row items-baseline justify-between q-mt-xs">
+            <span class="text-subtitle1 text-weight-bolder">+90 Spaces</span>
+            <span class="text-caption uc-muted">Dream Team &amp; Staff</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div
+          class="uc-card q-px-md q-py-sm full-height cursor-pointer"
+          style="border-color: rgba(168, 85, 247, 0.45)"
+          @click="activateExpansionView"
+        >
+          <div class="text-caption text-uppercase text-weight-bold" style="font-size: 10px; letter-spacing: 0.05em; color: #a855f7">
+            ⑪–⑬ In-Parcel Expansion
+          </div>
+          <div class="row items-baseline justify-between q-mt-xs">
+            <span class="text-subtitle1 text-weight-bolder">+360 Spaces</span>
+            <span class="text-caption uc-muted">810 Total (Click to View)</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="uc-card q-px-md q-py-sm full-height cursor-pointer" @click="selectPost('turf')">
+          <div class="text-caption uc-muted text-uppercase text-weight-bold" style="font-size: 10px; letter-spacing: 0.05em">
+            Owned Campus Land
+          </div>
+          <div class="row items-baseline justify-between q-mt-xs">
+            <span class="text-subtitle1 text-weight-bolder">28.15 Acres</span>
+            <span class="text-caption" style="color: #16a34a; font-weight: 700">Turf Field Protected</span>
+          </div>
         </div>
       </div>
     </div>
@@ -24,34 +57,19 @@
       <!-- Left / Main Area: High-Emphasis Interactive Campus Parking Map -->
       <div :class="fullWidthMap ? 'col-12' : 'col-12 col-lg-8'">
         <div class="uc-card q-pa-md">
-          <!-- Top Map Header & Interactive Toolbar -->
+          <!-- Top Map Header & Clean Utility Buttons -->
           <div class="row items-center justify-between q-mb-sm q-col-gutter-sm">
             <div class="col-12 col-sm">
-              <div class="row items-center q-gutter-x-sm">
-                <div class="text-h6 text-weight-bolder" style="letter-spacing: -0.01em">
-                  Campus Parking &amp; Traffic Flow Map (Lots 1–13 &amp; Posts P1–P12)
-                </div>
+              <div class="text-h6 text-weight-bolder" style="letter-spacing: -0.01em">
+                Campus Parking &amp; Traffic Flow Map
               </div>
               <div class="text-caption uc-muted">
-                Click any numbered parking lot (<strong>①–⑩</strong> or proposed <strong>⑪–⑬</strong>) or post circle (<strong>P1–P12, G</strong>) to inspect parking spaces &amp; traffic flow.
+                Click any numbered lot (<strong>①–⑬</strong>) or post circle (<strong>P1–P12, G</strong>) on the map to inspect details on the right.
               </div>
             </div>
 
-            <!-- Map View & Zoom Controls -->
+            <!-- Clean Top-Right Map Utilities -->
             <div class="col-12 col-sm-auto row items-center q-gutter-xs no-print">
-              <q-btn
-                outline
-                dense
-                no-caps
-                size="sm"
-                :color="$q.dark.isActive ? 'white' : 'dark'"
-                :icon="uprightMode ? 'explore' : 'crop_portrait'"
-                :label="uprightMode ? 'Aligned to Pastor Map' : 'True North GIS'"
-                class="q-px-sm text-weight-bold"
-                style="border-radius: 7px"
-                title="Switch between Pastor Map upright alignment and True North GIS alignment"
-                @click="uprightMode = !uprightMode"
-              />
               <q-btn
                 :unelevated="showPastorCompare"
                 :outline="!showPastorCompare"
@@ -81,7 +99,7 @@
             </div>
           </div>
 
-          <!-- 4-Step Flow Mode Selector Bar -->
+          <!-- Single-Row 4-Step Scenario Selector Bar -->
           <div class="row q-col-gutter-sm q-mb-sm">
             <div
               v-for="opt in phaseOptions"
@@ -107,66 +125,6 @@
                   </div>
                 </div>
               </q-btn>
-            </div>
-          </div>
-
-          <!-- Interactive Layer Toggles & Zoom Bar -->
-          <div class="row items-center justify-between q-mb-sm q-px-xs q-col-gutter-xs no-print">
-            <div class="row items-center q-gutter-xs">
-              <span class="text-caption uc-muted text-weight-bold q-mr-xs">Map Layers:</span>
-              <q-chip
-                v-model:selected="layerLots"
-                clickable
-                dense
-                 outline
-                size="sm"
-                :color="layerLots ? ($q.dark.isActive ? 'white' : 'dark') : 'grey-6'"
-                class="text-weight-bold"
-              >
-                ①–⑩ Lot #s &amp; Spaces
-              </q-chip>
-              <q-chip
-                v-model:selected="layerPosts"
-                clickable
-                dense
-                outline
-                size="sm"
-                :color="layerPosts ? ($q.dark.isActive ? 'white' : 'dark') : 'grey-6'"
-                class="text-weight-bold"
-              >
-                Posts P1–P12 &amp; G
-              </q-chip>
-              <q-chip
-                v-model:selected="layerExpansion"
-                clickable
-                dense
-                outline
-                size="sm"
-                :color="layerExpansion || currentPhase === 'expand' ? 'purple-4' : 'grey-6'"
-                class="text-weight-bold"
-              >
-                ⑪–⑬ New Lots (+360)
-              </q-chip>
-              <q-chip
-                v-model:selected="layerGis"
-                clickable
-                dense
-                outline
-                size="sm"
-                :color="layerGis ? 'teal-4' : 'grey-6'"
-                class="text-weight-bold"
-              >
-                GIS Property Lines
-              </q-chip>
-            </div>
-
-            <!-- Zoom Controls -->
-            <div class="row items-center q-gutter-xs">
-              <span class="text-caption uc-muted">Zoom:</span>
-              <q-btn flat dense round size="sm" icon="remove" @click="adjustZoom(-0.2)" :disable="zoomLevel <= 1" />
-              <span class="text-caption text-weight-bold" style="min-width: 36px; text-align: center">{{ Math.round(zoomLevel * 100) }}%</span>
-              <q-btn flat dense round size="sm" icon="add" @click="adjustZoom(0.2)" :disable="zoomLevel >= 1.8" />
-              <q-btn v-if="zoomLevel > 1" flat dense size="xs" no-caps label="Reset" @click="resetZoom" />
             </div>
           </div>
 
@@ -645,6 +603,40 @@
                     </g>
                   </g>
                 </svg>
+
+                <!-- Sleek Floating Bottom-Right Map Controls (Orientation + Zoom) -->
+                <div
+                  class="row items-center no-wrap q-gutter-x-xs q-px-sm q-py-xs no-print"
+                  style="
+                    position: absolute;
+                    bottom: 10px;
+                    right: 10px;
+                    z-index: 2;
+                    background: rgba(9, 9, 11, 0.9);
+                    border: 1px solid rgba(255, 255, 255, 0.18);
+                    border-radius: 8px;
+                    color: #fafafa;
+                    backdrop-filter: blur(4px);
+                  "
+                >
+                  <q-btn
+                    flat
+                    dense
+                    no-caps
+                    size="xs"
+                    color="white"
+                    :icon="uprightMode ? 'explore' : 'crop_portrait'"
+                    :label="uprightMode ? 'Pastor View' : 'True North'"
+                    class="text-weight-bold q-px-xs"
+                    title="Toggle between Pastor Map upright alignment and True North GIS alignment"
+                    @click="uprightMode = !uprightMode"
+                  />
+                  <span style="color: rgba(255,255,255,0.25)">|</span>
+                  <q-btn flat dense round size="xs" color="white" icon="remove" @click="adjustZoom(-0.2)" :disable="zoomLevel <= 1" />
+                  <span class="text-caption text-weight-bold" style="font-size: 11px; min-width: 34px; text-align: center">{{ Math.round(zoomLevel * 100) }}%</span>
+                  <q-btn flat dense round size="xs" color="white" icon="add" @click="adjustZoom(0.2)" :disable="zoomLevel >= 1.8" />
+                  <q-btn v-if="zoomLevel > 1" flat dense size="xs" color="amber-4" no-caps label="Reset" class="q-px-xs" @click="resetZoom" />
+                </div>
               </div>
             </div>
 
@@ -672,77 +664,121 @@
             </div>
           </div>
 
-          <!-- Legend Bar Below Map (Aligned 100% with Pastor's Map Colors) -->
-          <div class="row items-center q-gutter-md q-mt-sm q-px-xs text-caption uc-muted">
-            <div class="row items-center no-wrap">
-              <span style="width: 16px; height: 4px; background: #38bdf8; border-radius: 2px; display: inline-block" class="q-mr-xs"></span>
-              <span><strong>Light Blue Arrows:</strong> Entry Flow (Lots 1→10)</span>
+          <!-- Unified Map Legend & Interactive Layer Toggle Bar Below Map -->
+          <div class="row items-center justify-between q-col-gutter-sm q-mt-sm q-px-xs text-caption uc-muted">
+            <div class="col-12 col-md-auto row items-center q-gutter-x-md q-gutter-y-xs">
+              <div class="row items-center no-wrap">
+                <span style="width: 14px; height: 4px; background: #38bdf8; border-radius: 2px; display: inline-block" class="q-mr-xs"></span>
+                <span><strong>Blue:</strong> Entry Flow (1→10)</span>
+              </div>
+              <div class="row items-center no-wrap">
+                <span style="width: 14px; height: 4px; background: #22c55e; border-radius: 2px; display: inline-block" class="q-mr-xs"></span>
+                <span><strong>Green:</strong> Exit Flow</span>
+              </div>
+              <div class="row items-center no-wrap">
+                <span style="width: 10px; height: 10px; background: #f59e0b; border: 2px solid #ef4444; border-radius: 50%; display: inline-block" class="q-mr-xs"></span>
+                <span><strong>P1/P11:</strong> Bottleneck</span>
+              </div>
             </div>
-            <div class="row items-center no-wrap">
-              <span style="width: 16px; height: 4px; background: #22c55e; border-radius: 2px; display: inline-block" class="q-mr-xs"></span>
-              <span><strong>Green Arrows:</strong> Exit Flow</span>
-            </div>
-            <div class="row items-center no-wrap">
-              <span style="width: 11px; height: 11px; background: #f59e0b; border: 2px solid #ef4444; border-radius: 50%; display: inline-block" class="q-mr-xs"></span>
-              <span><strong>P1 / P11:</strong> Potential Bottleneck</span>
-            </div>
-            <div class="row items-center no-wrap">
-              <span style="width: 12px; height: 12px; background: rgba(147, 51, 234, 0.55); border: 1px solid #c084fc; border-radius: 3px; display: inline-block" class="q-mr-xs"></span>
-              <span><strong>⑪–⑬ Proposed Lots:</strong> +360 Spaces (In-Parcel)</span>
-            </div>
-            <div class="row items-center no-wrap">
-              <span style="width: 14px; height: 0px; border-top: 2px dashed #34d399; display: inline-block" class="q-mr-xs"></span>
-              <span><strong>Green Dashed:</strong> Owned GIS Property Line</span>
+
+            <!-- Interactive Layer Chips (Click to Toggle Visibility) -->
+            <div class="col-12 col-md-auto row items-center q-gutter-xs no-print">
+              <span class="text-caption uc-muted text-weight-bold q-mr-xs">Layers:</span>
+              <q-chip
+                v-model:selected="layerLots"
+                clickable
+                dense
+                outline
+                size="sm"
+                :color="layerLots ? ($q.dark.isActive ? 'white' : 'dark') : 'grey-6'"
+                class="text-weight-bold"
+              >
+                ①–⑩ Lots
+              </q-chip>
+              <q-chip
+                v-model:selected="layerPosts"
+                clickable
+                dense
+                outline
+                size="sm"
+                :color="layerPosts ? ($q.dark.isActive ? 'white' : 'dark') : 'grey-6'"
+                class="text-weight-bold"
+              >
+                Posts P1–P12
+              </q-chip>
+              <q-chip
+                v-model:selected="layerExpansion"
+                clickable
+                dense
+                outline
+                size="sm"
+                :color="layerExpansion || currentPhase === 'expand' ? 'purple-4' : 'grey-6'"
+                class="text-weight-bold"
+              >
+                ⑪–⑬ New Lots (+360)
+              </q-chip>
+              <q-chip
+                v-model:selected="layerGis"
+                clickable
+                dense
+                outline
+                size="sm"
+                :color="layerGis ? 'teal-4' : 'grey-6'"
+                class="text-weight-bold"
+              >
+                GIS Parcel Lines
+              </q-chip>
             </div>
           </div>
 
           <!-- Active View Summary Bar + 5 Clickable Week 3 Tweaks Directly Below the Map -->
-          <div class="uc-subcard q-pa-md q-mt-md">
+          <div class="uc-subcard q-pa-md q-mt-sm">
             <div class="row items-center justify-between no-wrap q-col-gutter-md">
               <div class="col">
-                <span class="uc-pill-black q-mb-xs">{{ activePhaseObj.stepLabel }}</span>
-                <div class="text-subtitle1 text-weight-bold q-mt-xs">
-                  {{ activePhaseObj.title }}
+                <div class="row items-center q-gutter-x-sm">
+                  <span class="uc-pill-black">{{ activePhaseObj.stepLabel }}</span>
+                  <span class="text-subtitle2 text-weight-bolder">{{ activePhaseObj.title }}</span>
                 </div>
-                <div class="text-body2 uc-muted q-mt-xs" style="line-height: 1.55">
+                <div class="text-body2 uc-muted q-mt-xs" style="line-height: 1.5">
                   {{ activePhaseObj.desc }}
                 </div>
               </div>
               <div class="col-auto no-print">
                 <q-btn
                   unelevated
+                  dense
                   :color="$q.dark.isActive ? 'white' : 'dark'"
                   :text-color="$q.dark.isActive ? 'dark' : 'white'"
                   icon-right="arrow_forward"
-                  label="Next Map View"
+                  label="Next View"
                   no-caps
-                  class="text-weight-bold"
+                  class="text-weight-bold q-px-md q-py-xs"
+                  style="border-radius: 8px"
                   @click="nextPhase"
                 />
               </div>
             </div>
 
-            <!-- Quick-Jump Buttons for the 5 Week 3+ Map Improvements -->
-            <div class="q-mt-md q-pt-sm" style="border-top: 1px solid rgba(113, 113, 122, 0.2)">
-              <div class="text-caption text-uppercase text-weight-bold uc-muted q-mb-xs" style="letter-spacing: 0.04em">
-                Click any Week 3+ Improvement to Highlight on Map:
-              </div>
-              <div class="row q-gutter-xs">
-                <q-btn
-                  v-for="tweak in pastorMapTweaks"
-                  :key="tweak.num"
-                  size="sm"
-                  no-caps
-                  :unelevated="selectedPostKey === tweak.postKey && currentPhase === tweak.phase"
-                  :outline="!(selectedPostKey === tweak.postKey && currentPhase === tweak.phase)"
-                  :color="selectedPostKey === tweak.postKey && currentPhase === tweak.phase ? ($q.dark.isActive ? 'white' : 'dark') : 'grey-7'"
-                  :text-color="selectedPostKey === tweak.postKey && currentPhase === tweak.phase ? ($q.dark.isActive ? 'dark' : 'white') : undefined"
-                  :label="tweak.badge"
-                  class="text-weight-bold"
-                  style="border-radius: 7px"
-                  @click="focusTweak(tweak)"
-                />
-              </div>
+            <!-- Compact Quick-Jump Buttons for the 5 Week 3+ Map Improvements -->
+            <div class="row items-center q-gutter-xs q-mt-sm q-pt-sm no-print" style="border-top: 1px solid rgba(113, 113, 122, 0.2)">
+              <span class="text-caption text-uppercase text-weight-bold uc-muted q-mr-xs" style="font-size: 10px; letter-spacing: 0.04em">
+                Week 3 Fixes:
+              </span>
+              <q-btn
+                v-for="tweak in pastorMapTweaks"
+                :key="tweak.num"
+                size="sm"
+                dense
+                no-caps
+                :unelevated="selectedPostKey === tweak.postKey && currentPhase === tweak.phase"
+                :outline="!(selectedPostKey === tweak.postKey && currentPhase === tweak.phase)"
+                :color="selectedPostKey === tweak.postKey && currentPhase === tweak.phase ? ($q.dark.isActive ? 'white' : 'dark') : 'grey-7'"
+                :text-color="selectedPostKey === tweak.postKey && currentPhase === tweak.phase ? ($q.dark.isActive ? 'dark' : 'white') : undefined"
+                :label="tweak.badge"
+                class="text-weight-bold q-px-sm"
+                style="border-radius: 6px"
+                @click="focusTweak(tweak)"
+              />
             </div>
           </div>
         </div>
@@ -752,16 +788,40 @@
       <div :class="fullWidthMap ? 'col-12 row q-col-gutter-lg' : 'col-12 col-lg-4 column q-gutter-y-lg'">
         <!-- Card 1: Interactive Map Inspector (Lots 1-13 & Posts P1-P12) -->
         <div :class="fullWidthMap ? 'col-12 col-md-6' : ''">
-          <div class="uc-card q-pa-md q-pa-md-lg full-height">
-            <div class="row items-center justify-between q-mb-xs">
-              <span class="uc-pill-black">{{ activePostObj.badge }}</span>
+          <div class="uc-card q-pa-md full-height">
+            <!-- Compact Top Switcher for Inspecting Any Lot or Post -->
+            <div class="q-pb-sm q-mb-sm no-print" style="border-bottom: 1px solid rgba(113, 113, 122, 0.2)">
+              <div class="row items-center justify-between q-mb-xs">
+                <span class="text-caption uc-muted text-uppercase text-weight-bold" style="font-size: 10px; letter-spacing: 0.05em">
+                  Selected on Map (Click to Switch):
+                </span>
+                <span class="uc-pill-black" style="font-size: 9.5px; padding: 2px 7px">{{ activePostObj.badge }}</span>
+              </div>
+              <div class="row q-gutter-xs">
+                <q-btn
+                  v-for="item in inspectorQuickItems"
+                  :key="item.key"
+                  size="xs"
+                  dense
+                  no-caps
+                  :unelevated="selectedPostKey === item.key"
+                  :outline="selectedPostKey !== item.key"
+                  :color="selectedPostKey === item.key ? ($q.dark.isActive ? 'white' : 'dark') : (item.isExpand ? 'purple-5' : 'grey-7')"
+                  :text-color="selectedPostKey === item.key ? ($q.dark.isActive ? 'dark' : 'white') : undefined"
+                  :label="item.label"
+                  class="q-px-sm text-weight-bold"
+                  style="border-radius: 6px"
+                  @click="selectPost(item.key)"
+                />
+              </div>
             </div>
-            <div class="text-h6 text-weight-bolder q-mt-sm q-mb-xs" style="line-height: 1.3">
+
+            <div class="text-subtitle1 text-weight-bolder q-mb-xs" style="line-height: 1.3">
               {{ activePostObj.title }}
             </div>
 
             <!-- Key Metric Pills for Selected Lot/Post -->
-            <div v-if="activePostObj.metrics" class="row q-gutter-xs q-mb-md">
+            <div v-if="activePostObj.metrics" class="row q-gutter-xs q-mb-sm">
               <span
                 v-for="(m, idx) in activePostObj.metrics"
                 :key="idx"
@@ -776,61 +836,18 @@
               <div class="text-caption text-uppercase text-weight-bold uc-muted" style="font-size: 10px">
                 Current Map Setup (Lots 1–10 &amp; P1–P12)
               </div>
-              <div class="text-body2 q-mt-xs" style="line-height: 1.5">
+              <div class="text-body2 q-mt-xs" style="line-height: 1.48">
                 {{ activePostObj.week12 }}
               </div>
             </div>
 
-            <div class="uc-subcard q-pa-sm q-mb-md" style="border-left: 3px solid #22c55e">
+            <div class="uc-subcard q-pa-sm" style="border-left: 3px solid #22c55e">
               <div class="text-caption text-uppercase text-weight-bold" style="font-size: 10px; color: #16a34a">
                 Recommended Action / GIS Verification
               </div>
-              <div class="text-body2 q-mt-xs" style="line-height: 1.5">
+              <div class="text-body2 q-mt-xs" style="line-height: 1.48">
                 {{ activePostObj.week3Fix }}
               </div>
-            </div>
-
-            <!-- Categorized Quick-Select Directory for All Lots & Posts -->
-            <div class="text-caption uc-muted text-uppercase text-weight-bold q-mb-xs" style="font-size: 10px; letter-spacing: 0.05em">
-              Inspect Lots 1–10 &amp; Posts P1–P12:
-            </div>
-            <div class="row q-gutter-xs q-mb-sm">
-              <q-btn
-                v-for="key in ['split', 'lot1', 'east', 'north', 'grass10', 'hpd', 'greeters']"
-                :key="key"
-                size="sm"
-                dense
-                no-caps
-                :unelevated="selectedPostKey === key"
-                :outline="selectedPostKey !== key"
-                :color="selectedPostKey === key ? ($q.dark.isActive ? 'white' : 'dark') : 'grey-7'"
-                :text-color="selectedPostKey === key ? ($q.dark.isActive ? 'dark' : 'white') : undefined"
-                :label="postData[key].shortLabel"
-                class="q-px-sm text-weight-bold"
-                style="border-radius: 7px"
-                @click="selectPost(key)"
-              />
-            </div>
-
-            <div class="text-caption uc-muted text-uppercase text-weight-bold q-mb-xs" style="font-size: 10px; letter-spacing: 0.05em">
-              Inspect Proposed Lots 11–13 (+360 Spaces) &amp; GIS Land:
-            </div>
-            <div class="row q-gutter-xs">
-              <q-btn
-                v-for="key in ['e1', 'e2', 'e3', 'turf', 'gis']"
-                :key="key"
-                size="sm"
-                dense
-                no-caps
-                :unelevated="selectedPostKey === key"
-                :outline="selectedPostKey !== key"
-                :color="selectedPostKey === key ? ($q.dark.isActive ? 'white' : 'dark') : 'grey-7'"
-                :text-color="selectedPostKey === key ? ($q.dark.isActive ? 'dark' : 'white') : undefined"
-                :label="postData[key].shortLabel"
-                class="q-px-sm text-weight-bold"
-                style="border-radius: 7px"
-                @click="selectPost(key)"
-              />
             </div>
           </div>
         </div>
@@ -950,6 +967,21 @@ const layerGis = ref(true)
 
 const currentPhase = ref('ingress')
 const selectedPostKey = ref('split')
+
+const inspectorQuickItems = [
+  { key: 'split', label: 'P1 / P11' },
+  { key: 'lot1', label: '① Exit Lot 1' },
+  { key: 'east', label: '②–④ Lots 2–4' },
+  { key: 'north', label: '⑤–⑧ Lots 5–8' },
+  { key: 'grass10', label: '⑨–⑩ Grass/Wall' },
+  { key: 'hpd', label: 'P12 & Hwy 2145' },
+  { key: 'greeters', label: 'G: Greeters' },
+  { key: 'e1', label: '⑪ Lot 11 (+180)', isExpand: true },
+  { key: 'e2', label: '⑫ Lot 12 (+110)', isExpand: true },
+  { key: 'e3', label: '⑬ Lot 13 (+70)', isExpand: true },
+  { key: 'turf', label: 'Turf Field' },
+  { key: 'gis', label: 'GIS Lines' }
+]
 
 const attendees = ref(1000)
 const occ = ref(2.2)
@@ -1073,6 +1105,7 @@ function activateExpansionView() {
 
 defineExpose({
   activateExpansionView,
-  setPhase
+  setPhase,
+  focusTweak
 })
 </script>

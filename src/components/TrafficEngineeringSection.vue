@@ -34,43 +34,23 @@
           >
             <div class="row items-center justify-between q-mb-xs">
               <span class="uc-pill-outline">{{ tweak.badge }}</span>
+              <q-btn
+                outline
+                dense
+                no-caps
+                size="xs"
+                icon="map"
+                label="Highlight on Map"
+                class="q-px-sm text-weight-bold no-print"
+                style="border-radius: 6px"
+                @click="$emit('focus-tweak', tweak)"
+              />
             </div>
             <div class="text-subtitle1 text-weight-bold">
               {{ tweak.title }}
             </div>
             <div class="text-body2 uc-muted q-mt-xs" style="line-height: 1.58">
               {{ tweak.desc }}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Top Executive Overview Card -->
-    <div class="uc-card q-pa-lg">
-      <span class="uc-pill-black">Executive Summary</span>
-      <div class="text-h5 text-weight-bolder q-mt-sm">
-        How We Welcome 1,000+ People Per Service Without Backing Up Sam Furr Rd
-      </div>
-      <p class="text-body1 uc-muted q-mt-sm q-mb-none" style="max-width: 880px; line-height: 1.65">
-        Our new Huntersville building has a <strong>2,100-seat auditorium</strong>, but only
-        <strong>~450 paved spaces</strong> and a <strong>single 2-lane entrance road</strong> over Ramah Creek.
-        With three Sunday gatherings (<strong>8:30 AM, 10:30 AM, 12:30 PM</strong>), these four operational principles keep Sunday mornings effortless for families and guests.
-      </p>
-
-      <div class="row q-col-gutter-md q-mt-md">
-        <div
-          v-for="item in executiveTakeaways"
-          :key="item.id"
-          class="col-12 col-sm-6 col-md-3"
-        >
-          <div class="uc-subcard q-pa-md full-height">
-            <span class="uc-pill-outline">{{ item.badge }}</span>
-            <div class="text-subtitle1 text-weight-bold q-mt-sm q-mb-xs">
-              {{ item.title }}
-            </div>
-            <div class="text-body2 uc-muted" style="line-height: 1.55">
-              {{ item.description }}
             </div>
           </div>
         </div>
@@ -152,5 +132,6 @@
 </template>
 
 <script setup>
-import { executiveTakeaways, chickFilAPrinciples, pastorMapTweaks } from '../data/studyData'
+import { chickFilAPrinciples, pastorMapTweaks } from '../data/studyData'
+defineEmits(['focus-tweak'])
 </script>

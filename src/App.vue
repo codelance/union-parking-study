@@ -95,7 +95,7 @@
 
           <!-- TAB 2: TRAFFIC & DROP-OFF PLAN -->
           <div v-show="activeTab === 'engineering' || activeTab === 'all'" class="q-mb-xl">
-            <TrafficEngineeringSection />
+            <TrafficEngineeringSection @focus-tweak="handleFocusTweak" />
             <div v-if="activeTab === 'engineering'" class="row justify-between q-mt-lg no-print">
               <q-btn
                 outline
@@ -219,6 +219,14 @@ function handleShowExpansion() {
   activeTab.value = 'map'
   if (mapSimRef.value) {
     mapSimRef.value.activateExpansionView()
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+function handleFocusTweak(tweak) {
+  activeTab.value = 'map'
+  if (mapSimRef.value) {
+    mapSimRef.value.focusTweak(tweak)
   }
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
